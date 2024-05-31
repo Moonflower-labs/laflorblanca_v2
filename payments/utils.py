@@ -180,8 +180,8 @@ def update_order(order_number, items_data):
                 )
                 for item_data in items_data
             ]
-            logger.info(f" {len(order_items_instances)
-                            } Order items to creates")
+            logger.info(f""" {len(order_items_instances)}
+                        Order items to creates""")
             # Bulk create the updated order items
             if order_items_instances:
                 OrderItem.objects.bulk_create(order_items_instances)
