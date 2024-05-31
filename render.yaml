@@ -1,7 +1,6 @@
 databases:
   - name: florblancav2db
     plan: free
-    region: frankfurt
     databaseName: mysite
     user: mysite
 
