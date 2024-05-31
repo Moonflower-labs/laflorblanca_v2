@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+      footer {
+        text-align: center;
+        color: #fff;
+        font-size: 12px;
+        padding: 10px 0;
+        margin-top: 20px;
+        background: linear-gradient(to right, #60a5fa, #8b5cf6);
+      }
+    </style>
+  </head>
+  <body>
+    <div style="padding: 20px">
+      <img
+        src="https://i.pinimg.com/originals/40/8e/de/408ededb2e73c5b17a293ae7e8e820f8.jpg"
+        alt="Lotus flower"
+        width="300"
+        height="200"
+        style="display: block; margin: 0 auto"
+      />
+      <h1 style="color: #90479e; text-align: center">
+        {% block heading %}{% endblock %}
+      </h1>
+      <div style="margin-bottom: 20px">{% block content %} {% endblock %}</div>
+      <p>
+        Si tienes cualquier problema, contáctanos en
+        <a href="mailto:admi@thechicnoir.com">admi@thechicnoir.com</a>
+      </p>
+    </div>
+    <footer class="footer">&copy; 2024 La Flor Blanca.</footer>
+  </body>
+</html>

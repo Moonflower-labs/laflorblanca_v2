@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" data-theme="florBlanca">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'logo.jpeg' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Flor Blanca</title>
+  </head>
+  <body class="font-serif">
+    <div id="root"></div>
+    <script type="module" crossorigin src="{% static manifest_js %}"></script>
+    <link rel="stylesheet" crossorigin href="{% static manifest_css %}" />
+  </body>
+</html>
