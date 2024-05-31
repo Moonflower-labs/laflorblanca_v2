@@ -31,7 +31,7 @@ LANGUAGE_CODE = 'es'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'laflorblanca.onrender']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'laflorblanca.onrender.com']
 
 CORS_ALLOWED_ALL_ORIGINS = False
 
