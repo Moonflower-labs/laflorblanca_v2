@@ -510,8 +510,8 @@ class PasswordResetView(APIView):
             # Send the email with HTML content
             send_mail(
                 'Restablecer contraseña',
-                f'Pincha en el enlace a continuación para restablecer tu contraseña {
-                    reset_url}',
+                f"""Pincha en el enlace a continuación para restablecer tu contraseña {
+                    reset_url}""",
                 os.environ.get('DEFAULT_FROM_EMAIL'),
                 [email],
                 html_message=html_content,
