@@ -50,9 +50,10 @@ class UserPermissions(View):
         plan = request.GET.get('plan')
         user = request.user
         user_permissions = False
-        if user.is_authenticated:
+        membership = getattr(request.user, 'membership', None)
+        if user.is_authenticated and membership is not None:
             # TODO: add admin list logic
-            user_plan = user.membership.plan.name
+            user_plan = membership.plan.name
             if user_plan == os.getenv('SPIRIT'):
                 user_permissions = True
             elif plan == 'Alma' and (user_plan == os.getenv('SOUL') or user_plan == os.getenv('SPIRIT')):
