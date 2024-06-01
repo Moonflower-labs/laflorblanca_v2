@@ -19,7 +19,7 @@ const Header = () => {
     }
   };
   return (
-    <header className="sticky top-0 bg-slate-300 z-[200]">
+    <header className="sticky top-0 bg-slate-300 z-[200] w-screen">
       {/* User navigation */}
       <div className="navbar bg-gradient-to-r from-violet-300 to-sky-300">
         <div className="navbar-start">

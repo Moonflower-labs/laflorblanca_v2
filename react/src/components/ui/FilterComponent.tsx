@@ -48,7 +48,7 @@ const FilterComponent = () => {
   }, [isChecked]);
 
   return (
-    <div className="flex justify-between gap-4 align-middle w-[90%] mx-auto pb-4">
+    <div className="flex flex-col md:flex-row justify-between gap-4 align-middle w-[90%] mx-auto pb-4">
       <div className="flex flex-row gap-2 align-middle">
         <fetcher.Form
           ref={searchFormRef}

@@ -204,7 +204,7 @@ const Personality = () => {
         {posts && posts.length ? (
           posts.map((post: Post) => <PostListCard post={post} key={post.id} />)
         ) : (
-          <div className="text-xl pb-3">No hay respuestas disponibles</div>
+          <div className="text-xl pb-3 text-center">No hay respuestas disponibles</div>
         )}
       </div>
       <Pagination totalPages={data?.total_pages as number} />

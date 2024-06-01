@@ -483,6 +483,9 @@ class RegisterAPIView(APIView):
 
             user = User.objects.create_user(username, email, password)
             user.save()
+            """create a profile"""
+            profile = UserProfile.objects.create(user=user)
+            profile.save()
             """create a stripe customer"""
             CustomerView().post(request, user=user)
         except IntegrityError:

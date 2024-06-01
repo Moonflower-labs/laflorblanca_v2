@@ -15,7 +15,7 @@ const Navbar = () => {
       <LuMenuSquare
         onClick={handleNav}
         size={28}
-        className="text-primary my-auto me-3 cursor-pointer"
+        className="text-primary my-auto pe-2 cursor-pointer"
       />
       <AnimatePresence>
         {isVisible && (

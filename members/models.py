@@ -14,9 +14,9 @@ class UserProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile')
     favorite_posts = models.ManyToManyField(
-        'Post', related_name='favorited_by')
+        'Post', related_name='favorited_by', blank=True)
     favorite_videos = models.ManyToManyField(
-        'VideoLink', related_name='favorited_by')
+        'VideoLink', related_name='favorited_by', blank=True)
     basic_used_questions = models.PositiveSmallIntegerField(
         default=0, validators=[MaxValueValidator(3)])
     tarot_used_questions = models.PositiveSmallIntegerField(

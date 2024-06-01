@@ -39,20 +39,20 @@ const Register = () => {
           <div className="form-control mb-3">
             <input
               type="text"
-              placeholder="username"
+              placeholder="Usuario"
               className="floating-label-input peer"
               name="username"
               id="username"
               required
             />
             <label className="floating-label" htmlFor="username">
-              <span className="label-text">Username</span>
+              <span className="label-text">Nombre de usuario</span>
             </label>
           </div>
           <div className="form-control mb-3">
             <input
               type="email"
-              placeholder="email"
+              placeholder="Email"
               className="floating-label-input peer"
               name="email"
               id="email"
@@ -63,31 +63,31 @@ const Register = () => {
           <div className="form-control mb-3">
             <input
               type="password"
-              placeholder="password"
+              placeholder="Contraseña"
               className="floating-label-input peer"
               name="password"
               id="password"
               required
             />
             <label className="floating-label" htmlFor="password">
-              Password
+            Contraseña
             </label>
           </div>
           <div className="form-control mb-3">
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               className="floating-label-input peer"
               name="confirmation"
               id="confirmation"
               required
             />
             <label className="floating-label" htmlFor="confirmation">
-              Password
+            Confirma la contraseña
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Login</button>
+            <button className="btn btn-primary">Registrar</button>
           </div>
         </Form>
       </div>

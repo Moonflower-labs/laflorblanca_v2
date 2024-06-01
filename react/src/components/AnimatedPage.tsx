@@ -24,7 +24,7 @@ const AnimatedPage = ({ children }: AnimatedPageProps) => {
       filter: "blur(0px)",
     },
     exit: {
-      x: -300,
+      // x: -300,
       opacity: 0,
       filter: "blur(5px)",
       // transition: { ease: "easeOut", duration: 0.8 },
@@ -35,7 +35,7 @@ const AnimatedPage = ({ children }: AnimatedPageProps) => {
       variants={routeVariants}
       initial="initial"
       animate="final"
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.2 }}
       exit={"exit"}
     >
       {children}

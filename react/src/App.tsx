@@ -62,6 +62,7 @@ import ConfirmReset, {
   confirmResetAction,
 } from "./routes/auth/reset-confirmation";
 import { subscriptionAction } from "./components/SubscriptionPlans";
+import PaymentsLayout from "./components/layouts/PaymentsLayout";
 
 const routes = [
   {
@@ -247,10 +248,15 @@ const routes = [
         path: "subscribe",
         element: <Subscribe />,
       },
-      {
-        path: "payment/success",
-        loader: successLoader,
-        element: <Success />,
+      { 
+        element: <PaymentsLayout />,
+        children: [  
+          {
+            path: "payment/success",
+            loader: successLoader,
+            element: <Success />,
+          }
+        ]
       },
       {
         path: "store",

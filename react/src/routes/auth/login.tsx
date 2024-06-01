@@ -53,13 +53,13 @@ const Login = () => {
           <div className="form-control mb-3">
             <input
               type="text"
-              placeholder="Username"
+              placeholder="Usuario"
               className="floating-label-input peer"
               name="username"
               id="username"
             />
             <label htmlFor="username" className="floating-label">
-              Username
+              Nombre de usuario
             </label>
           </div>
           {/* <div className="form-control mb-3">
@@ -78,14 +78,14 @@ const Login = () => {
           <div className="form-control mb-3">
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               className="floating-label-input peer"
               name="password"
               id="password"
               required
             />
             <label htmlFor="password" className="floating-label">
-              Password
+              Contraseña
             </label>
             <div className="label">
               <Link
@@ -98,7 +98,7 @@ const Login = () => {
           </div>
           <div className="form-control mt-6">
             <button type="submit" className="btn btn-primary">
-              Login
+              Iniciar sesión
             </button>
           </div>
         </Form>
