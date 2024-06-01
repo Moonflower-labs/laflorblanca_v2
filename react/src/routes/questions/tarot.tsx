@@ -56,7 +56,7 @@ export const tarotAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-const Tarot = () => {
+export const Tarot = () => {
   const errors = useActionData() as Errors;
   const { tarot_used_questions = 3 } = (useLoaderData() as {
     tarot_used_questions: number;
@@ -216,5 +216,3 @@ const Tarot = () => {
     </div>
   );
 };
-
-export default Tarot;

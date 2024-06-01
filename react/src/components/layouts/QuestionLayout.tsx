@@ -1,6 +1,6 @@
 import { FaQuestion } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
-import AnimatedPage from "../AnimatedPage";
+// import AnimatedPage from "../AnimatedPage";
 
 const QuestionLayout = () => {
   return (
@@ -34,9 +34,9 @@ const QuestionLayout = () => {
           <FaQuestion size={20} className="text-primary" /> Directo
         </NavLink>
       </div>
-      <AnimatedPage>
+      {/* <AnimatedPage> */}
         <Outlet />
-      </AnimatedPage>
+      {/* </AnimatedPage> */}
     </>
   );
 };

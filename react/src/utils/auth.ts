@@ -1,7 +1,19 @@
 import { api, login, logout, register } from "../api/axios";
+import { User } from "./definitions";
 import { storage } from "./storage";
 
-const AuthProvider = {
+interface AuthProvider {
+  isAuthenticated: boolean;
+  user: User | null;
+  login(data: FormData): Promise<void>;
+  logout(): Promise<void>;
+  register(data: FormData): Promise<void>;
+  checkAuthentication(): Promise<User | null>;
+  checkPermissions(plan: string): Promise<{user_permissions:string} | null>;
+  initialize(): void;
+}
+
+const authProvider: AuthProvider = {
   isAuthenticated: storage.get<boolean>("isAuthenticated") || false,
   user: null,
   login: async function (data: FormData): Promise<void> {
@@ -13,7 +25,7 @@ const AuthProvider = {
       console.error(error);
     }
   },
-  logout: async function (): Promise<void> {
+  logout: async function () {
     try {
       await logout();
       this.isAuthenticated = false;
@@ -22,7 +34,7 @@ const AuthProvider = {
       console.error(error);
     }
   },
-  register: async function (data: FormData): Promise<void> {
+  register: async function (data: FormData) {
     try {
       await register(data);
       this.isAuthenticated = true;
@@ -53,14 +65,11 @@ const AuthProvider = {
   },
 
   initialize: function () {
-    // const storedIsAuthenticated = localStorage.getItem("isAuthenticated");
     const storedIsAuthenticated = storage.get<boolean>("isAuthenticated");
-
     this.isAuthenticated = storedIsAuthenticated || false;
 
-    // Other initialization logic
   },
 };
-AuthProvider.initialize();
+authProvider.initialize();
 
-export default AuthProvider;
+export default authProvider;

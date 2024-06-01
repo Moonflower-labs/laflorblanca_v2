@@ -25,7 +25,7 @@ export const soulAction = () => {
   return null;
 };
 
-const Soul = () => {
+export function Soul() {
   const { data } = (useLoaderData() as { data: DRFResponse | null }) || {
     data: null,
   };
@@ -118,6 +118,5 @@ const Soul = () => {
       </section>
     </div>
   );
-};
+}
 
-export default Soul;

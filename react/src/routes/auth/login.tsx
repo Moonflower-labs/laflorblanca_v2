@@ -3,13 +3,13 @@ import type { ActionFunctionArgs } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom";
 import { Form, redirect } from "react-router-dom";
 import { api } from "../../api/axios";
-import AuthProvider from "../../utils/auth";
+import authProvider from "../../utils/auth";
 import { toast } from "react-toastify";
 
 export const loginLoader = async () => {
   // todo: ensure this works
-  if (AuthProvider.isAuthenticated) {
-    redirect("/");
+  if (authProvider.isAuthenticated) {
+    return redirect("/");
   }
   const response = await api.options("api/login/");
 
@@ -20,7 +20,7 @@ export const loginAction = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   //   TODO: validate input data
   try {
-    await AuthProvider.login(formData);
+    await authProvider.login(formData);
 
     const redirectTo = formData.get("redirectTo") as string | null;
 

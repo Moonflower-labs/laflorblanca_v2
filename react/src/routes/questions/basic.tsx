@@ -70,7 +70,7 @@ export const basicAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-const BasicQuestion = () => {
+export function BasicQuestion() {
   const { basic_used_questions = 3 } = (useLoaderData() as {
     basic_used_questions: number;
   }) || { basic_used_questions: 3 };
@@ -493,6 +493,4 @@ const BasicQuestion = () => {
       </fetcher.Form>
     </div>
   );
-};
-
-export default BasicQuestion;
+}

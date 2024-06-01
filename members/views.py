@@ -183,8 +183,11 @@ class BasicQuestionCreateView(viewsets.ViewSet):
     @action(detail=False, methods=['get'])
     def retrieve_basic_used_questions(self, request):
         # Return the basic used questions for the user
-        user_profile = UserProfile.objects.get(user=request.user)
-        return Response(user_profile.basic_used_questions, status=status.HTTP_200_OK)
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            return Response(user_profile.basic_used_questions, status=status.HTTP_200_OK)
+        except user_profile.DoesNotExist:
+            return Response(3, status=status.HTTP_200_OK)
 
 
 @method_decorator(csrf_protect, name='dispatch')

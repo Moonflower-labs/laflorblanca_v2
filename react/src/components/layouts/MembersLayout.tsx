@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import AnimatedPage from "../AnimatedPage";
+// import AnimatedPage from "../AnimatedPage";
 
 const MembersLayout = () => {
   return (
@@ -33,9 +33,9 @@ const MembersLayout = () => {
           Espíritu
         </NavLink>
       </div>
-      <AnimatedPage>
+      {/* <AnimatedPage> */}
         <Outlet />
-      </AnimatedPage>
+      {/* </AnimatedPage> */}
     </>
   );
 };

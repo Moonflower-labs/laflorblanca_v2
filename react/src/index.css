@@ -14,10 +14,10 @@
 .scale-hover {
   @apply hover:scale-110 ease-in duration-200;
 }
-html,
+/* html,
 body {
   scroll-behavior: smooth;
-}
+} */
 
 /* STRIPE CSS */
 

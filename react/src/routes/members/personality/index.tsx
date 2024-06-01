@@ -31,7 +31,7 @@ export const personalityAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-const Personality = () => {
+export const Personality = () => {
   const { data } = (useLoaderData() as {
     data: DRFResponse | null;
   }) || {
@@ -212,4 +212,3 @@ const Personality = () => {
   );
 };
 
-export default Personality;

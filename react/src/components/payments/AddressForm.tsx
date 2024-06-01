@@ -2,11 +2,10 @@ import { AddressElement } from "@stripe/react-stripe-js";
 
 const AddressForm = () => {
   return (
-    <form>
+    <form className="mx-auto rounded-lg border shadow-lg p-10 min-w-[400px] w-[30vw] text-center">
       <h3 className="text-xl text-center">Shipping</h3>
       <AddressElement
         options={{ mode: "shipping" }}
-        className="mx-auto rounded-lg border shadow-lg p-10 min-w-[400px] w-[30vw] text-center"
       />
     </form>
   );

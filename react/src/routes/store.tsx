@@ -1,6 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
 import Product from "../components/payments/Product";
-import AnimatedPage from "../components/AnimatedPage";
 import { api } from "../api/axios";
 import {
   ActionFunctionArgs,
@@ -9,9 +8,9 @@ import {
   useLoaderData,
 } from "react-router-dom";
 import { ProductItem } from "../utils/definitions";
-import { Suspense, useMemo,  } from "react";
+import { Suspense, useMemo } from "react";
 import StoreSkeleton from "../components/skeletons/StoreSkeleton";
-import AuthProvider from "../utils/auth";
+import authProvider from "../utils/auth";
 import { useCart } from "../context/CartContext";
 
 export const storeLoader = () => {
@@ -34,17 +33,17 @@ export const storeAction = ({ request }: ActionFunctionArgs) => {
   }
 };
 
-const Store = () => {
+export const Store = () => {
   const { products } = (useLoaderData() as { products: ProductItem[] }) ?? {products: null};
   const { addToCart } = useCart();
 
  
   return (
-    <AnimatedPage>
+    <>
       <h2 className="text-3xl text-center text-primary font-semibold pt-3 mb-4">
         Tienda
       </h2>
-      {!AuthProvider.isAuthenticated && (
+      {!authProvider.isAuthenticated && (
         <div role="alert" className="alert bg-warning/60 b mb-4 w-fit mx-auto">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +66,7 @@ const Store = () => {
         </div>
       )}
       <Suspense fallback={<StoreSkeleton />}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 justify-items-center pb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-items-center pb-4">
           <Await
             // resolve={products}
            
@@ -76,7 +75,7 @@ const Store = () => {
                 new Promise((resolve) => {
                   setTimeout(() => {
                     resolve(products);
-                  }, 1000);
+                  }, 600);
                 }),
               [products]
             )}
@@ -104,8 +103,7 @@ const Store = () => {
           </Await>
         </div>
       </Suspense>
-    </AnimatedPage>
+    </>
   );
 };
 
-export default Store;

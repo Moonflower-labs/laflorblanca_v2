@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import type { LoaderFunctionArgs } from "react-router-dom";
 import { Form, redirect } from "react-router-dom";
-import AuthProvider from "../../utils/auth";
+import authProvider from "../../utils/auth";
 import { api } from "../../api/axios";
 
 export const registerLoader = async () => {
@@ -12,12 +12,12 @@ export const registerLoader = async () => {
 
 export const registerAction = async ({ request }: LoaderFunctionArgs) => {
   const formData = await request.formData();
-  const response = await AuthProvider.register(formData);
+  const response = await authProvider.register(formData);
 
   if (response !== null && response !== undefined) {
     return null;
   }
-  await AuthProvider.login(formData);
+  await authProvider.login(formData);
   return redirect("/");
 };
 

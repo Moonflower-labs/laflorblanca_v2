@@ -61,7 +61,7 @@ export const liveAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-const Live = () => {
+export function Live() {
   const errors = useActionData() as Errors;
   const navigation = useNavigation();
   const { live_used_questions = 3 } = (useLoaderData() as {
@@ -161,6 +161,4 @@ const Live = () => {
       </div>
     </div>
   );
-};
-
-export default Live;
+}

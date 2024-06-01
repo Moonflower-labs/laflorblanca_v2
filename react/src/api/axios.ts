@@ -4,11 +4,8 @@ import { toast } from "react-toastify";
 
 const isDevelopment = import.meta.env.DEV;
 
-const BASEURL = isDevelopment ? "http://localhost:8000" : "/";
-// export const api = axios.create({
-//   baseURL: isDevelopment ? "http://localhost:8000" : "/",
-//   withCredentials: true,
-// });
+const BASEURL = isDevelopment ? "http://localhost:8000/" : "/";
+
 
 const axiosConfig = {
   baseURL: BASEURL,
@@ -72,11 +69,7 @@ export const login = async (formData: FormData) => {
   try {
     const response = await api.post("api/login/", formData);
 
-    const loginPromise = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(response);
-      }, 3000); // Fake delay before resolving promise
-    });
+    const loginPromise = new Promise((resolve) => resolve(response));
     // Display a promise toast message
     toast.promise(loginPromise, {
       pending: "Iniciando sesión...",
@@ -92,9 +85,7 @@ export const login = async (formData: FormData) => {
 export const logout = async () => {
   try {
     const response = await api.post("api/logout/");
-    const logoutPromise = new Promise((resolve) =>
-      setTimeout(() => resolve(response), 2000)
-    );
+    const logoutPromise = new Promise((resolve) => resolve(response));
     // Display a promise toast message
     toast.promise(logoutPromise, {
       pending: "Cerrando sesión...",
@@ -111,9 +102,7 @@ export const register = async (formData: FormData) => {
   try {
     const response = await api.post("api/register/", formData);
 
-    const registerPromise = new Promise((resolve) =>
-      setTimeout(() => resolve(response), 2000)
-    );
+    const registerPromise = new Promise((resolve) => resolve(response));
     // Display a promise toast message
     toast.promise(registerPromise, {
       pending: "Registrando usuario...",

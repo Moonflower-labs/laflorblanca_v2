@@ -1,4 +1,5 @@
 {% load static %}
+{% load vite %}
 <!DOCTYPE html>
 <html lang="es" data-theme="florBlanca">
   <head>
@@ -9,7 +10,6 @@
   </head>
   <body class="font-serif">
     <div id="root"></div>
-    <script type="module" crossorigin src="{% static manifest_js %}"></script>
-    <link rel="stylesheet" crossorigin href="{% static manifest_css %}" />
+      {% load_vite_bundles %}
   </body>
 </html>

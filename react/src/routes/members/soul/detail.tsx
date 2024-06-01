@@ -10,7 +10,6 @@ import {
   type LoaderFunctionArgs,
 } from "react-router-dom";
 import Comment from "../../../components/ui/Comment";
-import AnimatedPage from "../../../components/AnimatedPage";
 import { PiFlowerLotus } from "react-icons/pi";
 import FavoritesBtn from "../../../components/ui/FavoritesBtn";
 import { FaRegCommentAlt } from "react-icons/fa";
@@ -57,7 +56,7 @@ export const soulDetailAction = async ({
   // TODO: handle favorites and rating actions.
 };
 
-const SoulDetail = () => {
+export function  SoulDetail() {
   const { video } = (useLoaderData() as { video: VideoLink | null }) || {
     video: null,
   };
@@ -74,7 +73,7 @@ const SoulDetail = () => {
   const likedVideos = user?.likes.liked_videos;
   const likedComments = user?.likes.liked_comments;
   return (
-    <AnimatedPage>
+    <>
       {video ? (
         <>
           <article className="pb-6 pt-16 px-10 md:px-40">
@@ -141,8 +140,6 @@ const SoulDetail = () => {
           No hemos encontrado el post.
         </div>
       )}
-    </AnimatedPage>
+    </>
   );
-};
-
-export default SoulDetail;
+}

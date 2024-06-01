@@ -13,48 +13,18 @@ import Homepage from "./components/Homepage";
 import Login, { loginLoader, loginAction } from "./routes/auth/login";
 import Register from "./routes/auth/register";
 import { registerLoader, registerAction } from "./routes/auth/register";
-import Personality, {
-  personalityAction,
-  personalityLoader,
-} from "./routes/members/personality";
-import BasicDetail, {
-  basicDetailLoader,
-  basicDetailAction,
-} from "./routes/members/personality/detail";
-import Soul, { soulLoader } from "./routes/members/soul";
-import SoulDetail, {
-  soulDetailLoader,
-  soulDetailAction,
-} from "./routes/members/soul/detail";
 import Spirit, { spiritLoader } from "./routes/members/spirit";
-import SpiritDetail, {
-  spiritDetailAction,
-  spiritDetailLoader,
-} from "./routes/members/spirit/detail";
 import Help from "./routes/help";
-import AuthProvider from "./utils/auth";
+import authProvider from "./utils/auth";
 import { commentAction } from "./routes/comments";
 import QuestionLayout from "./components/layouts/QuestionLayout";
-import BasicQuestion, {
-  basicAction,
-  basicLoader,
-} from "./routes/questions/basic";
-import Live from "./routes/questions/live";
-import { liveAction, liveLoader } from "./routes/questions/live";
-import Tarot, { tarotAction, tarotLoader } from "./routes/questions/tarot";
 import Checkout from "./routes/payments/checkout";
 import Success, { successLoader } from "./routes/payments/success";
 import Subscribe from "./routes/payments/subscribe";
-// import PaymentsLayout from "./components/layouts/PaymentsLayout";
-import Store, { storeLoader } from "./routes/store";
 import ShoppingCart from "./components/ui/ShoppingCart";
 import handleAccessRestriction from "./config/permissions";
 import protectedRouteLoader from "./config/protectedRouteLoader";
 import { loadStripe } from "@stripe/stripe-js";
-import UserProfile, {
-  userProfileAction,
-  userProfileLoader,
-} from "./routes/userProfile/profile";
 import Subscription from "./routes/userProfile/subscription";
 import Favorites from "./routes/userProfile/favorites";
 import ResetPassword, { resetPassAction } from "./routes/auth/reset-password";
@@ -64,6 +34,7 @@ import ConfirmReset, {
 import { subscriptionAction } from "./components/SubscriptionPlans";
 import PaymentsLayout from "./components/layouts/PaymentsLayout";
 
+
 const routes = [
   {
     id: "root",
@@ -71,7 +42,7 @@ const routes = [
     async loader() {
        const stripePromise = loadStripe("pk_test_51LIRtEAEZk4zaxmw2ngsEkzDCYygcLkU5uL4m2ba01aQ6zXkWFXboTVdNH71GBZzvHNmiRU13qtQyjjCvTzVizlX00yXeplNgV");
 
-      return { user: await AuthProvider.checkAuthentication(), stripePromise };
+      return { user: await authProvider.checkAuthentication(), stripePromise };
     },
  
     element: <RootLayout />,
@@ -100,15 +71,27 @@ const routes = [
             children: [
               {
                 index: true,
-                loader: personalityLoader,
-                action: personalityAction,
-                element: <Personality />,
+                async lazy() {
+                  const { Personality, personalityAction, personalityLoader } = 
+                    await import("./routes/members/personality");
+                  return {
+                    loader: personalityLoader,
+                    action: personalityAction,
+                    Component: Personality,
+                  }
+                },
               },
               {
                 path: "post/:id",
-                loader: basicDetailLoader,
-                action: basicDetailAction,
-                element: <BasicDetail />,
+                async lazy() {
+                  const { basicDetailLoader, basicDetailAction, BasicDetail } = 
+                    await import("./routes/members/personality/detail");
+                  return {
+                    loader: basicDetailLoader,
+                    action: basicDetailAction,
+                    Component: BasicDetail,
+                  }
+                },
               },
             ],
           },
@@ -124,14 +107,24 @@ const routes = [
             children: [
               {
                 index: true,
-                loader: soulLoader,
-                element: <Soul />,
+                async lazy(){
+                  const { soulLoader, Soul } = await import("./routes/members/soul")
+                  return {
+                    loader: soulLoader,
+                    Component: Soul,
+                  }
+                },
               },
               {
                 path: "video/:id",
-                loader: soulDetailLoader,
-                action: soulDetailAction,
-                element: <SoulDetail />,
+                async lazy(){
+                  const { soulDetailLoader, SoulDetail, soulDetailAction } = await import("./routes/members/soul/detail")
+                  return {
+                    loader: soulDetailLoader,
+                    action: soulDetailAction,
+                    Component: SoulDetail,
+                  }
+                },
               },
             ],
           },
@@ -153,9 +146,15 @@ const routes = [
               },
               {
                 path: "video/:id",
-                loader: spiritDetailLoader,
-                action: spiritDetailAction,
-                element: <SpiritDetail />,
+                async lazy() {
+                  const { spiritDetailLoader, spiritDetailAction, SpiritDetail } = 
+                      await import("./routes/members/spirit/detail")
+                  return {
+                    loader: spiritDetailLoader,
+                    action: spiritDetailAction,
+                    Component: SpiritDetail
+                  }
+                },
               },
             ],
           },
@@ -179,9 +178,14 @@ const routes = [
             children: [
               {
                 index: true,
-                loader: basicLoader,
-                action: basicAction,
-                element: <BasicQuestion />,
+                async lazy() {
+                  const { basicLoader, basicAction, BasicQuestion  } = await import("./routes/questions/basic");
+                  return {
+                    loader: basicLoader,
+                    action: basicAction,
+                    Component: BasicQuestion,
+                  }
+                },
               },
             ],
           },
@@ -197,28 +201,39 @@ const routes = [
             children: [
               {
                 index: true,
-                loader: tarotLoader,
-                action: tarotAction,
-                element: <Tarot />,
+                async lazy(){
+                  const { tarotLoader, tarotAction, Tarot } = 
+                    await import("./routes/questions/tarot")
+                  
+                  return {
+                    loader: tarotLoader,
+                    action: tarotAction,
+                    Component: Tarot,
+                  }
+                },
               },
             ],
           },
           {
             loader: async () => {
               // Check user permissions
-              if (!(await handleAccessRestriction("Espíritu"))) {
-                return redirect("/#plans");
-              }
+              // if (!(await handleAccessRestriction("Espíritu"))) {
+              //   return redirect("/#plans");
+              // }
               return null;
             },
             path: "live",
             children: [
               {
                 index: true,
-
-                loader: liveLoader,
-                action: liveAction,
-                element: <Live />,
+                async lazy() {
+                  const { liveLoader, liveAction, Live  } = await import("./routes/questions/live");
+                  return {
+                    loader: liveLoader,
+                    action: liveAction,
+                    Component: Live,
+                  }
+                },
               },
             ],
           },
@@ -226,9 +241,17 @@ const routes = [
       },
       {
         path: "user-profile",
-        loader: userProfileLoader,
-        action: userProfileAction,
-        element: <UserProfile />,
+        async lazy(){
+          const { userProfileLoader, userProfileAction, UserProfile } =
+            await import("./routes/userProfile/profile")
+
+          return {
+            loader: userProfileLoader,
+            action: userProfileAction,
+            Component: UserProfile,
+          }
+        },
+       
         children: [
           {
             path: "subscription",
@@ -260,8 +283,13 @@ const routes = [
       },
       {
         path: "store",
-        loader: storeLoader,
-        element: <Store />,
+        async lazy(){
+          const { Store ,storeLoader} = await import ("./routes/store")
+          return {
+            loader: storeLoader,
+            Component: Store,
+          }
+        },
       },
       {
         path: "checkout",
@@ -305,7 +333,7 @@ const routes = [
           return redirect("/");
         },
         async action() {
-          await AuthProvider.logout();
+          await authProvider.logout();
           return redirect("/");
         },
       },
@@ -321,47 +349,7 @@ const router = createBrowserRouter(routes as RouteObject[], {
   future: {
     v7_normalizeFormMethod: true,
   },
-  // async unstable_dataStrategy({
-  //   request,
-  //   params,
-  //   matches,
-  // }) {
-  //   // Run middleware sequentially and let them add data to `context`
-  //   const context = {};
-  //   for (const match of matches) {
-  //     if (match.route.handle?.middleware) {
-  //       await match.route.handle.middleware(
-  //         { request, params },
-  //         context
-  //       );
-  //     }
-  //   }
-
-  //   // Run loaders in parallel with the `context` value
-  //   return Promise.all(
-  //     matches.map((match, _i) =>
-  //       match.resolve(async (handler) => {
-  //         // Whatever you pass to `handler` will be passed as the 2nd parameter
-  //         // to your loader/action
-  //         const result = await handler(context);
-  //         return { type: "data", result };
-  //       })
-  //     )
-  //   );
-  // },
-  // // * Adding logging to routes
-  // unstable_dataStrategy({ request, matches }) {
-  //   return Promise.all(
-  //     matches.map(async (match) => {
-  //       console.log(`Processing route ${match.route.id}`);
-  //       const result = await match.resolve();
-  //       console.log(`Done processing route ${match.route.id}`);
-  //       console.log(`url ${request.url}`);
-
-  //       return result;
-  //     })
-  //   );
-  // },
+  
 });
 
 function App() {

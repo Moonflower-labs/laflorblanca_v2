@@ -1,11 +1,133 @@
 {
+  "_VideoComponent-D5vkRMQN.js": {
+    "file": "assets/VideoComponent-D5vkRMQN.js",
+    "name": "VideoComponent",
+    "imports": [
+      "index.html",
+      "_helpers-DtwQPPdk.js"
+    ]
+  },
+  "_helpers-DtwQPPdk.js": {
+    "file": "assets/helpers-DtwQPPdk.js",
+    "name": "helpers",
+    "imports": [
+      "index.html"
+    ]
+  },
   "index.html": {
-    "file": "assets/index-GC2RXoxw.js",
+    "file": "assets/index-CNPLqyP2.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
+    "dynamicImports": [
+      "src/routes/members/personality/index.tsx",
+      "src/routes/members/personality/detail.tsx",
+      "src/routes/members/soul/index.tsx",
+      "src/routes/members/soul/detail.tsx",
+      "src/routes/members/spirit/detail.tsx",
+      "src/routes/questions/basic.tsx",
+      "src/routes/questions/tarot.tsx",
+      "src/routes/questions/live.tsx",
+      "src/routes/userProfile/profile.tsx",
+      "src/routes/store.tsx"
+    ],
     "css": [
-      "assets/index--9h_hDvs.css"
+      "assets/index-nBskO6TA.css"
+    ]
+  },
+  "src/routes/members/personality/detail.tsx": {
+    "file": "assets/detail-BTiQzH2Q.js",
+    "name": "detail",
+    "src": "src/routes/members/personality/detail.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_helpers-DtwQPPdk.js"
+    ]
+  },
+  "src/routes/members/personality/index.tsx": {
+    "file": "assets/index-Cz6ONye6.js",
+    "name": "index",
+    "src": "src/routes/members/personality/index.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/routes/members/soul/detail.tsx": {
+    "file": "assets/detail-2zRDHh_9.js",
+    "name": "detail",
+    "src": "src/routes/members/soul/detail.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_helpers-DtwQPPdk.js",
+      "_VideoComponent-D5vkRMQN.js"
+    ]
+  },
+  "src/routes/members/soul/index.tsx": {
+    "file": "assets/index-TprIcqhc.js",
+    "name": "index",
+    "src": "src/routes/members/soul/index.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/routes/members/spirit/detail.tsx": {
+    "file": "assets/detail-DjjbuLCn.js",
+    "name": "detail",
+    "src": "src/routes/members/spirit/detail.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html",
+      "_helpers-DtwQPPdk.js",
+      "_VideoComponent-D5vkRMQN.js"
+    ]
+  },
+  "src/routes/questions/basic.tsx": {
+    "file": "assets/basic-xm5jH6yg.js",
+    "name": "basic",
+    "src": "src/routes/questions/basic.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/routes/questions/live.tsx": {
+    "file": "assets/live-B0yHDluB.js",
+    "name": "live",
+    "src": "src/routes/questions/live.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/routes/questions/tarot.tsx": {
+    "file": "assets/tarot-CU26n4_O.js",
+    "name": "tarot",
+    "src": "src/routes/questions/tarot.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/routes/store.tsx": {
+    "file": "assets/store-DIhY5Ixj.js",
+    "name": "store",
+    "src": "src/routes/store.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/routes/userProfile/profile.tsx": {
+    "file": "assets/profile-CGd8l3BV.js",
+    "name": "profile",
+    "src": "src/routes/userProfile/profile.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
     ]
   }
 }

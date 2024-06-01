@@ -58,7 +58,7 @@ export const spiritDetailAction = async ({
   // TODO: handle favorites and rating actions.
 };
 
-const SpiritDetail = () => {
+export const SpiritDetail = () => {
   const { video } = (useLoaderData() as { video: VideoLink | null }) || {
     video: null,
   };
@@ -149,5 +149,3 @@ const SpiritDetail = () => {
     </AnimatedPage>
   );
 };
-
-export default SpiritDetail;

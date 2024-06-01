@@ -31,7 +31,7 @@ interface Profile {
   }
 }
 
-const UserProfile = () => {
+export const UserProfile = () => {
   const profile = useLoaderData() as Profile;
   console.log(profile);
   return (
@@ -110,5 +110,3 @@ const UserProfile = () => {
     </div>
   );
 };
-
-export default UserProfile;

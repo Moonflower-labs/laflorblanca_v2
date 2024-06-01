@@ -2,7 +2,6 @@
 import { PiFlowerLotus } from "react-icons/pi";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { postActions, submitLike } from "../../../api/actions";
-import AnimatedPage from "../../../components/AnimatedPage";
 import FavoritesBtn from "../../../components/ui/FavoritesBtn";
 import Rating from "../../../components/ui/Rating";
 import type { DRFResponse, Post, User } from "../../../utils/definitions";
@@ -53,7 +52,7 @@ export const basicDetailAction = async ({
   // TODO: handle rating action.
 };
 
-const BasicDetail = () => {
+export function BasicDetail () {
   const { post } = (useLoaderData() as { post: Post | null }) || {
     post: null,
   };
@@ -70,7 +69,7 @@ const BasicDetail = () => {
   const likedComments = user?.likes?.liked_comments;
 
   return (
-    <AnimatedPage>
+    <>
       {post ? (
         <>
           <article className="pb-6 pt-16 px-10 md:px-40">
@@ -136,8 +135,6 @@ const BasicDetail = () => {
           No hemos encontrado el post.
         </div>
       )}
-    </AnimatedPage>
+    </>
   );
-};
-
-export default BasicDetail;
+}
