@@ -67,7 +67,7 @@ export const Tarot = () => {
   const remaining_question_count = 1 - Number(tarot_used_questions);
   return (
     <div className="text-center pt-16 pb-6">
-      <div className="">
+      {/* <div className="">
         <img
           className="tarot"
           src="{{url_for('static', filename='images/sun.avif')}}"
@@ -78,7 +78,7 @@ export const Tarot = () => {
           src="{{url_for('static', filename='images/tarot.avif')}}"
           alt=""
         />
-      </div>
+      </div> */}
       <h2 className="text-3xl font-semibold text-primary mb-1">
         Pregunta de Tarot
       </h2>
