@@ -7,7 +7,7 @@ const AuthLayout = () => {
   return (
     <div data-testid="auth-layout" className="hero min-h-screen">
       <AnimatedPage>
-        <div className="hero-content flex-col lg:flex-row">
+        <div className="hero-content flex-col lg:flex-row gap-8">
           <img
             src={logoUrl}
             width={200}

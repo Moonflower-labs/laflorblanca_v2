@@ -47,62 +47,64 @@ const Login = () => {
           id nisi.
         </p>
       </div>
-      <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-        <Form className="card-body mx-auto" method="post">
-          <input type="hidden" name="redirectTo" value={from} />
-          <div className="form-control mb-3">
-            <input
-              type="text"
-              placeholder="Usuario"
-              className="floating-label-input peer"
-              name="username"
-              id="username"
-            />
-            <label htmlFor="username" className="floating-label">
-              Nombre de usuario
-            </label>
-          </div>
-          {/* <div className="form-control mb-3">
-            <input
-              type="email"
-              placeholder="email"
-              className="floating-label-input peer"
-              name="email"
-              id="email"
-              required
-            />
-            <label htmlFor="email" className="floating-label">
-              Email
-            </label>
-          </div> */}
-          <div className="form-control mb-3">
-            <input
-              type="password"
-              placeholder="Contraseña"
-              className="floating-label-input peer"
-              name="password"
-              id="password"
-              required
-            />
-            <label htmlFor="password" className="floating-label">
-              Contraseña
-            </label>
-            <div className="label">
-              <Link
-                to={"/reset-password"}
-                className="label-text-alt link link-hover"
-              >
-                Olvidaste tu contraseña?
-              </Link>
+      <Form method="post">
+        <div className="card shrink-0 w-full shadow-2xl bg-base-100 mx-auto">
+          <div className="card-body">
+            <input type="hidden" name="redirectTo" value={from} />
+            <div className="form-control mb-3">
+              <input
+                type="text"
+                placeholder="Usuario"
+                className="floating-label-input peer"
+                name="username"
+                id="username"
+              />
+              <label htmlFor="username" className="floating-label">
+                Nombre de usuario
+              </label>
+            </div>
+            {/* <div className="form-control mb-3">
+              <input
+                type="email"
+                placeholder="email"
+                className="floating-label-input peer"
+                name="email"
+                id="email"
+                required
+              />
+              <label htmlFor="email" className="floating-label">
+                Email
+              </label>
+            </div> */}
+            <div className="form-control mb-3">
+              <input
+                type="password"
+                placeholder="Contraseña"
+                className="floating-label-input peer"
+                name="password"
+                id="password"
+                required
+              />
+              <label htmlFor="password" className="floating-label">
+                Contraseña
+              </label>
+              <div className="label">
+                <Link
+                  to={"/reset-password"}
+                  className="label-text-alt link link-hover"
+                >
+                  Olvidaste tu contraseña?
+                </Link>
+              </div>
+            </div>
+            <div className="form-control mt-6">
+              <button type="submit" className="btn btn-primary">
+                Iniciar sesión
+              </button>
             </div>
           </div>
-          <div className="form-control mt-6">
-            <button type="submit" className="btn btn-primary">
-              Iniciar sesión
-            </button>
-          </div>
-        </Form>
-      </div>
+        </div>
+      </Form>
     </>
   );
 };
