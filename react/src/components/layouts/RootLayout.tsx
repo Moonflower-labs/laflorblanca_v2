@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ToastContainer } from "react-toastify";
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { ScrollRestoration } from "react-router-dom";
 import Header from "../Header";
 import Footer from "../Footer";
 import "react-toastify/dist/ReactToastify.css";
+import AnimatedOutlet from "./AnimatedOutlet";
 
 const RootLayout = () => {
   return (
@@ -11,7 +12,7 @@ const RootLayout = () => {
       <Header />
       <ToastContainer position="bottom-right" />
       <div data-testid="root-layout" className="min-h-screen">
-        <Outlet />
+        <AnimatedOutlet />
       </div>
       <Footer />
       <ScrollRestoration 

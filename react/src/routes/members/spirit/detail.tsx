@@ -9,7 +9,6 @@ import {
   useRouteLoaderData,
   type LoaderFunctionArgs,
 } from "react-router-dom";
-import AnimatedPage from "../../../components/AnimatedPage";
 import { formatDate } from "../../../utils/format";
 import { PiFlowerLotus } from "react-icons/pi";
 import FavoritesBtn from "../../../components/ui/FavoritesBtn";
@@ -75,7 +74,7 @@ export const SpiritDetail = () => {
   const likedVideos = user?.likes?.liked_videos;
   const likedComments = user?.likes?.liked_comments;
   return (
-    <AnimatedPage>
+    <>
       {video ? (
         <>
           <article className="pb-6 pt-16 px-10 md:px-40">
@@ -146,6 +145,6 @@ export const SpiritDetail = () => {
           No hemos encontrado el post.
         </div>
       )}
-    </AnimatedPage>
+    </>
   );
 };

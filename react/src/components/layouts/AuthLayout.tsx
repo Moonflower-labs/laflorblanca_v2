@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-// import AnimatedPage from "../AnimatedPage";
+import AnimatedPage from "../AnimatedPage";
 const AuthLayout = () => {
   const staticPrefix = import.meta.env.PROD ? "/static" : "";
 
   const logoUrl = `${staticPrefix}/logo.jpeg`;
   return (
     <div data-testid="auth-layout" className="hero min-h-screen">
-      {/* <AnimatedPage> */}
+      <AnimatedPage>
         <div className="hero-content flex-col lg:flex-row">
           <img
             src={logoUrl}
@@ -15,7 +15,7 @@ const AuthLayout = () => {
           />
           <Outlet />
         </div>
-      {/* </AnimatedPage> */}
+      </AnimatedPage>
     </div>
   );
 };

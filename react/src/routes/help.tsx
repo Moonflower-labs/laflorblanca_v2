@@ -1,10 +1,10 @@
-// import AnimatedPage from "../components/AnimatedPage";
+import AnimatedPage from "../components/AnimatedPage";
 
 const Help = () => {
   return (
-    // <AnimatedPage>
+    <AnimatedPage>
       <div className="text-4xl text-end">A lot of help</div>
-    // {/* </AnimatedPage> */}
+    </AnimatedPage>
   );
 };
 
