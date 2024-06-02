@@ -137,7 +137,7 @@ export function BasicQuestion() {
       </div>
       <div className="mb-6">
         Preguntas disponibles:
-        <span className="text-warning">{remaining_question_count} </span>
+        <span className="text-warning">{" "}{remaining_question_count} </span>
         de
         <span className="text-warning"> 3</span>
       </div>

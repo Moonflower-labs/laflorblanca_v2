@@ -117,7 +117,6 @@ export const Tarot = () => {
               <span className="label-text">
                 1. ¿Qué duda tienes o qué te interesa saber?
               </span>
-              <span className="label-text-alt">Alt label</span>
             </div>
             <textarea
               className="textarea textarea-bordered h-24"
@@ -135,7 +134,6 @@ export const Tarot = () => {
                 2. Cuéntanos algo que nos ayude a prepararnos para tu consulta
                 dándonos el contexto de la pregunta si crees que es necesario.
               </span>
-              <span className="label-text-alt">Alt label</span>
             </div>
             <textarea
               className="textarea textarea-bordered h-24"

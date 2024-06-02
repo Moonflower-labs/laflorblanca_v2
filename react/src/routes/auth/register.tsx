@@ -35,7 +35,7 @@ const Register = () => {
         </p>
       </div>
       <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-        <Form method="post" className="card-body">
+        <Form method="post" className="card-body mx-auto">
           <div className="form-control mb-3">
             <input
               type="text"

@@ -48,7 +48,7 @@ const Login = () => {
         </p>
       </div>
       <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-        <Form className="card-body" method="post">
+        <Form className="card-body mx-auto" method="post">
           <input type="hidden" name="redirectTo" value={from} />
           <div className="form-control mb-3">
             <input

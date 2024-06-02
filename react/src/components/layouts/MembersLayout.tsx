@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 
-const MembersLayout = () => {
+export function MembersLayout() {
   return (
     <>
       <div role="tablist" className="tabs fixed bg-base-100/80 z-50  w-screen">
@@ -38,6 +38,4 @@ const MembersLayout = () => {
       </AnimatedPage>
     </>
   );
-};
-
-export default MembersLayout;
+}

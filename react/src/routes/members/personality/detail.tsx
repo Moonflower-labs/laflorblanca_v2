@@ -131,7 +131,7 @@ export function BasicDetail () {
           <CommentForm object={post} fieldName="post" />
         </>
       ) : (
-        <div className="text-3xl text-center h-full my-auto">
+        <div className="text-3xl text-center h-full my-auto pt-10">
           No hemos encontrado el post.
         </div>
       )}

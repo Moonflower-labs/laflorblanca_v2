@@ -22,7 +22,7 @@ export const spiritAction = () => {
   return null;
 };
 
-const Spirit = () => {
+export function Spirit() {
   const { data } = (useLoaderData() as { data: DRFResponse | null }) || {
     data: null,
   };
@@ -119,6 +119,5 @@ const Spirit = () => {
       </section>
     </div>
   );
-};
+}
 
-export default Spirit;

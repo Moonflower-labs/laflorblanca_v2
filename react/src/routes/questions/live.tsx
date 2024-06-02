@@ -117,7 +117,6 @@ export function Live() {
                 <span className="label-text">
                   1. ¿Qué necesitas aclarar, entender?
                 </span>
-                <span className="label-text-alt">Alt label</span>
               </div>
               <textarea
                 className="textarea textarea-bordered h-24"

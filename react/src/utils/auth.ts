@@ -16,44 +16,44 @@ interface AuthProvider {
 const authProvider: AuthProvider = {
   isAuthenticated: storage.get<boolean>("isAuthenticated") || false,
   user: null,
-  login: async function (data: FormData): Promise<void> {
+  async login (data) {
     try {
       await login(data);
-      this.isAuthenticated = true;
+      authProvider.isAuthenticated = true;
       storage.set("isAuthenticated", true);
     } catch (error) {
       console.error(error);
     }
   },
-  logout: async function () {
+  async logout() {
     try {
       await logout();
-      this.isAuthenticated = false;
+      authProvider.isAuthenticated = false;
       storage.remove("isAuthenticated");
     } catch (error) {
       console.error(error);
     }
   },
-  register: async function (data: FormData) {
-    try {
-      await register(data);
-      this.isAuthenticated = true;
-    } catch (error) {
-      console.error(error);
-    }
-  },
-  checkAuthentication: async function () {
-    try {
-      const response = await api.get("api/current-user/get_user/");
-      const user = response?.data;
+    async register (data) {
+      try {
+        await register(data);
+        authProvider.isAuthenticated = true;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async checkAuthentication () {
+      try {
+        const response = await api.get("api/current-user/get_user/");
+        const user = response?.data;
 
-      return user;
-    } catch (error) {
-      console.error("Error fetching user:", error);
-      return null;
-    }
-  },
-  checkPermissions: async function (plan: string) {
+        return user;
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        return null;
+      }
+    },
+  async checkPermissions (plan) {
     try {
       const response = await api.get(`api/user-permissions/?plan=${plan}`);
 
@@ -64,9 +64,9 @@ const authProvider: AuthProvider = {
     }
   },
 
-  initialize: function () {
+  initialize() {
     const storedIsAuthenticated = storage.get<boolean>("isAuthenticated");
-    this.isAuthenticated = storedIsAuthenticated || false;
+    authProvider.isAuthenticated = storedIsAuthenticated || false;
 
   },
 };

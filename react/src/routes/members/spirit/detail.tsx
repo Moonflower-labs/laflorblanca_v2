@@ -141,8 +141,8 @@ export const SpiritDetail = () => {
           <CommentForm object={video} fieldName="video" />
         </>
       ) : (
-        <div className="text-3xl text-center h-full my-auto">
-          No hemos encontrado el post.
+        <div className="text-3xl text-center h-full my-auto pt-10">
+          No hemos encontrado el video.
         </div>
       )}
     </>

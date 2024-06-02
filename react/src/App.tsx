@@ -6,14 +6,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import RootLayout from "./components/layouts/RootLayout";
-import MembersLayout from "./components/layouts/MembersLayout";
 import AuthLayout from "./components/layouts/AuthLayout";
 import ErrorPage from "./routes/Error";
 import Homepage from "./components/Homepage";
 import Login, { loginLoader, loginAction } from "./routes/auth/login";
 import Register from "./routes/auth/register";
 import { registerLoader, registerAction } from "./routes/auth/register";
-import Spirit, { spiritLoader } from "./routes/members/spirit";
 import Help from "./routes/help";
 import authProvider from "./utils/auth";
 import { commentAction } from "./routes/comments";
@@ -40,7 +38,7 @@ const routes = [
     id: "root",
     path: "/",
     async loader() {
-       const stripePromise = loadStripe("pk_test_51LIRtEAEZk4zaxmw2ngsEkzDCYygcLkU5uL4m2ba01aQ6zXkWFXboTVdNH71GBZzvHNmiRU13qtQyjjCvTzVizlX00yXeplNgV");
+      const stripePromise = loadStripe("pk_test_51LIRtEAEZk4zaxmw2ngsEkzDCYygcLkU5uL4m2ba01aQ6zXkWFXboTVdNH71GBZzvHNmiRU13qtQyjjCvTzVizlX00yXeplNgV");
 
       return { user: await authProvider.checkAuthentication(), stripePromise };
     },
@@ -54,13 +52,15 @@ const routes = [
         action: subscriptionAction,
 
       },
-      {
-        element: <MembersLayout />,
+      { async lazy() {
+        const { MembersLayout } = await import("./components/layouts/MembersLayout");
+        return { Component: MembersLayout}
+      },
         errorElement: <ErrorPage />,
         loader: protectedRouteLoader,
         children: [
           {
-            loader: async () => {
+            async loader() {
               // if (!(await handleAccessRestriction("Personalidad"))) {
               //   return redirect("/#plans");
               // }
@@ -141,8 +141,14 @@ const routes = [
             children: [
               {
                 index: true,
-                loader: spiritLoader,
-                element: <Spirit />,
+                async lazy() {
+                  const { spiritLoader, Spirit } = 
+                      await import("./routes/members/spirit")
+                  return {
+                    loader: spiritLoader,
+                    Component: Spirit
+                  }
+                },
               },
               {
                 path: "video/:id",
