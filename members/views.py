@@ -251,7 +251,8 @@ class PostViewSet(viewsets.ModelViewSet):
     search_fields = ['title']
     # filter_set_fields = []
     pagination_class = CustomPagination
-    permission_classes = [permissions.IsAuthenticated, IsActiveMember]
+    # permission_classes = [permissions.IsAuthenticated, IsActiveMember]
+    permission_classes = [AllowAny]
 
     @action(detail=True, methods=['post'])
     def manage_favorites(self, request, pk=None):
@@ -361,7 +362,8 @@ class LikeViewSet(viewsets.ModelViewSet):
 class LinkViewSet(viewsets.ModelViewSet):
     queryset = VideoLink.objects.all().order_by('-uploaded_on')
     serializer_class = VideoLinkSerializer
-    permission_classes = [permissions.IsAuthenticated, IsActiveMember]
+    # permission_classes = [permissions.IsAuthenticated, IsActiveMember]
+    permission_classes = [AllowAny]
     pagination_class = CustomPagination
     search_fields = ['title']
 

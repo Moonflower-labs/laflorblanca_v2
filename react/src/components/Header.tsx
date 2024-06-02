@@ -93,13 +93,12 @@ const Header = () => {
           </div>
         </div>
         <div className="navbar-center flex-col md:flex-row gap-2">
+          <PiFlowerLotus size={40} className="text-primary animate-pulse" />
           <Link
             to={"/"}
             onClick={handleDropdown}
             className="btn btn-ghost text-primary/75 text-2xl"
           >
-            {" "}
-            <PiFlowerLotus size={40} className="text-primary animate-pulse" />
             La Flor Blanca
           </Link>
           {user && (

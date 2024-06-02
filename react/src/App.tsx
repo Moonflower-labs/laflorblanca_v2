@@ -22,7 +22,7 @@ import Checkout from "./routes/payments/checkout";
 import Success, { successLoader } from "./routes/payments/success";
 import Subscribe from "./routes/payments/subscribe";
 import ShoppingCart from "./components/ui/ShoppingCart";
-import handleAccessRestriction from "./config/permissions";
+// import handleAccessRestriction from "./config/permissions";
 import protectedRouteLoader from "./config/protectedRouteLoader";
 import { loadStripe } from "@stripe/stripe-js";
 import Subscription from "./routes/userProfile/subscription";
@@ -169,9 +169,9 @@ const routes = [
           {
             loader: async () => {
               // Check user permissions
-              if (!(await handleAccessRestriction("Personalidad"))) {
-                return redirect("/#plans");
-              }
+              // if (!(await handleAccessRestriction("Personalidad"))) {
+              //   return redirect("/#plans");
+              // }
               return null;
             },
             path: "basic",
