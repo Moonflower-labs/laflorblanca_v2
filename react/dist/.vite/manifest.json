@@ -1,21 +1,21 @@
 {
-  "_VideoComponent-Cv7qp3yk.js": {
-    "file": "assets/VideoComponent-Cv7qp3yk.js",
+  "_VideoComponent-CwGrOWvk.js": {
+    "file": "assets/VideoComponent-CwGrOWvk.js",
     "name": "VideoComponent",
     "imports": [
       "index.html",
-      "_helpers-CX6dfm75.js"
+      "_helpers-B4Tcbn1N.js"
     ]
   },
-  "_helpers-CX6dfm75.js": {
-    "file": "assets/helpers-CX6dfm75.js",
+  "_helpers-B4Tcbn1N.js": {
+    "file": "assets/helpers-B4Tcbn1N.js",
     "name": "helpers",
     "imports": [
       "index.html"
     ]
   },
   "index.html": {
-    "file": "assets/index-BW1M4ofp.js",
+    "file": "assets/index-DYpJbAN9.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -36,17 +36,17 @@
     ]
   },
   "src/routes/members/personality/detail.tsx": {
-    "file": "assets/detail-CAdEOoUI.js",
+    "file": "assets/detail-DM3FLdiJ.js",
     "name": "detail",
     "src": "src/routes/members/personality/detail.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_helpers-CX6dfm75.js"
+      "_helpers-B4Tcbn1N.js"
     ]
   },
   "src/routes/members/personality/index.tsx": {
-    "file": "assets/index-B0E-ZcoR.js",
+    "file": "assets/index-BybcIgtD.js",
     "name": "index",
     "src": "src/routes/members/personality/index.tsx",
     "isDynamicEntry": true,
@@ -55,18 +55,18 @@
     ]
   },
   "src/routes/members/soul/detail.tsx": {
-    "file": "assets/detail-B8Xe6rZs.js",
+    "file": "assets/detail-DVx1VZId.js",
     "name": "detail",
     "src": "src/routes/members/soul/detail.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_helpers-CX6dfm75.js",
-      "_VideoComponent-Cv7qp3yk.js"
+      "_helpers-B4Tcbn1N.js",
+      "_VideoComponent-CwGrOWvk.js"
     ]
   },
   "src/routes/members/soul/index.tsx": {
-    "file": "assets/index-B5IlM-Mr.js",
+    "file": "assets/index-CLVjTtAE.js",
     "name": "index",
     "src": "src/routes/members/soul/index.tsx",
     "isDynamicEntry": true,
@@ -75,18 +75,18 @@
     ]
   },
   "src/routes/members/spirit/detail.tsx": {
-    "file": "assets/detail-hrjDCTjs.js",
+    "file": "assets/detail-DFpCIbjs.js",
     "name": "detail",
     "src": "src/routes/members/spirit/detail.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_helpers-CX6dfm75.js",
-      "_VideoComponent-Cv7qp3yk.js"
+      "_helpers-B4Tcbn1N.js",
+      "_VideoComponent-CwGrOWvk.js"
     ]
   },
   "src/routes/questions/basic.tsx": {
-    "file": "assets/basic-DW4d3e4w.js",
+    "file": "assets/basic-Bd0XNXeI.js",
     "name": "basic",
     "src": "src/routes/questions/basic.tsx",
     "isDynamicEntry": true,
@@ -95,7 +95,7 @@
     ]
   },
   "src/routes/questions/live.tsx": {
-    "file": "assets/live-Cmb-7Vf0.js",
+    "file": "assets/live-Mo-uhk5J.js",
     "name": "live",
     "src": "src/routes/questions/live.tsx",
     "isDynamicEntry": true,
@@ -104,7 +104,7 @@
     ]
   },
   "src/routes/questions/tarot.tsx": {
-    "file": "assets/tarot-C7eU-JTT.js",
+    "file": "assets/tarot-D5tdTsMp.js",
     "name": "tarot",
     "src": "src/routes/questions/tarot.tsx",
     "isDynamicEntry": true,
@@ -113,7 +113,7 @@
     ]
   },
   "src/routes/store.tsx": {
-    "file": "assets/store-DZAEO8HC.js",
+    "file": "assets/store-D3slIfdH.js",
     "name": "store",
     "src": "src/routes/store.tsx",
     "isDynamicEntry": true,
@@ -122,7 +122,7 @@
     ]
   },
   "src/routes/userProfile/profile.tsx": {
-    "file": "assets/profile-oHqt98nK.js",
+    "file": "assets/profile-BAV5eEmD.js",
     "name": "profile",
     "src": "src/routes/userProfile/profile.tsx",
     "isDynamicEntry": true,

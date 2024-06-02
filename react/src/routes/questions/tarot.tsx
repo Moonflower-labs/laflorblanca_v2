@@ -103,7 +103,7 @@ export const Tarot = () => {
       <Form
         ref={formRef}
         method="post"
-        className="bg-primary/30 p-2 rounded-lg mx-3 md:w-1/2 md:mx-auto shadow-lg mb-6"
+        className="bg-primary/30 p-2 rounded-lg md:w-1/2 mx-auto shadow-lg mb-6"
       >
         <input
           type="hidden"
