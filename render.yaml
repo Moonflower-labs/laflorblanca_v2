@@ -1,12 +1,14 @@
 databases:
   - name: florblancav2db
     plan: free
+    region: frankfurt
     databaseName: mysite
     user: mysite
 
 services:
   - type: web
     plan: free
+    region: frankfurt
     name: laflorblanca
     runtime: python
     buildCommand: "./build.sh"
