@@ -22,7 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('payments.urls')),
     path('', include('members.urls')),
-    # Serve react app
-    re_path(r'^(?!api/).*',
-            TemplateView.as_view(template_name='index.html'), name='react_app'),
+
 ]

@@ -1,5 +1,6 @@
 from django.urls import include, path, re_path
 from rest_framework import routers
+from django.views.generic import TemplateView
 
 
 from .views import *
@@ -29,5 +30,8 @@ urlpatterns = [
     path('api/password_reset/', PasswordResetView.as_view()),
     path('api/reset/<uidb64>/<token>', PasswordResetView.as_view()),
     path('mail/send/', MailView.as_view()),
+    # Serve react app
+    re_path(r'^(?!(api|static)/).*',
+            TemplateView.as_view(template_name='index.html'), name='react_app'),
 
 ]
