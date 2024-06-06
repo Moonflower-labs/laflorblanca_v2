@@ -12,7 +12,7 @@ services:
     name: laflorblanca
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "cd react && npm install && npm run build && cd .. && python -m gunicorn django_core.asgi:application -k uvicorn.workers.UvicornWorker"    
+    startCommand: "python -m gunicorn django_core.asgi:application -k uvicorn.workers.UvicornWorker"    
     envVars:
       - key: DATABASE_URL
         fromDatabase:
