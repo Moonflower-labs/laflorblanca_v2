@@ -21,6 +21,7 @@ from .pagination import CustomPagination
 from .serializers import *
 from .permissions import IsActiveMember, HasSoulMembership
 from payments.views import CustomerView
+from django.views.generic import TemplateView
 
 
 class UserPermissions(View):

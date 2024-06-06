@@ -23,7 +23,7 @@ export const Subscription = () => {
   const { membership } = useLoaderData() as { membership: Membership} || {}
   return (
     <div>
-          {membership && (
+          {membership ? (
             <>
               <div className="overflow-x-auto mt-8">
                 <table className="table">
@@ -63,6 +63,8 @@ export const Subscription = () => {
                 </table>
               </div>
             </>
+          ):(
+            <div className="text-xl text-center text-semibold">No tienes ninguna suscripción.</div>
           )}
     
     </div>

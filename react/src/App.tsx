@@ -50,10 +50,11 @@ const routes = [
         action: homeAction,
 
       },
-      { async lazy() {
-        const { MembersLayout } = await import("./components/layouts/MembersLayout");
-        return { Component: MembersLayout}
-      },
+      {
+        async lazy() {
+          const { MembersLayout } = await import("./components/layouts/MembersLayout");
+          return { Component: MembersLayout}
+        },
         errorElement: <ErrorPage />,
         loader: protectedRouteLoader,
         children: [
