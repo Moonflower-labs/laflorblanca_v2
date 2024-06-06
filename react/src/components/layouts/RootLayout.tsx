@@ -1,12 +1,37 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ToastContainer } from "react-toastify";
-import { ScrollRestoration } from "react-router-dom";
+import { ScrollRestoration, useBeforeUnload, useNavigation, useSubmit } from "react-router-dom";
 import Header from "../Header";
 import Footer from "../Footer";
 import "react-toastify/dist/ReactToastify.css";
 import AnimatedOutlet from "./AnimatedOutlet";
+import { useCallback } from "react";
 
 const RootLayout = () => {
+  const submit = useSubmit()
+  const navigation = useNavigation()
+
+  const isPageRefresh =
+  navigation.state === "idle" &&
+  navigation.formData == null &&
+  navigation.location == null
+  
+  useBeforeUnload(
+    useCallback(() => {
+
+      if (!isPageRefresh) {
+        submit(null, {
+          method: 'post',
+          action: '/logout',
+        });
+      }
+ 
+  }, [isPageRefresh, submit])
+  );
+
+
+  
+
   return (
     <>
       <Header />

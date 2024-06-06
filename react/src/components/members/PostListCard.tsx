@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Post } from "../../utils/definitions";
-import { FaRegHeart, FaRegCommentAlt } from "react-icons/fa";
+import { FaRegCommentAlt } from "react-icons/fa";
+import { FaStar } from "react-icons/fa6";
 
 const PostListCard = ({ post }: { post: Post }) => {
   const staticPrefix = import.meta.env.PROD ? "/static" : "";
@@ -24,8 +25,8 @@ const PostListCard = ({ post }: { post: Post }) => {
         <div className=" divider"></div>
         <div className="text-secondary flex flex-col md:flex-row gap-3">
           <div className="flex gap-4 text-xl">
-            <FaRegHeart size={30} />
-            <div className="">Rating here</div>
+            <FaStar size={30} />
+            <div className="">{post?.rating_score?.score.toFixed(1)}</div>
           </div>
           <div className="flex gap-4 text-xl">
             <FaRegCommentAlt size={30} />

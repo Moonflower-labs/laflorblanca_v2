@@ -4,10 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Form, redirect } from "react-router-dom";
 import { api } from "../../api/axios";
 import authProvider from "../../utils/auth";
-import { toast } from "react-toastify";
 
 export const loginLoader = async () => {
-  // todo: ensure this works
   if (authProvider.isAuthenticated) {
     return redirect("/");
   }
@@ -20,14 +18,14 @@ export const loginAction = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   //   TODO: validate input data
   try {
-    await authProvider.login(formData);
+    await authProvider.login(formData);  
 
-    const redirectTo = formData.get("redirectTo") as string | null;
-
-    return redirect(redirectTo || "/");
+    if (authProvider.isAuthenticated) {
+      const redirectTo = formData.get("redirectTo") as string | null;
+      redirect(redirectTo || "/");
+    }
   } catch (error) {
     console.error(error);
-    toast.error("Ha ocurrido un error");
   }
   return null;
 };
@@ -42,9 +40,8 @@ const Login = () => {
       <div className="text-center">
         <h1 className="text-5xl text-primary font-bold">Iniciar sesión</h1>
         <p className="py-8">
-          Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-          excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
-          id nisi.
+        ¿ No tienes una cuenta ?{" "}
+        <Link to={"register"} className="link-primary">Registro</Link>
         </p>
       </div>
       <Form method="post">

@@ -1,8 +1,70 @@
+/* eslint-disable react-refresh/only-export-components */
+import { FaCheckCircle } from "react-icons/fa";
+import { IoWarning } from "react-icons/io5";
+import { api } from "../../api/axios";
+import { useLoaderData } from "react-router-dom";
+import { Membership } from "../../utils/definitions";
+
+export const userSubscriptionLoader = async () => {
+
+  try {
+    const response = await api.get("api/user-profile/");
+    const profile = response.data[0];
+    return profile;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+ 
+}
+
 const Subscription = () => {
+
+  const { membership } = useLoaderData() as { membership: Membership} || {}
   return (
     <div>
-      <h1>Subscription</h1>
-      <p>Change plan, Cancel plan</p>
+          {membership && (
+            <>
+              <div className="overflow-x-auto mt-8">
+                <table className="table">
+                  {/* head */}
+                  <thead>
+                    <tr>
+                      <th>Plan</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="font-bold">{membership?.plan?.name}</td>
+                      <td>
+                        {membership?.status === "active" ? (
+                          <FaCheckCircle
+                            size={20}
+                            title="Activa"
+                            className="text-success"
+                          />
+                        ) : (
+                          <IoWarning
+                            size={20}
+                            title="Inactiva"
+                            className="text-warning"
+                          />
+                        )}
+                      </td>
+                      <th>
+                        <button className="btn btn-outline btn-primary btn-xs">
+                          Cambiar plan
+                        </button>
+                      </th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+    
     </div>
   );
 };

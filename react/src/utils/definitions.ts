@@ -195,3 +195,10 @@ export interface PaymentIntent {
   source: null;
   status: string;
 }
+export interface Review {
+  id: string;
+  text: string;
+  user: string;
+  created: Date;
+  score: number;
+}

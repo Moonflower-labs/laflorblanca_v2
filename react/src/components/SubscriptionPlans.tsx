@@ -1,26 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
-import { ActionFunctionArgs, Form, useActionData, useNavigate, useNavigation } from "react-router-dom";
-import { api } from "../api/axios";
+import { Form, useActionData, useNavigate, useNavigation } from "react-router-dom";
 import { useEffect } from "react";
-
-export const subscriptionAction = async ({request}:ActionFunctionArgs) => {
-  const formData = await request.formData()
-  const priceId = formData.get('priceId')
-
-   try {
-      const response = await api.post("subscriptions/", { priceId });
-      const { subscriptionId, clientSecret } = response.data;
-      if (subscriptionId && clientSecret) {
-        console.log(subscriptionId, clientSecret)
-        return {subscriptionId, clientSecret};
-      }
-   } catch (error) {
-    console.error(error)
-    
-   }
-
-    return null
-}
 
 
 const SubscriptionPlans = () => {
@@ -60,7 +40,7 @@ useEffect(() => {
         Planes de Suscripción
       </p>
       <div className="grid md:grid-cols-2 gap-4 mx-auto pb-3 justify-items-center">
-        <div className="card glass w-[95%] md:w-[70%] shadow-xl">
+        <div className="card glass w-[95%] max-w-[30rem] shadow-xl">
           <figure className="px-10 pt-10">
             <img src={personalityPlanImg} alt="" className="rounded-xl" />
           </figure>
@@ -96,7 +76,7 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className="card glass w-[95%] md:w-[70%] shadow-xl">
+        <div className="card glass w-[95%] max-w-[30rem] shadow-xl">
           <figure className="px-10 pt-10">
             <img src={soulPlanImg} alt="" className="rounded-xl" />
           </figure>
@@ -136,7 +116,7 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className="card glass w-[95%] md:w-[70%] shadow-xl">
+        <div className="card glass w-[95%] max-w-[30rem] shadow-xl">
           <figure className="px-10 pt-10">
             <img src={spiritPlanImg} alt="" className="rounded-xl" />
           </figure>

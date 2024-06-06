@@ -1,10 +1,59 @@
+/* eslint-disable react-refresh/only-export-components */
 import SubscriptionPlans from "./SubscriptionPlans";
 import AnimatedPage from "./AnimatedPage";
-import { useLocation } from "react-router-dom";
+import { ActionFunctionArgs, Await, defer, useLoaderData, useLocation } from "react-router-dom";
+import { Suspense, useMemo } from "react";
 import { useEffect } from "react";
+import Reviews from "./Reviews";
+import { api } from "../api/axios";
+import { Review } from "../utils/definitions";
+import { toast } from "react-toastify";
+import ReviewsSkeleton from "./skeletons/ReviewsSkeleton";
+
+export const homeLoader = () => {
+  return api.get('api/reviews').then((response) => {
+    return defer({ reviews: response.data})
+  }).catch((error)=> {
+    console.error(error)
+    return null
+  })
+}
+
+export const homeAction = async ({request}: ActionFunctionArgs) => {
+  const formData = await request.formData()
+
+  const priceId = formData.get('priceId')
+// handle subscription
+ if(priceId) {     
+      try {
+        const response = await api.post("subscriptions/", { priceId });
+        const { subscriptionId, clientSecret } = response.data;
+        if (subscriptionId && clientSecret) {
+          console.log(subscriptionId, clientSecret)
+          return {subscriptionId, clientSecret};
+        }
+      } catch (error) {
+      console.error(error)
+      return null
+      }
+
+  }else {
+
+    try {
+      await api.post('api/reviews/',formData)
+   
+      return toast.success("Gracias por tu opinión")
+      
+    } catch (error) {
+      console.error(error)
+      return toast.error("Ya has dado tu opinión!")
+    }
+  }
+}
 
 const Homepage = () => {
   const { pathname, hash } = useLocation();
+  const {reviews} = useLoaderData() as {reviews: Review[]} || {}
   const staticPrefix = import.meta.env.PROD ? "/static" : "";
 
   const logoUrl = `${staticPrefix}/flower.png`;
@@ -91,8 +140,40 @@ const Homepage = () => {
             ></iframe>
           </div>
         </div>
-
         <SubscriptionPlans />
+
+        <Suspense fallback={<ReviewsSkeleton/>}>
+          <div className="">
+            <Await
+              resolve={useMemo(
+                () =>
+                  new Promise((resolve) => {
+                    setTimeout(() => {
+                      resolve(reviews);
+                    }, 600);
+                  }),
+                [reviews]
+              )}
+              errorElement={
+                <p className="text-error text-xl text-center col-span-full py-6">
+                  ⚠️  {" "}Error cargando los reviews!
+                </p>
+              }
+            >
+              {(reviewList) =>
+                reviewList ? (
+                    <Reviews reviewsData={reviewList} />
+                  
+                ) : (
+                  <div className="text-2xl py-10 text-center mx-auto col-span-full">
+                    No hay reviews que mostrar.
+                  </div>
+                )
+              }
+            </Await>
+          </div>
+        </Suspense>
+        {/* <Reviews /> */}
       </AnimatedPage>
     </>
   );

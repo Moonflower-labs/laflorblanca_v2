@@ -194,8 +194,11 @@ class Membership(models.Model):
 
 class Review(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name='review')
+        User, on_delete=models.CASCADE, related_name='reviews')
     text = models.TextField()
     score = models.PositiveIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)])
     created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username}'s review"

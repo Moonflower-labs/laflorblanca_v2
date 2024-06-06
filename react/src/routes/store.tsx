@@ -14,14 +14,10 @@ import authProvider from "../utils/auth";
 import { useCart } from "../context/CartContext";
 
 export const storeLoader = () => {
-
   return api
     .get("products/")
-    .then((response) => {
-      const products = response.data;
-      
-      return defer({ products: products });
-    })
+    .then((response) => { return defer({ products: response.data })}
+    )
     .catch((error) => {
       console.error(error);
       return null;
@@ -69,7 +65,6 @@ export const Store = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-items-center pb-4">
           <Await
             // resolve={products}
-           
             resolve={useMemo(
               () =>
                 new Promise((resolve) => {

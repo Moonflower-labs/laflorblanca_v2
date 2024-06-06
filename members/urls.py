@@ -29,6 +29,5 @@ urlpatterns = [
     path('api/password_reset/', PasswordResetView.as_view()),
     path('api/reset/<uidb64>/<token>', PasswordResetView.as_view()),
     path('mail/send/', MailView.as_view()),
-    re_path(r'^(?!api/).*', ReactAppView.as_view()),
 
 ]

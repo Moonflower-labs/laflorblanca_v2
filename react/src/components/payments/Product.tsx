@@ -31,7 +31,7 @@ const Product = ({
   };
 
   return (
-    <div className="card w-96 glass mx-auto shadow-lg">
+    <div className="card w-[95%] glass mx-auto shadow-lg">
       <figure className="px-10 pt-10">
         <img
           src={item?.product?.images[0]}

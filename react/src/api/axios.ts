@@ -29,7 +29,7 @@ export const handleApiError = (error: Error | AxiosError) => {
   console.error(error);
 
   if (error instanceof AxiosError && error.response?.data.error) {
-    // toast.error(error.response.data.error); // Display the error message from the response
+   // toast.error(error.response.data.error); // Display the error message from the response
     console.log(error.response.data.error);
   } else {
     // toast.error("An error occurred."); // Display a default error message
@@ -67,32 +67,29 @@ export const registerUser = async (userData: FormData) => {
 
 export const login = async (formData: FormData) => {
   try {
-    const response = await api.post("api/login/", formData);
+    const response =  api.post("api/login/", formData);
 
-    const loginPromise = new Promise((resolve) => resolve(response));
-    // Display a promise toast message
-    toast.promise(loginPromise, {
+    toast.promise(response, {
       pending: "Iniciando sesión...",
       success: "Sesión iniciada con éxito.",
-      error: "Ha ocurrido un error.",
+      error: "Credenciales invalidas!",
     });
-    return response.data;
+    return (await response).data;
   } catch (error) {
     handleApiError(error as Error | AxiosError<unknown>);
-    return null;
+   return null
   }
 };
 export const logout = async () => {
   try {
-    const response = await api.post("api/logout/");
-    const logoutPromise = new Promise((resolve) => resolve(response));
+    const response = api.post("api/logout/");
     // Display a promise toast message
-    toast.promise(logoutPromise, {
+    toast.promise(response, {
       pending: "Cerrando sesión...",
       success: "Sesión cerrada con éxito.",
       error: "Ha ocurrido un error.",
     });
-    return response.data;
+    return (await response).data;
   } catch (error) {
     handleApiError(error as Error | AxiosError<unknown>);
     return null;
@@ -100,16 +97,15 @@ export const logout = async () => {
 };
 export const register = async (formData: FormData) => {
   try {
-    const response = await api.post("api/register/", formData);
+    const response = api.post("api/register/", formData);
 
-    const registerPromise = new Promise((resolve) => resolve(response));
     // Display a promise toast message
-    toast.promise(registerPromise, {
+    toast.promise(response, {
       pending: "Registrando usuario...",
       success: "Usuario registrado con éxito",
       error: "Ha ocurrido un error.",
     });
-    return response.data;
+    return (await response).data;
   } catch (error) {
     handleApiError(error as Error | AxiosError<unknown>);
     return null;

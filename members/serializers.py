@@ -201,6 +201,16 @@ class PremiumQuestionSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+    # Define the method to return the username
+
+    def get_user(self, obj):
+        if isinstance(obj, dict):
+            # If obj is a dictionary (like in this case), handle accordingly
+            # Return an empty string if 'user' key is not present
+            return obj.get('user', '')
+        # Assume obj is a model instance, proceed with normal operation
+        return obj.user.username
 
     class Meta:
         model = Review

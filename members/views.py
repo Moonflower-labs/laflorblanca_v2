@@ -1,10 +1,7 @@
-import json
 import os
 from django.db import IntegrityError
 from django.db.models import F
-from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.tokens import default_token_generator
@@ -24,23 +21,6 @@ from .pagination import CustomPagination
 from .serializers import *
 from .permissions import IsActiveMember, HasSoulMembership
 from payments.views import CustomerView
-
-
-# This view serves the react app template
-class ReactAppView(TemplateView):
-    template_name = 'index.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        with open('./react/dist/.vite/manifest.json') as manifest_file:
-            manifest_data = json.load(manifest_file)
-            manifest_js = manifest_data['index.html']['file']
-            manifest_css = manifest_data['index.html']['css']
-
-        context['manifest_js'] = manifest_js
-        context['manifest_css'] = manifest_css[0]
-        return context
 
 
 class UserPermissions(View):
@@ -101,6 +81,18 @@ class UserProfileViewSet(viewsets.ModelViewSet):
             instance=self.queryset)
         return Response(serialized_data)
 
+    @action(detail=False, methods=['get'])
+    def favorites(self, request, *args, **kwargs):
+        user = self.request.user
+        profile = user.profile  # Assuming related_name for UserProfile is set to 'profile'
+
+        serialized_data = {
+            'favorite_posts': list(profile.favorite_posts.values()),
+            'favorite_videos': list(profile.favorite_videos.values())
+        }
+
+        return Response(serialized_data)
+
 
 class MailView(View):
     def get(self, request):
@@ -143,9 +135,36 @@ class UserViewSet(viewsets.ViewSet):
         return User.objects.filter(user=request.user.pk)
 
 
-class ReviewViewset(viewsets.ModelViewSet):
+class ReviewViewset(viewsets.ViewSet):
     queryset = Review.objects.all().order_by('-created')
     serializer_class = ReviewSerializer
+
+    def get_permissions(self):
+        if self.action == 'list':
+            # Custom permissions for the list action
+            permission_classes = [AllowAny]
+            return [permission() for permission in permission_classes]
+        else:
+            return super().get_permissions()
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.queryset
+        serializer = ReviewSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def create(self, request, *args, **kwargs):
+        existing_review = Review.objects.filter(user=request.user).first()
+        if existing_review:
+            return Response('You already have a review', status=status.HTTP_403_FORBIDDEN)
+
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        # Set the user before saving the serializer
+        serializer.save(user=request.user)
+
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 @method_decorator(csrf_protect, name='dispatch')
@@ -484,11 +503,15 @@ class RegisterAPIView(APIView):
         confirmation = request.data.get("confirmation")
         if password != confirmation or not password:
             return Response({"error":  "Passwords must match."}, status=status.HTTP_400_BAD_REQUEST)
+
+        is_admin = email in os.environ.get('ADMIN_LIST', '')
         # Attempt to create new user
         try:
+            if is_admin:
+                user = User.objects.create_superuser(username, email, password)
+            else:
+                user = User.objects.create_user(username, email, password)
 
-            user = User.objects.create_user(username, email, password)
-            user.save()
             """create a profile"""
             profile = UserProfile.objects.create(user=user)
             profile.save()
@@ -506,8 +529,6 @@ class PasswordResetView(APIView):
     def post(self, request):
         email = request.data.get('email')
         user = User.objects.get(email=email)
-        print(user)
-        print(email)
         if user:
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))

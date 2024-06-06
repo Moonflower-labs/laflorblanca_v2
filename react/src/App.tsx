@@ -8,7 +8,7 @@ import {
 import RootLayout from "./components/layouts/RootLayout";
 import AuthLayout from "./components/layouts/AuthLayout";
 import ErrorPage from "./routes/Error";
-import Homepage from "./components/Homepage";
+import Homepage, { homeAction, homeLoader } from "./components/Homepage";
 import Login, { loginLoader, loginAction } from "./routes/auth/login";
 import Register from "./routes/auth/register";
 import { registerLoader, registerAction } from "./routes/auth/register";
@@ -23,14 +23,14 @@ import ShoppingCart from "./components/ui/ShoppingCart";
 // import handleAccessRestriction from "./config/permissions";
 import protectedRouteLoader from "./config/protectedRouteLoader";
 import { loadStripe } from "@stripe/stripe-js";
-import Subscription from "./routes/userProfile/subscription";
-import Favorites from "./routes/userProfile/favorites";
+import Subscription, { userSubscriptionLoader } from "./routes/userProfile/subscription";
+import Favorites, { userFavoriteLoader } from "./routes/userProfile/favorites";
 import ResetPassword, { resetPassAction } from "./routes/auth/reset-password";
 import ConfirmReset, {
   confirmResetAction,
 } from "./routes/auth/reset-confirmation";
-import { subscriptionAction } from "./components/SubscriptionPlans";
 import PaymentsLayout from "./components/layouts/PaymentsLayout";
+import { UserProfile, userProfileLoader } from "./routes/userProfile/profile";
 
 
 const routes = [
@@ -48,8 +48,9 @@ const routes = [
     children: [
       {
         index: true,
+        loader: homeLoader,
         element: <Homepage />,
-        action: subscriptionAction,
+        action: homeAction,
 
       },
       { async lazy() {
@@ -248,23 +249,31 @@ const routes = [
       {
         path: "user-profile",
         async lazy(){
-          const { userProfileLoader, userProfileAction, UserProfile } =
+          const { userProfileLoader, userProfileAction } =
             await import("./routes/userProfile/profile")
+          const { UserProfileLayout } = await import("./components/layouts/UserProfileLayout")
 
           return {
             loader: userProfileLoader,
             action: userProfileAction,
-            Component: UserProfile,
+            Component: UserProfileLayout,
           }
         },
        
         children: [
           {
+            index: true,
+            loader: userProfileLoader,
+            element: <UserProfile />,
+          },
+          {
             path: "subscription",
+            loader: userSubscriptionLoader,
             element: <Subscription />,
           },
           {
             path: "favorites",
+            loader: userFavoriteLoader,
             element: <Favorites />,
           },
         ],

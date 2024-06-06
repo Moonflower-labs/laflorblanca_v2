@@ -68,6 +68,7 @@ class LikeAdmin(admin.ModelAdmin):
 
 admin.site.register(UserProfile)
 admin.site.register(Plan)
+admin.site.register(Review)
 admin.site.register(PostRating)  # not needed
 admin.site.register(Like)
 admin.site.register(Membership)

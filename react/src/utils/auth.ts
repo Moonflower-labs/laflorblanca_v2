@@ -13,17 +13,19 @@ interface AuthProvider {
   initialize(): void;
 }
 
+
 const authProvider: AuthProvider = {
-  isAuthenticated: storage.get<boolean>("isAuthenticated") || false,
+  isAuthenticated: false,
   user: null,
   async login (data) {
-    try {
-      await login(data);
+  try {
+     const user = await login(data);
+     if(user){
       authProvider.isAuthenticated = true;
-      storage.set("isAuthenticated", true);
-    } catch (error) {
-      console.error(error);
-    }
+     }
+  } catch (error) {
+    return 
+  }
   },
   async logout() {
     try {
@@ -49,7 +51,7 @@ const authProvider: AuthProvider = {
 
         return user;
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error("Error authenticating:", error);
         return null;
       }
     },
@@ -59,15 +61,16 @@ const authProvider: AuthProvider = {
 
       return response.data;
     } catch (error) {
-      console.error("Error fetching user:", error);
+      console.error("Error checking permissions:", error);
       return null;
     }
   },
 
-  initialize() {
-    const storedIsAuthenticated = storage.get<boolean>("isAuthenticated");
-    authProvider.isAuthenticated = storedIsAuthenticated || false;
-
+  async initialize() {
+    const user = await authProvider.checkAuthentication()
+    if(user) {
+      authProvider.isAuthenticated = true
+    } 
   },
 };
 authProvider.initialize();
