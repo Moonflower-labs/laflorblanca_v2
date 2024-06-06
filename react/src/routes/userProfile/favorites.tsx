@@ -17,7 +17,7 @@ export const userFavoriteLoader = async () => {
   }
 }
 
-const Favorites = () => {
+export const Favorites = () => {
   const { favorite_posts, favorite_videos } = useLoaderData() as {favorite_posts:Post[],favorite_videos: VideoLink[]} || {}
   const fetcher = useFetcher()
   return (
@@ -90,5 +90,3 @@ const Favorites = () => {
     </div>
   );
 };
-
-export default Favorites;

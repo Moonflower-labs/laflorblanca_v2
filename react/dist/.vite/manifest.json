@@ -1,35 +1,34 @@
 {
-  "_Pagination-D5FQsI_N.js": {
-    "file": "assets/Pagination-D5FQsI_N.js",
+  "_Pagination-BG4NEREv.js": {
+    "file": "assets/Pagination-BG4NEREv.js",
     "name": "Pagination",
     "imports": [
       "index.html"
     ]
   },
-  "_VideoComponent-BBm8Ttrb.js": {
-    "file": "assets/VideoComponent-BBm8Ttrb.js",
+  "_VideoComponent-CbnV_Mdh.js": {
+    "file": "assets/VideoComponent-CbnV_Mdh.js",
     "name": "VideoComponent",
     "imports": [
-      "index.html",
-      "_helpers-DgSNuxse.js"
+      "index.html"
     ]
   },
-  "_VideoListCard-zz-1_wdZ.js": {
-    "file": "assets/VideoListCard-zz-1_wdZ.js",
+  "_VideoListCard-DoI-e7PL.js": {
+    "file": "assets/VideoListCard-DoI-e7PL.js",
     "name": "VideoListCard",
     "imports": [
       "index.html"
     ]
   },
-  "_helpers-DgSNuxse.js": {
-    "file": "assets/helpers-DgSNuxse.js",
+  "_helpers-CRUMSjCA.js": {
+    "file": "assets/helpers-CRUMSjCA.js",
     "name": "helpers",
     "imports": [
       "index.html"
     ]
   },
   "index.html": {
-    "file": "assets/index-CZ7_xKSa.js",
+    "file": "assets/index-DBHNzPA1.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -45,14 +44,18 @@
       "src/routes/questions/tarot.tsx",
       "src/routes/questions/live.tsx",
       "src/routes/userProfile/profile.tsx",
+      "src/components/layouts/UserProfileLayout.tsx",
+      "src/routes/userProfile/profile.tsx",
+      "src/routes/userProfile/subscription.tsx",
+      "src/routes/userProfile/favorites.tsx",
       "src/routes/store.tsx"
     ],
     "css": [
-      "assets/index-BraiVYWp.css"
+      "assets/index-Bem2qHio.css"
     ]
   },
   "src/components/layouts/MembersLayout.tsx": {
-    "file": "assets/MembersLayout-5oJdf1_w.js",
+    "file": "assets/MembersLayout-BSixlBw_.js",
     "name": "MembersLayout",
     "src": "src/components/layouts/MembersLayout.tsx",
     "isDynamicEntry": true,
@@ -60,72 +63,81 @@
       "index.html"
     ]
   },
+  "src/components/layouts/UserProfileLayout.tsx": {
+    "file": "assets/UserProfileLayout-DQa-tAHc.js",
+    "name": "UserProfileLayout",
+    "src": "src/components/layouts/UserProfileLayout.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
   "src/routes/members/personality/detail.tsx": {
-    "file": "assets/detail-DJSMIkcW.js",
+    "file": "assets/detail-DXt_BhZy.js",
     "name": "detail",
     "src": "src/routes/members/personality/detail.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_helpers-DgSNuxse.js"
+      "_helpers-CRUMSjCA.js"
     ]
   },
   "src/routes/members/personality/index.tsx": {
-    "file": "assets/index-DxZyDE1O.js",
+    "file": "assets/index-ke0tNcU7.js",
     "name": "index",
     "src": "src/routes/members/personality/index.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_Pagination-D5FQsI_N.js"
+      "_Pagination-BG4NEREv.js"
     ]
   },
   "src/routes/members/soul/detail.tsx": {
-    "file": "assets/detail-Dsz1If12.js",
+    "file": "assets/detail-D-lhkQZb.js",
     "name": "detail",
     "src": "src/routes/members/soul/detail.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_helpers-DgSNuxse.js",
-      "_VideoComponent-BBm8Ttrb.js"
+      "_helpers-CRUMSjCA.js",
+      "_VideoComponent-CbnV_Mdh.js"
     ]
   },
   "src/routes/members/soul/index.tsx": {
-    "file": "assets/index-D4n4R22x.js",
+    "file": "assets/index-Ouwc2wj-.js",
     "name": "index",
     "src": "src/routes/members/soul/index.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_Pagination-D5FQsI_N.js",
-      "_VideoListCard-zz-1_wdZ.js"
+      "_Pagination-BG4NEREv.js",
+      "_VideoListCard-DoI-e7PL.js"
     ]
   },
   "src/routes/members/spirit/detail.tsx": {
-    "file": "assets/detail-DQcZG0vH.js",
+    "file": "assets/detail-Bigl2EpR.js",
     "name": "detail",
     "src": "src/routes/members/spirit/detail.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_helpers-DgSNuxse.js",
-      "_VideoComponent-BBm8Ttrb.js"
+      "_helpers-CRUMSjCA.js",
+      "_VideoComponent-CbnV_Mdh.js"
     ]
   },
   "src/routes/members/spirit/index.tsx": {
-    "file": "assets/index--IJdRrDJ.js",
+    "file": "assets/index-BcL2tZHN.js",
     "name": "index",
     "src": "src/routes/members/spirit/index.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html",
-      "_Pagination-D5FQsI_N.js",
-      "_VideoListCard-zz-1_wdZ.js"
+      "_Pagination-BG4NEREv.js",
+      "_VideoListCard-DoI-e7PL.js"
     ]
   },
   "src/routes/questions/basic.tsx": {
-    "file": "assets/basic-zpPNn2lq.js",
+    "file": "assets/basic-B_Ox6Y8x.js",
     "name": "basic",
     "src": "src/routes/questions/basic.tsx",
     "isDynamicEntry": true,
@@ -134,7 +146,7 @@
     ]
   },
   "src/routes/questions/live.tsx": {
-    "file": "assets/live-Ce9pd3oy.js",
+    "file": "assets/live-CU66-Eod.js",
     "name": "live",
     "src": "src/routes/questions/live.tsx",
     "isDynamicEntry": true,
@@ -143,7 +155,7 @@
     ]
   },
   "src/routes/questions/tarot.tsx": {
-    "file": "assets/tarot-CcIhxl32.js",
+    "file": "assets/tarot-CDNbMr05.js",
     "name": "tarot",
     "src": "src/routes/questions/tarot.tsx",
     "isDynamicEntry": true,
@@ -152,7 +164,7 @@
     ]
   },
   "src/routes/store.tsx": {
-    "file": "assets/store-DdEOoESJ.js",
+    "file": "assets/store-85niHOAa.js",
     "name": "store",
     "src": "src/routes/store.tsx",
     "isDynamicEntry": true,
@@ -160,10 +172,28 @@
       "index.html"
     ]
   },
+  "src/routes/userProfile/favorites.tsx": {
+    "file": "assets/favorites-D-UgfYm-.js",
+    "name": "favorites",
+    "src": "src/routes/userProfile/favorites.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
   "src/routes/userProfile/profile.tsx": {
-    "file": "assets/profile-B6Xzqxep.js",
+    "file": "assets/profile-C8ODaq1p.js",
     "name": "profile",
     "src": "src/routes/userProfile/profile.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
+    ]
+  },
+  "src/routes/userProfile/subscription.tsx": {
+    "file": "assets/subscription-C9OxVgfj.js",
+    "name": "subscription",
+    "src": "src/routes/userProfile/subscription.tsx",
     "isDynamicEntry": true,
     "imports": [
       "index.html"

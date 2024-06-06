@@ -18,7 +18,7 @@ export const userSubscriptionLoader = async () => {
  
 }
 
-const Subscription = () => {
+export const Subscription = () => {
 
   const { membership } = useLoaderData() as { membership: Membership} || {}
   return (
@@ -69,4 +69,3 @@ const Subscription = () => {
   );
 };
 
-export default Subscription;

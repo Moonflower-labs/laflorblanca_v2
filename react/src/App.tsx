@@ -23,14 +23,11 @@ import ShoppingCart from "./components/ui/ShoppingCart";
 // import handleAccessRestriction from "./config/permissions";
 import protectedRouteLoader from "./config/protectedRouteLoader";
 import { loadStripe } from "@stripe/stripe-js";
-import Subscription, { userSubscriptionLoader } from "./routes/userProfile/subscription";
-import Favorites, { userFavoriteLoader } from "./routes/userProfile/favorites";
 import ResetPassword, { resetPassAction } from "./routes/auth/reset-password";
 import ConfirmReset, {
   confirmResetAction,
 } from "./routes/auth/reset-confirmation";
 import PaymentsLayout from "./components/layouts/PaymentsLayout";
-import { UserProfile, userProfileLoader } from "./routes/userProfile/profile";
 
 
 const routes = [
@@ -263,18 +260,38 @@ const routes = [
         children: [
           {
             index: true,
-            loader: userProfileLoader,
-            element: <UserProfile />,
+            async lazy(){
+              const { userProfileLoader, userProfileAction, UserProfile } =
+                await import("./routes/userProfile/profile")
+    
+              return {
+                loader: userProfileLoader,
+                action: userProfileAction,
+                Component: UserProfile,
+              }
+            },
           },
           {
             path: "subscription",
-            loader: userSubscriptionLoader,
-            element: <Subscription />,
+            async lazy(){
+              const { userSubscriptionLoader, Subscription } =
+                await import("./routes/userProfile/subscription")
+              return {
+                loader: userSubscriptionLoader,
+                Component: Subscription,
+              }
+            },
           },
           {
             path: "favorites",
-            loader: userFavoriteLoader,
-            element: <Favorites />,
+            async lazy(){
+              const { userFavoriteLoader, Favorites } =
+                await import("./routes/userProfile/favorites")
+              return {
+                loader: userFavoriteLoader,
+                Component: Favorites,
+              }
+            },
           },
         ],
       },
