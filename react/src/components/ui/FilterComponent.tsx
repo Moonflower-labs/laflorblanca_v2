@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { BsFilterCircle } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
-// import { BsFilterCircleFill } from "react-icons/bs";
+
 
 const FilterComponent = () => {
   const { q } = (useLoaderData() as { q: string | null }) || { q: null };
@@ -49,15 +49,15 @@ const FilterComponent = () => {
 
   return (
     <div className="flex flex-col md:flex-row justify-between gap-4 align-middle w-[90%] mx-auto pb-4">
-      <div className="flex flex-row gap-2 align-middle">
+      <div className="flex flex-row gap-4 align-middle">
         <fetcher.Form
           ref={searchFormRef}
           onChange={(event) => debounceSearchSubmit(event.currentTarget)}
         >
-          <label className="input input-bordered input-md w-full max-w-xs flex items-center gap-2">
+          <label className="input input-bordered input-md w-full max-w-xs flex items-center align-middle gap-2">
             <input
               type="text"
-              className=""
+              className="w-full"
               placeholder="Search"
               name="search"
               id="search"
@@ -70,7 +70,7 @@ const FilterComponent = () => {
           <span className="loading loading-ring loading-lg"></span>
         </div>
       </div>
-      <div className="dropdown dropdown-bottom dropdown-end my-auto">
+      <div className="dropdown dropdown-bottom my-auto">
         <div
           tabIndex={0}
           role="button"
@@ -79,27 +79,27 @@ const FilterComponent = () => {
           Filtros
           <BsFilterCircle size={24} />
         </div>
-        <div
-          tabIndex={0}
-          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-72"
+        <fetcher.Form
+          ref={formRef}
+          onReset={() => {
+            const searchParams = new URLSearchParams(
+              navigation.location?.search
+            );
+            searchParams.delete("favorites");
+            searchParams.delete("category");
+            history.replaceState(null, "", `?${searchParams.toString()}`);
+          }}
         >
-          <fetcher.Form
-            ref={formRef}
-            onReset={() => {
-              const searchParams = new URLSearchParams(
-                navigation.location?.search
-              );
-              searchParams.delete("favorites");
-              searchParams.delete("category");
-              history.replaceState(null, "", `?${searchParams.toString()}`);
-            }}
+          <div
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-72"
           >
             <div className="form-control">
               <label className="cursor-pointer label">
                 <span className="label-text">Favoritos</span>
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-success"
+                  className="checkbox checkbox-secondary"
                   name="favorites"
                   // defaultValue={isChecked ? "true" : "false"}
                   defaultChecked={isChecked}
@@ -124,8 +124,8 @@ const FilterComponent = () => {
               <option value="chakras">Chakras</option>
             </select>
             <button type="reset">Reset</button>
-          </fetcher.Form>
-        </div>
+          </div>
+        </fetcher.Form>
       </div>
     </div>
   );

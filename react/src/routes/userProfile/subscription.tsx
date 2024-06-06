@@ -64,7 +64,7 @@ export const Subscription = () => {
               </div>
             </>
           ):(
-            <div className="text-xl text-center text-semibold">No tienes ninguna suscripción.</div>
+            <div className="text-xl text-center text-semibold pt-8">No tienes ninguna suscripción.</div>
           )}
     
     </div>
