@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  createBrowserRouter,
-  redirect,
-  RouteObject,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
+import type { RouteObject } from "react-router-dom";
 import RootLayout from "./components/layouts/RootLayout";
 import AuthLayout from "./components/layouts/AuthLayout";
 import ErrorPage from "./routes/Error";
@@ -15,7 +11,6 @@ import { registerLoader, registerAction } from "./routes/auth/register";
 import Help from "./routes/help";
 import authProvider from "./utils/auth";
 import { commentAction } from "./routes/comments";
-import QuestionLayout from "./components/layouts/QuestionLayout";
 import Checkout from "./routes/payments/checkout";
 import Success, { successLoader } from "./routes/payments/success";
 import Subscribe from "./routes/payments/subscribe";
@@ -28,6 +23,12 @@ import ConfirmReset, {
   confirmResetAction,
 } from "./routes/auth/reset-confirmation";
 import PaymentsLayout from "./components/layouts/PaymentsLayout";
+import { Personality, personalityAction, personalityLoader } from "./routes/members/personality";
+import { BasicDetail, basicDetailAction, basicDetailLoader } from "./routes/members/personality/detail";
+import { SoulDetail, soulDetailAction, soulDetailLoader } from "./routes/members/soul/detail";
+import { Soul, soulLoader } from "./routes/members/soul";
+import { Spirit, spiritLoader } from "./routes/members/spirit";
+import { SpiritDetail, spiritDetailAction, spiritDetailLoader } from "./routes/members/spirit/detail";
 
 
 const routes = [
@@ -70,27 +71,15 @@ const routes = [
             children: [
               {
                 index: true,
-                async lazy() {
-                  const { Personality, personalityAction, personalityLoader } = 
-                    await import("./routes/members/personality");
-                  return {
-                    loader: personalityLoader,
-                    action: personalityAction,
-                    Component: Personality,
-                  }
-                },
+                loader: personalityLoader,
+                action: personalityAction,
+                element: <Personality />,
               },
               {
                 path: "post/:id",
-                async lazy() {
-                  const { basicDetailLoader, basicDetailAction, BasicDetail } = 
-                    await import("./routes/members/personality/detail");
-                  return {
-                    loader: basicDetailLoader,
-                    action: basicDetailAction,
-                    Component: BasicDetail,
-                  }
-                },
+                loader: basicDetailLoader,
+                action: basicDetailAction,
+                element: <BasicDetail />,
               },
             ],
           },
@@ -106,24 +95,14 @@ const routes = [
             children: [
               {
                 index: true,
-                async lazy(){
-                  const { soulLoader, Soul } = await import("./routes/members/soul")
-                  return {
-                    loader: soulLoader,
-                    Component: Soul,
-                  }
-                },
+                loader: soulLoader,
+                element: <Soul />,
               },
               {
                 path: "video/:id",
-                async lazy(){
-                  const { soulDetailLoader, SoulDetail, soulDetailAction } = await import("./routes/members/soul/detail")
-                  return {
-                    loader: soulDetailLoader,
-                    action: soulDetailAction,
-                    Component: SoulDetail,
-                  }
-                },
+                loader: soulDetailLoader,
+                action: soulDetailAction,
+                element: <SoulDetail />,
               },
             ],
           },
@@ -140,26 +119,14 @@ const routes = [
             children: [
               {
                 index: true,
-                async lazy() {
-                  const { spiritLoader, Spirit } = 
-                      await import("./routes/members/spirit")
-                  return {
-                    loader: spiritLoader,
-                    Component: Spirit
-                  }
-                },
+                loader: spiritLoader,
+                element: <Spirit />
               },
               {
                 path: "video/:id",
-                async lazy() {
-                  const { spiritDetailLoader, spiritDetailAction, SpiritDetail } = 
-                      await import("./routes/members/spirit/detail")
-                  return {
-                    loader: spiritDetailLoader,
-                    action: spiritDetailAction,
-                    Component: SpiritDetail
-                  }
-                },
+                loader: spiritDetailLoader,
+                action: spiritDetailAction,
+                element: <SpiritDetail />
               },
             ],
           },
@@ -167,7 +134,10 @@ const routes = [
       },
       {
         path: "questions",
-        element: <QuestionLayout />,
+        async lazy() {
+          const { QuestionLayout } = await import("./components/layouts/QuestionLayout");
+          return { Component: QuestionLayout}
+        },
         errorElement: <ErrorPage />,
         loader: protectedRouteLoader,
         children: [

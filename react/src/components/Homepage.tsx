@@ -2,13 +2,14 @@
 import SubscriptionPlans from "./SubscriptionPlans";
 import AnimatedPage from "./AnimatedPage";
 import { ActionFunctionArgs, Await, defer, useLoaderData, useLocation } from "react-router-dom";
-import { Suspense, useMemo } from "react";
+import { Suspense } from "react";
 import { useEffect } from "react";
 import Reviews from "./Reviews";
 import { api } from "../api/axios";
 import { Review } from "../utils/definitions";
 import { toast } from "react-toastify";
 import ReviewsSkeleton from "./skeletons/ReviewsSkeleton";
+import YoutubeVideo from "./ui/YoutubeVideo";
 
 export const homeLoader = () => {
   return api.get('api/reviews').then((response) => {
@@ -109,51 +110,19 @@ const Homepage = () => {
             misión.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-4 mb-4 px-1">
-          <iframe
-            className="aspect-video rounded-lg border border-neutral-400"
-            src="https://www.youtube-nocookie.com/embed/v726U5jRots?si=16inDY65QTJli5hi"
-            height="100%"
-            width="100%"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-            allowFullScreen
-          ></iframe>
-          <iframe
-            className="aspect-video rounded-lg border border-neutral-400"
-            src="https://www.youtube-nocookie.com/embed/Lj5Q6_o_yyw"
-            height="100%"
-            width="100%"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
+        <div className="grid md:grid-cols-2 gap-6 mb-4 px-1">
+          <YoutubeVideo videoId="v726U5jRots"  />
+          <YoutubeVideo videoId="Lj5Q6_o_yyw"  />
           <div className="col-span-full">
-            <iframe
-              className="md:w-1/2 mx-auto aspect-video rounded-lg border border-neutral-400"
-              src="https://www.youtube-nocookie.com/embed/4GIIhZK1vaY"
-              height="100%"
-              width="100%"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
+           <YoutubeVideo videoId="4GIIhZK1vaY" className="md:w-1/2 mx-auto"  />
           </div>
         </div>
+       
         <SubscriptionPlans />
 
         <Suspense fallback={<ReviewsSkeleton/>}>
-          <div className="">
             <Await
-              resolve={useMemo(
-                () =>
-                  new Promise((resolve) => {
-                    setTimeout(() => {
-                      resolve(reviews);
-                    }, 600);
-                  }),
-                [reviews]
-              )}
+              resolve={reviews}
               errorElement={
                 <p className="text-error text-xl text-center col-span-full py-6">
                   ⚠️  {" "}Error cargando los reviews!
@@ -171,9 +140,7 @@ const Homepage = () => {
                 )
               }
             </Await>
-          </div>
         </Suspense>
-        {/* <Reviews /> */}
       </AnimatedPage>
     </>
   );

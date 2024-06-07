@@ -6,6 +6,7 @@ import { postActions } from "../../../api/actions";
 import Pagination from "../../../components/ui/Pagination";
 import FilterComponent from "../../../components/ui/FilterComponent";
 import PostListCard from "../../../components/members/PostListCard";
+import YoutubeVideo from "../../../components/ui/YoutubeVideo";
 
 export const personalityLoader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
@@ -68,7 +69,8 @@ export const Personality = () => {
           <p className="h-10 mb-2">
             El Mirto o Arrayán y sus usos para el amor
           </p>
-          <iframe
+          <YoutubeVideo videoId="dKXH2Tdttkg" />
+          {/* <iframe
             className="aspect-video rounded-lg"
             src="https://www.youtube-nocookie.com/embed/dKXH2Tdttkg"
             title="YouTube video player"
@@ -76,13 +78,14 @@ export const Personality = () => {
             allowFullScreen
             referrerPolicy="no-referrer"
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
         </div>
         <div className="flex flex-col m-10">
           <p className="h-10 mb-2">
             Los Cuatro Elementos 🔥🌬🌊⛰ y sus Colores🎨
           </p>
-          <iframe
+          <YoutubeVideo videoId="7Pi6W3Xnv5U" />
+          {/* <iframe
             className="aspect-video rounded-lg"
             src="https://www.youtube-nocookie.com/embed/7Pi6W3Xnv5U"
             title="YouTube video player"
@@ -90,14 +93,15 @@ export const Personality = () => {
             allowFullScreen
             referrerPolicy="no-referrer"
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
         </div>
 
         <div className="flex flex-col m-10">
           <p className="h-10 mb-2">
             Triada del Fuego🔥: Aries, Leo y Sagitario
           </p>
-          <iframe
+          <YoutubeVideo videoId="RqHO0WUlK2Y" />
+          {/* <iframe
             className="aspect-video rounded-lg"
             src="https://www.youtube-nocookie.com/embed/RqHO0WUlK2Y"
             title="YouTube video player"
@@ -105,14 +109,14 @@ export const Personality = () => {
             allowFullScreen
             referrerPolicy="no-referrer"
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
         </div>
         <div className="flex flex-col m-10">
           <p className="h-10 mb-2">
             Triada de la Tierra🌋: Tauro, Virgo y Capricornio
           </p>
-
-          <iframe
+          <YoutubeVideo videoId="0b8onmHCsY4" />
+          {/* <iframe
             className="aspect-video rounded-lg"
             src="https://www.youtube-nocookie.com/embed/0b8onmHCsY4"
             title="YouTube video player"
@@ -120,15 +124,15 @@ export const Personality = () => {
             allowFullScreen
             referrerPolicy="no-referrer"
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
         </div>
 
         <div className="flex flex-col m-10">
           <p className="h-10 mb-2">
             Triada del Aire🌬: Géminis, Libra y Acuario
           </p>
-
-          <iframe
+          <YoutubeVideo videoId="4-C-0JsUt1I" />
+          {/* <iframe
             className="aspect-video rounded-lg"
             src="https://www.youtube-nocookie.com/embed/4-C-0JsUt1I"
             title="YouTube video player"
@@ -136,14 +140,14 @@ export const Personality = () => {
             allowFullScreen
             referrerPolicy="no-referrer"
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
         </div>
         <div className="flex flex-col m-10">
           <p className="h-10 mb-2">
             Triada del Agua🌊: Cáncer, Escorpio y Piscis
           </p>
-
-          <iframe
+          <YoutubeVideo videoId="XTup4T4vVRw" />
+          {/* <iframe
             className="aspect-video rounded-lg"
             src="https://www.youtube-nocookie.com/embed/XTup4T4vVRw"
             title="YouTube video player"
@@ -151,12 +155,13 @@ export const Personality = () => {
             allowFullScreen
             referrerPolicy="no-referrer"
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
         </div>
 
         <div className="flex flex-col m-10">
           <p className="h-10 mb-2">Narcisismo desde el Astral</p>
-          <iframe
+          <YoutubeVideo videoId="re4mncuNTD4" />
+          {/* <iframe
             className="aspect-video rounded-lg"
             src="https://www.youtube-nocookie.com/embed/re4mncuNTD4"
             title="YouTube video player"
@@ -164,13 +169,14 @@ export const Personality = () => {
             allowFullScreen
             referrerPolicy="no-referrer"
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
         </div>
         <div className="flex flex-col m-10">
           <p className="h-10 mb-2">
             Falsos Lectores de Energía y Guía para Detectarlos
           </p>
-          <iframe
+          <YoutubeVideo videoId="_jLz5sVcC2Y" />
+          {/* <iframe
             className="aspect-video rounded-lg"
             src="https://www.youtube-nocookie.com/embed/_jLz5sVcC2Y"
             title="YouTube video player"
@@ -178,7 +184,7 @@ export const Personality = () => {
             allowFullScreen
             referrerPolicy="no-referrer"
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
         </div>
       </div>
 

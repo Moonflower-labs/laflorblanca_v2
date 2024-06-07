@@ -2,7 +2,7 @@ import { FaQuestion } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
 
-const QuestionLayout = () => {
+export const QuestionLayout = () => {
   return (
     <>
       <div role="tablist" className="tabs fixed bg-base-100/80 z-50  w-screen">
@@ -40,5 +40,3 @@ const QuestionLayout = () => {
     </>
   );
 };
-
-export default QuestionLayout;

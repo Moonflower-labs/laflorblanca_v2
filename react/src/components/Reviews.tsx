@@ -44,7 +44,7 @@ const Reviews = ({reviewsData}:{reviewsData: Review[]}) => {
        <>
         <div className="text-2xl text-center text-primary mb-6">Deja tu opinión</div>
         <div className="card w-96 mx-auto">
-            <fetcher.Form method="post" className="text-center">
+            <fetcher.Form method="post" className="text-center w-full">
                 <div className="rating mx-auto">
                     <input type="radio" name="score" defaultValue={1} className="mask mask-star-2 bg-warning" />
                     <input type="radio" name="score" defaultValue={2} className="mask mask-star-2 bg-warning" />
