@@ -49,16 +49,19 @@ const FilterComponent = () => {
 
   return (
     <div className="flex flex-col md:flex-row justify-between gap-4 align-middle w-[90%] mx-auto pb-4">
-      <div className="flex flex-row gap-4 align-middle">
+      <div className="flex flex-row gap-4 align-middle w-full">
         <fetcher.Form
           ref={searchFormRef}
           onChange={(event) => debounceSearchSubmit(event.currentTarget)}
+          className="flex flex-row gap-4 align-middle w-full"
         >
-          <label className="input input-bordered input-md w-full max-w-xs flex items-center align-middle gap-2">
+
+
+          <label className="input input-bordered input-md w-full md:w-1/3 flex items-center align-middle gap-2">
             <input
               type="text"
               className="w-full"
-              placeholder="Search"
+              placeholder="Buscar"
               name="search"
               id="search"
               defaultValue={q || ""}
@@ -70,11 +73,11 @@ const FilterComponent = () => {
           <span className="loading loading-ring loading-lg"></span>
         </div>
       </div>
-      <div className="dropdown dropdown-bottom my-auto">
+      <div className="dropdown dropdown-bottom md:dropdown-end my-auto">
         <div
           tabIndex={0}
           role="button"
-          className="w-full flex gap-4 m-1 text-primary"
+          className="w-full flex justify-between md:gap-4 m-1 text-primary"
         >
           Filtros
           <BsFilterCircle size={24} />
@@ -99,7 +102,7 @@ const FilterComponent = () => {
                 <span className="label-text">Favoritos</span>
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-secondary"
+                  className="checkbox checkbox-primary"
                   name="favorites"
                   // defaultValue={isChecked ? "true" : "false"}
                   defaultChecked={isChecked}

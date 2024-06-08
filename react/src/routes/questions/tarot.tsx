@@ -143,7 +143,7 @@ export const Tarot = () => {
           </label>
 
           <div className="flex gap-3 mb-3 justify-center">
-            <button type="reset" className="btn btn-secondary  btn-outline">
+            <button type="reset" className="btn btn-accent  btn-outline">
               Cancelar
             </button>
             <button type="submit" className="btn btn-primary">

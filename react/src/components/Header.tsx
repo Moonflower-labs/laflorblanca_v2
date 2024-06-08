@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 bg-slate-300 z-[200] w-screen">
       {/* User navigation */}
-      <div className="navbar bg-gradient-to-r from-primary/70 to-secondary/80 text-primary-content/75">
+      <div className="navbar bg-gradient-to-r from-primary/80 to-secondary/80 text-primary-content/75">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -104,14 +104,14 @@ const Header = () => {
             </div>
             <div tabIndex={0} className="menu dropdown-content z-[1] p-0 m-0 justify-end rounded-full">
               <div className="join join-vertical">
-                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Default" value="default" />
-                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Garden" value="garden" />
-                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Emerald" value="emerald" />
-                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Cupcake" value="cupcake" />
-                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Coffee" value="coffee" />
-                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Aqua" value="aqua" />
-                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Dark" value="dark" />
-                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Dim" value="dim" />
+                <input type="radio" name="theme-buttons" defaultChecked className="btn theme-controller join-item bg-base-100" aria-label="Default" value="default" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item bg-base-100" aria-label="Garden" value="garden" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item bg-base-100" aria-label="Emerald" value="emerald" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item bg-base-100" aria-label="Cupcake" value="cupcake" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item bg-base-100" aria-label="Coffee" value="coffee" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item bg-base-100" aria-label="Aqua" value="aqua" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item bg-base-100" aria-label="Dark" value="dark" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item bg-base-100" aria-label="Dim" value="dim" />
               </div>
             </div>
           </div>

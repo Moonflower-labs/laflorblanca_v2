@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react()],
 
   build: {
-    // generate .vite/manifest.json in outDir
+    
     manifest: true,
     // rollupOptions: {
     //   assetFileNames: (file) => {
@@ -18,7 +18,6 @@ export default defineConfig({
     //     return "assets/js/[name].min.js";
     //   },
     // },
-    // chunkSizeWarningLimit: 600,
   },
   test: {
     globals: true,

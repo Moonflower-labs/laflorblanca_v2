@@ -37,9 +37,9 @@ class UserPermissions(View):
             user_plan = membership.plan.name
             if user_plan == os.getenv('SPIRIT'):
                 user_permissions = True
-            elif plan == 'Alma' and (user_plan == os.getenv('SOUL') or user_plan == os.getenv('SPIRIT')):
+            elif plan == 'soul' and (user_plan == os.getenv('SOUL') or user_plan == os.getenv('SPIRIT')):
                 user_permissions = True
-            elif plan == 'Personalidad' and user_plan is not None:
+            elif plan == 'personality' and user_plan is not None:
                 user_permissions = True
 
         return JsonResponse({'user_permissions': user_permissions})

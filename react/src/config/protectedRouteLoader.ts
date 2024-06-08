@@ -11,7 +11,8 @@ export default async function protectedRouteLoader({ request }: LoaderFunctionAr
   }
   return null;
 }
-export async function protectedLoader({ request }:{request: Request}, name:string) {
+export async function protectedLoader({ request }:{ request: Request }) {
+  const lastSegment = new URL(request.url).pathname.split('/').pop() || "";
   // Check authentication
   const user = await authProvider.checkAuthentication();
   if (!user) {
@@ -20,7 +21,7 @@ export async function protectedLoader({ request }:{request: Request}, name:strin
     return redirect("/login?" + params.toString());
   }
    // Check user permissions
-  if (!(await handleAccessRestriction(name))) {
+  if (!(await handleAccessRestriction(lastSegment))) {
     return redirect("/#plans");
   }
   return null;

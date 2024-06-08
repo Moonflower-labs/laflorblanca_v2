@@ -4,13 +4,12 @@ import type { RouteObject } from "react-router-dom";
 import RootLayout from "./components/layouts/RootLayout";
 import ErrorPage from "./routes/Error";
 import Homepage, { homeAction, homeLoader } from "./components/Homepage";
-import Help from "./routes/help";
 import authProvider from "./utils/auth";
 import { commentAction } from "./routes/comments";
 import Checkout from "./routes/payments/checkout";
 import Success, { successLoader } from "./routes/payments/success";
 import Subscribe from "./routes/payments/subscribe";
-import protectedRouteLoader from "./config/protectedRouteLoader";
+import protectedRouteLoader, { protectedLoader } from "./config/protectedRouteLoader";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentsLayout from "./components/layouts/PaymentsLayout";
 import { Personality, personalityAction, personalityLoader } from "./routes/members/personality";
@@ -53,13 +52,9 @@ const routes: RouteObject[] = [
             ErrorBoundary: ErrorPage,
             children: [
               {
-                async loader() {
-                  // if (!(await handleAccessRestriction("Personalidad"))) {
-                  //   return redirect("/#plans");
-                  // }
-                  return null;
-
-                },
+                // loader({ request }) {
+                //   return protectedLoader({ request })
+                // },
                 path: "personality",
                 children: [
                   {
@@ -79,7 +74,7 @@ const routes: RouteObject[] = [
               {
                 path: "soul",
                 // loader({ request }) {
-                //   return protectedLoader({ request }, "Alma")
+                //   return protectedLoader({ request })
                 // },
                 children: [
                   {
@@ -97,12 +92,8 @@ const routes: RouteObject[] = [
               },
               {
                 path: "spirit",
-                loader: async () => {
-                  // Check user permissions
-                  // if (!(await handleAccessRestriction("Espíritu"))) {
-                  //   return redirect("/#plans");
-                  // }
-                  return null;
+                loader({ request }) {
+                  return protectedLoader({ request })
                 },
                 children: [
                   {
@@ -129,13 +120,9 @@ const routes: RouteObject[] = [
             ErrorBoundary: ErrorPage,
             children: [
               {
-                loader: async () => {
-                  // Check user permissions
-                  // if (!(await handleAccessRestriction("Personalidad"))) {
-                  //   return redirect("/#plans");
-                  // }
-                  return null;
-                },
+                // loader({ request }) {
+                //   return protectedLoader({ request })
+                // },
                 path: "basic",
                 children: [
                   {
@@ -152,13 +139,9 @@ const routes: RouteObject[] = [
                 ],
               },
               {
-                loader: async () => {
-                  // Check user permissions
-                  // if (!(await handleAccessRestriction("Alma"))) {
-                  //   return redirect("/#plans");
-                  // }
-                  return null;
-                },
+                // loader({ request }) {
+                //   return protectedLoader({ request })
+                // },
                 path: "tarot",
                 children: [
                   {
@@ -177,13 +160,9 @@ const routes: RouteObject[] = [
                 ],
               },
               {
-                loader: async () => {
-                  // Check user permissions
-                  // if (!(await handleAccessRestriction("Espíritu"))) {
-                  //   return redirect("/#plans");
-                  // }
-                  return null;
-                },
+                // loader({ request }) {
+                //   return protectedLoader({ request })
+                // },
                 path: "live",
                 children: [
                   {
@@ -255,7 +234,10 @@ const routes: RouteObject[] = [
       },
       {
         path: "help",
-        Component: Help,
+        async lazy() {
+          const { Help } = await import("./routes/help")
+          return { Component: Help }
+        },
       },
       {
         path: "subscribe",

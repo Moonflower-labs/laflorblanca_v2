@@ -180,7 +180,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="subject"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"Limpiezas"}
                 />
               </label>
@@ -194,7 +194,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="subject"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"Emociones"}
                 />
               </label>
@@ -205,7 +205,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="subject"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"Ataques Psíquicos"}
                 />
               </label>
@@ -216,7 +216,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="subject"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"Habilidades Psíquicas"}
                 />
               </label>
@@ -232,7 +232,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="subject"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"Other"}
                 />
               </label>
@@ -263,7 +263,7 @@ export function BasicQuestion() {
                 <span className="label-text">Telegram</span>
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-secondary"
+                  className="checkbox checkbox-primary"
                   value={"Telegram"}
                   name="media"
                 />
@@ -275,7 +275,7 @@ export function BasicQuestion() {
 
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-secondary"
+                  className="checkbox checkbox-primary"
                   value={"YouTube"}
                   name="media"
                 />
@@ -286,7 +286,7 @@ export function BasicQuestion() {
                 <span className="label-text">Instagram</span>
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-secondary"
+                  className="checkbox checkbox-primary"
                   value={"Instagram"}
                   name="media"
                 />
@@ -297,7 +297,7 @@ export function BasicQuestion() {
                 <span className="label-text">Facebook</span>
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-secondary"
+                  className="checkbox checkbox-primary"
                   value={"Facebook"}
                   name="media"
                 />
@@ -308,7 +308,7 @@ export function BasicQuestion() {
                 <span className="label-text">LinkedIn</span>
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-secondary"
+                  className="checkbox checkbox-primary"
                   value={"LinkedIn"}
                   name="media"
                 />
@@ -319,7 +319,7 @@ export function BasicQuestion() {
                 <span className="label-text">Anuncio</span>
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-secondary"
+                  className="checkbox checkbox-primary"
                   value={"Anuncio"}
                   name="media"
                 />
@@ -330,7 +330,7 @@ export function BasicQuestion() {
                 <span className="label-text">De boca en boca</span>
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-secondary"
+                  className="checkbox checkbox-primary"
                   value={"De boca en boca"}
                   name="media"
                 />
@@ -341,7 +341,7 @@ export function BasicQuestion() {
                 <span className="label-text">Otro</span>
                 <input
                   type="checkbox"
-                  className="checkbox checkbox-secondary"
+                  className="checkbox checkbox-primary"
                   value={"otro"}
                   name="media"
                   onChange={(event) => {
@@ -367,7 +367,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="age_group"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"16-25"}
                 />
               </label>
@@ -378,7 +378,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="age_group"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"26-35"}
                 />
               </label>
@@ -389,7 +389,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="age_group"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"36-45"}
                 />
               </label>
@@ -400,7 +400,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="age_group"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"46-55"}
                 />
               </label>
@@ -411,7 +411,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="age_group"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"56-65"}
                 />
               </label>
@@ -422,7 +422,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="age_group"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={"66-75"}
                 />
               </label>
@@ -433,7 +433,7 @@ export function BasicQuestion() {
                 <input
                   type="radio"
                   name="age_group"
-                  className="radio checked:bg-secondary"
+                  className="radio checked:bg-primary"
                   value={">75"}
                 />
               </label>
@@ -486,7 +486,7 @@ export function BasicQuestion() {
         <button
           type="submit"
           className="btn btn-primary"
-          // disabled={remaining_question_count <= 0}
+        // disabled={remaining_question_count <= 0}
         >
           Enviar
         </button>

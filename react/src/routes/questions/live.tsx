@@ -130,7 +130,7 @@ export function Live() {
             <div className="mb-3 text-center">
               <button
                 type="reset"
-                className="btn btn-outline btn-secondary mx-1 rounded-1"
+                className="btn btn-outline btn-accent mx-1 rounded-1"
               >
                 Cancelar
               </button>
