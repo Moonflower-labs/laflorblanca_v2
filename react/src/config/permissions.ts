@@ -5,7 +5,8 @@ import authProvider from "../utils/auth";
 const handleAccessRestriction = async (planName: string) => {
   const hasPermissions = await authProvider.checkPermissions(planName);
   if (!hasPermissions?.user_permissions) {
-    toast.error(`Debes suscribirte al plan ${planName} para acceder.`, {
+    const plan = planName === "spirit" ? "Espíritu" : planName === "soul" ? "Alma" : "Personalidad"
+    toast.error(`Debes suscribirte al plan ${plan} para acceder.`, {
       // position: "top-center",
     });
     return false;
