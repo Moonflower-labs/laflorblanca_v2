@@ -48,8 +48,11 @@ export default {
       },
       "dark",
       "cupcake",
-      "fantasy",
+      "garden",
       "dim",
+      "emerald",
+      "aqua",
+      "coffee",
     ],
   },
 };

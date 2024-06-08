@@ -17,10 +17,10 @@ const ShoppingCart = () => {
   const handleModal = () => {
     setIsVisible(!isVisible);
   };
- 
 
 
-  const calculateTotalItems=(cartItems: CartProduct[]) => {
+
+  const calculateTotalItems = (cartItems: CartProduct[]) => {
     let totalItems = 0;
     if (cartItems.length > 0) {
       cartItems.forEach((item) => {
@@ -32,13 +32,13 @@ const ShoppingCart = () => {
 
   return (
     <>
-      <div className="indicator cursor-pointer"  ref={cartRef} onClick={handleModal}>
+      <div className="indicator cursor-pointer" ref={cartRef} onClick={handleModal}>
         {cartItems.length > 0 && (
           <motion.span
             key={calculateTotalItems(cartItems)}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="badge badge-sm badge-secondary indicator-item indicator-end"
+            className="badge badge-sm badge-primary border-primary-content indicator-item indicator-end"
           >
             {calculateTotalItems(cartItems)}
           </motion.span>
@@ -64,7 +64,7 @@ const ShoppingCart = () => {
             <div className="w-full h-full fixed right-0 backdrop-blur-sm flex flex-col gap-3 items-center justify-center">
               <div
                 onClick={(e) => e.stopPropagation()}
-                className="bg-base-100 p-10 min-h-16 text-center rounded-lg z-[100] relative w-screen max-w-screen-sm max-h-screen overflow-y-auto"
+                className="bg-base-100 p-10 min-h-16 text-center text-neutral-content rounded-lg z-[100] relative w-screen max-w-screen-sm max-h-screen overflow-y-auto"
               >
                 {" "}
                 <button>
@@ -96,9 +96,9 @@ const ShoppingCart = () => {
                           <AnimatePresence>
                             {cartItems.length && cartItems.map((item) => (
                               <motion.tr key={item.id}
-                              initial={{ opacity: 0, scale: 0 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              exit={{ opacity: 0, scale: 0 }}>
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0 }}>
                                 <td>
                                   <div className="flex items-center gap-3">
                                     <div className="avatar">
@@ -183,15 +183,15 @@ const ShoppingCart = () => {
                       Checkout
                     </button>
                   )}
-                {!location.pathname.includes("/store") && (
+                  {!location.pathname.includes("/store") && (
                     <Link
-                    to={"/store"}
-                    className="link-primary"
-                    onClick={() => setIsVisible(false)}
-                  >
-                    Ir a la tienda
-                  </Link>
-                )}
+                      to={"/store"}
+                      className="link-primary"
+                      onClick={() => setIsVisible(false)}
+                    >
+                      Ir a la tienda
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

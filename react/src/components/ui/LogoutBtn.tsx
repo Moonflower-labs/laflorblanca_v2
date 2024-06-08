@@ -12,7 +12,7 @@ const LogoutBtn = () => {
         className="flex justify-center w-full"
       >
         <button
-          className="btn btn-md btn-outline btn-primary w-full"
+          className="btn btn-sm btn-outline btn-secondary w-full"
           type="submit"
           disabled={isLoggingOut}
         >

@@ -1,17 +1,15 @@
 import { AiOutlineUser } from "react-icons/ai";
 import { PiFlowerLotus } from "react-icons/pi";
-import { GiMoon } from "react-icons/gi";
-import { FaRegSun } from "react-icons/fa6";
-import { NavLink, useRouteLoaderData, Link } from "react-router-dom";
+import { useRouteLoaderData, Link } from "react-router-dom";
 import LogoutBtn from "./ui/LogoutBtn";
 import Navbar from "./ui/Navbar";
 import { User } from "../utils/definitions";
 import ShoppingCart from "./ui/ShoppingCart";
+import { IoColorPalette } from "react-icons/io5";
 
 const Header = () => {
-  const { user } = (useRouteLoaderData("root") as { user: User }) || {
-    user: null,
-  };
+
+  const { user } = (useRouteLoaderData("root") as { user: User }) || { user: null };
   const handleDropdown = () => {
     const elem = document.activeElement as HTMLInputElement;
     if (elem) {
@@ -21,7 +19,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 bg-slate-300 z-[200] w-screen">
       {/* User navigation */}
-      <div className="navbar bg-gradient-to-r from-violet-300 to-sky-300">
+      <div className="navbar bg-gradient-to-r from-primary/70 to-secondary/80 text-primary-content/75">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -29,11 +27,11 @@ const Header = () => {
               role="button"
               className="btn btn-ghost btn-circle"
             >
-              <AiOutlineUser size={26} className="text-primary" />
+              <AiOutlineUser size={26} />
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-primary/90 rounded-box w-52"
             >
               {user ? (
                 <>
@@ -41,93 +39,83 @@ const Header = () => {
                     <LogoutBtn />
                   </li>
                   <li>
-                    <NavLink
+                    <Link
                       to={"/user-profile"}
                       onClick={handleDropdown}
-                      className={({ isActive }) =>
-                        `min-w-40 ${isActive ? "border-2 border-primary" : ""} `
-                      }
+                      className={"min-w-40"}
                     >
                       Perfil
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
-                    <NavLink
-                      to={"/"}
+                    <Link
+                      to={"/settings"}
                       onClick={handleDropdown}
-                      className={({ isActive }) =>
-                        `min-w-40 ${isActive ? "border-2 border-primary" : ""} `
-                      }
+                      className={"min-w-40"}
                     >
                       Ajustes
-                    </NavLink>
+                    </Link>
                   </li>
                 </>
               ) : (
                 <>
                   <li>
-                    <NavLink
+                    <Link
                       to={"/login"}
                       onClick={handleDropdown}
-                      className={({ isActive }) =>
-                        `min-w-40 ${isActive ? "border-2 border-primary" : ""} `
-                      }
+                      className={"min-w-40"}
                     >
                       Iniciar sesión
-                    </NavLink>
+                    </Link>
                   </li>
                   <li>
-                    <NavLink
+                    <Link
                       to={"/register"}
                       onClick={handleDropdown}
-                      className={({ isActive }) =>
-                        `min-w-40 ${isActive ? "border-2 border-primary" : ""} `
-                      }
+                      className={"min-w-40"}
                     >
                       Registro
-                    </NavLink>
+                    </Link>
                   </li>
                 </>
               )}
             </ul>
           </div>
         </div>
-        <div className="navbar-center flex-col md:flex-row gap-2">
-          <PiFlowerLotus size={40} className="text-primary animate-pulse" />
+        <div className="navbar-center md:flex-row gap-2">
           <Link
             to={"/"}
             onClick={handleDropdown}
-            className="btn btn-ghost text-primary/75 text-2xl"
+            className="btn btn-ghost text-2xl"
           >
-            La Flor Blanca
+            <span className="hidden md:block">La Flor Blanca</span>
+            <PiFlowerLotus size={40} className="animate-pulse" />
           </Link>
-          {user && (
-            <div data-testid="username" className="text-2xl text-primary/70">
-              {user?.username}
-            </div>
-          )}
+          <div data-testid="username" className="text-2xl flex">
+            <span>{user?.username}</span>
+            <ShoppingCart />
+          </div>
         </div>
-
-        <ShoppingCart />
-
         <div className="navbar-end">
-          <button className="btn btn-ghost btn-circle">
-            <label className="swap swap-rotate">
-              {/* this hidden checkbox controls the state */}
-              <input
-                type="checkbox"
-                className="theme-controller"
-                value="dim"
-                id="theme"
-              />
-              {/* sun icon */}
-              <FaRegSun size={24} className="text-primary swap-off" />
-
-              {/* moon icon */}
-              <GiMoon size={24} className="text-primary swap-on" />
-            </label>
-          </button>
-          {/* Main menu navugation */}
+          <div className="dropdown dropdown-end dropdown-bottom">
+            <div tabIndex={0} className="m-1 btn btn-ghost">
+              <span className="hidden md:block">Theme</span>
+              <IoColorPalette size={24} />
+            </div>
+            <div tabIndex={0} className="menu dropdown-content z-[1] p-0 m-0 justify-end rounded-full">
+              <div className="join join-vertical">
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Default" value="default" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Garden" value="garden" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Emerald" value="emerald" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Cupcake" value="cupcake" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Coffee" value="coffee" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Aqua" value="aqua" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Dark" value="dark" />
+                <input type="radio" name="theme-buttons" className="btn theme-controller join-item" aria-label="Dim" value="dim" />
+              </div>
+            </div>
+          </div>
+          {/* Main menu */}
           <Navbar />
         </div>
       </div>

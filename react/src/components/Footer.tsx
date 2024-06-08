@@ -7,7 +7,7 @@ const Footer = () => {
 
   const logoUrl = `${staticPrefix}/logo.jpeg`;
   return (
-    <footer className="footer justify-center md:justify-normal p-10 bg-gradient-to-r from-violet-300 to-sky-300 text-neutral-600">
+    <footer className="footer justify-center md:justify-normal p-10 bg-gradient-to-r from-secondary/80 to-primary/70 text-primary-content/75">
       <aside>
         <img
           src={logoUrl}
@@ -15,7 +15,7 @@ const Footer = () => {
           height={50}
           className="max-w-sm rounded-lg shadow-2xl"
         />
-        <p>&copy; La Flor Blanca {new Date().getFullYear()}</p>
+        <p className="text-primary-content">&copy; La Flor Blanca {new Date().getFullYear()}</p>
 
         <a
           className="link link-primary"

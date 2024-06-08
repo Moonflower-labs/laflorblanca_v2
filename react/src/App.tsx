@@ -255,19 +255,19 @@ const routes: RouteObject[] = [
       },
       {
         path: "help",
-        element: <Help />,
+        Component: Help,
       },
       {
         path: "subscribe",
-        element: <Subscribe />,
+        Component: Subscribe,
       },
       {
-        element: <PaymentsLayout />,
+        Component: PaymentsLayout,
         children: [
           {
             path: "payment/success",
             loader: successLoader,
-            element: <Success />,
+            Component: Success,
           }
         ]
       },
@@ -283,7 +283,7 @@ const routes: RouteObject[] = [
       },
       {
         path: "checkout",
-        element: <Checkout />,
+        Component: Checkout,
       },
       {
         async lazy() {
