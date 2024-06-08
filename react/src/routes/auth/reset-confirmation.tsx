@@ -36,7 +36,7 @@ export const confirmResetAction = async ({
   return null;
 };
 
-const ConfirmReset = () => {
+export const ConfirmReset = () => {
   const { error } = (useActionData() as { error: string }) || { error: null };
   const navigation = useNavigation();
   return (
@@ -91,5 +91,3 @@ const ConfirmReset = () => {
     </>
   );
 };
-
-export default ConfirmReset;

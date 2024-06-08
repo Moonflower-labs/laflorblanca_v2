@@ -18,15 +18,14 @@ const RootLayout = () => {
   
   useBeforeUnload(
     useCallback(() => {
-
-      if (!isPageRefresh) {
+      const isRefresh = isPageRefresh
+      if (!isRefresh) {
         submit(null, {
           method: 'post',
           action: '/logout',
         });
       }
- 
-  }, [isPageRefresh, submit])
+    }, [isPageRefresh, submit])
   );
 
 

@@ -9,7 +9,7 @@ const AnimatedPage = ({ children }: AnimatedPageProps) => {
   const [isPresent, safeToRemove] = usePresence();
 
   useEffect(() => {
-    !isPresent && setTimeout(safeToRemove, 1000);
+    !isPresent && setTimeout(safeToRemove, 500);
   }, [isPresent, safeToRemove]);
 
   const routeVariants = {

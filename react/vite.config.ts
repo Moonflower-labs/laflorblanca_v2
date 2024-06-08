@@ -18,7 +18,7 @@ export default defineConfig({
     //     return "assets/js/[name].min.js";
     //   },
     // },
-    chunkSizeWarningLimit: 600,
+    // chunkSizeWarningLimit: 600,
   },
   test: {
     globals: true,

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
-const AuthLayout = () => {
+export const AuthLayout = () => {
   const staticPrefix = import.meta.env.PROD ? "/static" : "";
 
   const logoUrl = `${staticPrefix}/logo.jpeg`;
@@ -19,5 +19,3 @@ const AuthLayout = () => {
     </div>
   );
 };
-
-export default AuthLayout;

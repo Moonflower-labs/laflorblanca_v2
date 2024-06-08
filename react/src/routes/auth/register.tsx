@@ -21,7 +21,7 @@ export const registerAction = async ({ request }: LoaderFunctionArgs) => {
   return redirect("/");
 };
 
-const Register = () => {
+export const Register = () => {
   return (
     <>
       <div className="text-center">
@@ -94,5 +94,3 @@ const Register = () => {
     </>
   );
 };
-
-export default Register;

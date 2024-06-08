@@ -30,7 +30,7 @@ export const loginAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-const Login = () => {
+export const Login = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const from = params.get("from") || "/";
@@ -105,5 +105,3 @@ const Login = () => {
     </>
   );
 };
-
-export default Login;
