@@ -13,13 +13,13 @@ const CommentForm = ({ object, fieldName }: CommentFormProps) => {
   }, [fetcher.data?.message, fetcher.state, formRef]);
 
   return (
-    <div className="text-center">
+    <div className="text-center mx-4">
       <h3 className="text-xl text-primary mb-4">Añade un comentario</h3>
       <fetcher.Form
         ref={formRef}
         method="post"
         action="/comment"
-        className="flex flex-col mx-3 md:w-1/3 md:mx-auto pb-4"
+        className="flex flex-col w-full md:w-1/3 md:mx-auto pb-4"
       >
         <input type="hidden" name={fieldName} value={object.id} />
         <textarea

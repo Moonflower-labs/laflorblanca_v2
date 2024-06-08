@@ -25,7 +25,7 @@ export const resetPassAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-const ResetPassword = () => {
+export const ResetPassword = () => {
   const navigation = useNavigation();
   return (
     <>
@@ -69,5 +69,3 @@ const ResetPassword = () => {
     </>
   );
 };
-
-export default ResetPassword;

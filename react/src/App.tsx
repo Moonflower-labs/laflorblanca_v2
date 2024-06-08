@@ -18,7 +18,6 @@ import ShoppingCart from "./components/ui/ShoppingCart";
 // import handleAccessRestriction from "./config/permissions";
 import protectedRouteLoader from "./config/protectedRouteLoader";
 import { loadStripe } from "@stripe/stripe-js";
-import ResetPassword, { resetPassAction } from "./routes/auth/reset-password";
 import ConfirmReset, {
   confirmResetAction,
 } from "./routes/auth/reset-confirmation";
@@ -216,7 +215,7 @@ const routes = [
       },
       {
         path: "user-profile",
-        async lazy(){
+        async lazy() {
           const { userProfileLoader, userProfileAction } =
             await import("./routes/userProfile/profile")
           const { UserProfileLayout } = await import("./components/layouts/UserProfileLayout")
@@ -227,11 +226,10 @@ const routes = [
             Component: UserProfileLayout,
           }
         },
-       
         children: [
           {
             index: true,
-            async lazy(){
+            async lazy() {
               const { userProfileLoader, userProfileAction, UserProfile } =
                 await import("./routes/userProfile/profile")
     
@@ -244,7 +242,7 @@ const routes = [
           },
           {
             path: "subscription",
-            async lazy(){
+            async lazy() {
               const { userSubscriptionLoader, Subscription } =
                 await import("./routes/userProfile/subscription")
               return {
@@ -255,7 +253,7 @@ const routes = [
           },
           {
             path: "favorites",
-            async lazy(){
+            async lazy() {
               const { userFavoriteLoader, Favorites } =
                 await import("./routes/userProfile/favorites")
               return {
@@ -286,8 +284,8 @@ const routes = [
       },
       {
         path: "store",
-        async lazy(){
-          const { Store ,storeLoader} = await import ("./routes/store")
+        async lazy() {
+          const { Store, storeLoader } = await import ("./routes/store")
           return {
             loader: storeLoader,
             Component: Store,
@@ -320,8 +318,13 @@ const routes = [
           },
           {
             path: "reset-password",
-            action: resetPassAction,
-            element: <ResetPassword />,
+            async lazy() {  
+              const { resetPassAction, ResetPassword } = await import("./routes/auth/reset-password");
+              return { 
+                action: resetPassAction,
+                Component: ResetPassword ,
+              }
+            },
           },
           {
             path: "reset/:uidb64/:token",
