@@ -1,0 +1,1 @@
+import{j as s,A as t,O as e}from"./index-DoNRI4aa.js";const r=()=>s.jsx("div",{"data-testid":"auth-layout",className:"hero min-h-screen",children:s.jsx(t,{children:s.jsxs("div",{className:"hero-content flex-col lg:flex-row gap-8",children:[s.jsx("img",{src:"/static/logo.jpeg",width:200,className:"max-w-sm rounded-lg shadow-2xl"}),s.jsx(e,{})]})})});export{r as AuthLayout};

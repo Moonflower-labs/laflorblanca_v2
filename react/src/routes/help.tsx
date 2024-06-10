@@ -6,7 +6,7 @@ export const Help = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredQuestions = searchTerm
-    ? questions.filter((q) => q.question.toLowerCase().includes(searchTerm))
+    ? questions.filter((q) => q.question.toLowerCase().includes(searchTerm.toLowerCase()))
     : questions;
 
   return (
