@@ -76,6 +76,7 @@ class VideoLink(models.Model):
     ]
     section = models.CharField(max_length=10, choices=SECTION_CHOICES)
     url = models.URLField(max_length=350)
+    videoId = models.CharField(max_length=255)
     uploaded_on = models.DateField(auto_now_add=True)
     title = models.CharField(max_length=400)
     description = models.TextField()
@@ -84,7 +85,7 @@ class VideoLink(models.Model):
     )
 
     def __str__(self):
-        return f"{self.title}'s question"
+        return f"{self.title} / {self.section}"
 
 
 class BasicQuestion(models.Model):
