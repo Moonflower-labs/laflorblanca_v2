@@ -10,7 +10,7 @@ app = Celery('django_core')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 # load task modules from all registered django app configs.
-app.autodiscover_tasks(['members'])
+app.autodiscover_tasks()
 
 logging.basicConfig(
     level=logging.INFO,

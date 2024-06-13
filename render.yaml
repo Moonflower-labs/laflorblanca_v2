@@ -18,6 +18,10 @@ services:
         fromDatabase:
           name: florblancav2db
           property: connectionString
+      - key: REDIS_URL  # Set an environment variable for the Redis connection URL
+        fromService:
+          name: thunder  # Name of the Redis service
+          property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
@@ -25,11 +29,11 @@ services:
       - fromGroup: flor_blanca_env
   
   - type: redis
-  name: thunder
-  plan: free
-  region: frankfurt
-  maxmemoryPolicy: allkeys-lru
-  ipAllowList:
-  - source: 80.5.141.61/32
-    description: alex.landin@hotmail.com
+    name: thunder
+    plan: free
+    region: frankfurt
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList:
+    - source: 80.5.141.61/32
+      description: alex.landin@hotmail.com
 version: "1"

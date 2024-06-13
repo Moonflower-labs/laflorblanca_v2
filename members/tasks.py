@@ -11,3 +11,8 @@ logger = logging.getLogger(__name__)
 @shared_task
 def log_message():
     logger.info('Periodic task running!!')
+
+
+@shared_task
+def reset_question_count():
+    logger.info('Question count reset!!')
