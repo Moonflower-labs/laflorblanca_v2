@@ -12,7 +12,7 @@ services:
     name: laflorblanca
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn django_core.asgi:application -k uvicorn.workers.UvicornWorker"    
+    startCommand: "./start.sh"    
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -23,3 +23,13 @@ services:
       - key: WEB_CONCURRENCY
         value: 4
       - fromGroup: flor_blanca_env
+  
+  - type: redis
+  name: thunder
+  plan: free
+  region: frankfurt
+  maxmemoryPolicy: allkeys-lru
+  ipAllowList:
+  - source: 80.5.141.61/32
+    description: alex.landin@hotmail.com
+version: "1"
