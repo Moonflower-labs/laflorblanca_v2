@@ -3,6 +3,8 @@ from django.utils import timezone
 from datetime import timedelta
 import logging
 
+logging.basicConfig(level=logging.INFO)
+
 logger = logging.getLogger(__name__)
 
 
