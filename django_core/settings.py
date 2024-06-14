@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 SITE_NAME = 'La Flor Blanca - Admin Site'
 LANGUAGE_CODE = 'es'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
@@ -78,6 +79,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,6 +130,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_core.wsgi.application'
 
+# Daphne
+ASGI_APPLICATION = "django_core.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
