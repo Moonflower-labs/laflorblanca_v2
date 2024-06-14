@@ -128,7 +128,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_core.wsgi.application'
+# WSGI_APPLICATION = 'django_core.wsgi.application'
 
 # Daphne
 ASGI_APPLICATION = "django_core.asgi.application"
