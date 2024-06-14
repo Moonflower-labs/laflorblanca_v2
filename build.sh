@@ -12,5 +12,5 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 # Add the command to run the custom management command for setting up the periodic task
-python manage.py schedule_tasks
-python manage.py reset_question_count
+# python manage.py schedule_tasks
+# python manage.py reset_question_count
