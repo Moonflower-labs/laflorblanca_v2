@@ -11,4 +11,4 @@ celery -A django_core beat --loglevel=info --scheduler django_celery_beat.schedu
 daphne -b 0.0.0.0 -p 8000 django_core.asgi:application &
 
 # Start uvicorn as the interface server to serve the ASGI application
-uvicorn --host 0.0.0.0 --port 8001 --workers 4 django_core.asgi:application
+uvicorn --host 0.0.0.0 --port 8001 --workers 4 --proxy-headers django_core.asgi:application
