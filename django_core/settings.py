@@ -128,7 +128,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'django_core.wsgi.application'
+WSGI_APPLICATION = 'django_core.wsgi.application'
 
 # Daphne
 ASGI_APPLICATION = "django_core.asgi.application"
@@ -216,7 +216,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Celery
-
 CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
 CELERY_RESULT_BACKEND = 'django-db'
 
@@ -224,3 +223,12 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("thunder", 6379)],
+        },
+    },
+}
