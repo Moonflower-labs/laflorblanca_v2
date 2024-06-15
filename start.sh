@@ -1,11 +1,11 @@
 #!/bin/bash
 
-exec supervisord -c supervisord.conf
+# exec supervisord -c supervisord.conf
 # # Start Celery worker
 # celery -A django_core worker --loglevel=info &
 
 # # Start Celery beat scheduler
 # celery -A django_core beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler &
 
-# # Start Daphne for both HTTP and WebSocket traffic
-# daphne -b 0.0.0.0 -p 1000 django_core.asgi:application
+# Start Daphne for both HTTP and WebSocket traffic
+daphne -b 0.0.0.0 -p 1000 django_core.asgi:application
