@@ -12,7 +12,7 @@ daphne -b 0.0.0.0 -p 1000 django_core.asgi:application &
 
 
 # Start uvicorn as the interface server to serve the ASGI application
-uvicorn --host 0.0.0.0 --port 8001 --workers 4 --proxy-headers django_core.asgi:application
+uvicorn --host 0.0.0.0 --port 8001 --workers 4
 
 # Start django server
 # python -m gunicorn django_core.asgi:application -k uvicorn.workers.UvicornWorker
