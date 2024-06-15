@@ -5,7 +5,7 @@ daphne -b 0.0.0.0 -p 8000 django_core.asgi:application &
 
 
 # Start Uvicorn to serve the ASGI application
-uvicorn django_core.asgi:application --host 0.0.0.0 --port 8001 &
+# uvicorn django_core.asgi:application --host 0.0.0.0 --port 8001 &
 
 # Start Celery worker
 celery -A django_core worker --loglevel=info &
