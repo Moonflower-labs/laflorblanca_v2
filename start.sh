@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Start Daphne for both HTTP and WebSocket traffic
-daphne -b 0.0.0.0 -p 8000 django_core.asgi:application &
+daphne -b 0.0.0.0 -p 8000 django_core.asgi:application
 
 # Delay to allow Daphne to start (adjust as needed)
 sleep 5
 
 # Start Uvicorn to serve the ASGI application
-uvicorn django_core.asgi:application --host 0.0.0.0 --port 8001 &
+uvicorn django_core.asgi:application --host 0.0.0.0 --port 8001
 
 # Start Celery worker
 celery -A django_core worker --loglevel=info & 
