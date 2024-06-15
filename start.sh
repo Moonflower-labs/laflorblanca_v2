@@ -10,7 +10,7 @@ sleep 5
 uvicorn django_core.asgi:application --host 0.0.0.0 --port 8001 &
 
 # Start Celery worker
-celery -A django_core worker --loglevel=info 
+celery -A django_core worker --loglevel=info &
 
 # Start Celery beat scheduler
 celery -A django_core beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
