@@ -8,4 +8,4 @@ celery -A django_core worker --loglevel=info &
 celery -A django_core beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler &
 
 # Start Daphne for both HTTP and WebSocket traffic
-exec daphne -b 0.0.0.0 -p 1000 django_core.asgi:application
+daphne django_core.asgi:application
