@@ -9,6 +9,8 @@ app = Celery('django_core')
 
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
+app.conf.broker_connection_retry_on_startup = True
+
 # load task modules from all registered django app configs.
 app.autodiscover_tasks()
 

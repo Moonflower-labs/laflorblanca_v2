@@ -138,12 +138,15 @@ ASGI_APPLICATION = "django_core.asgi.application"
 
 DATABASES = {
 
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=600)
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'), conn_max_age=600, ssl_require=True)
 
 AUTH_USER_MODEL = 'members.User'
 # Password validation
