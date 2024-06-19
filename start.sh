@@ -3,7 +3,7 @@
 set -e errexit
 
 # Start Daphne for both HTTP and WebSocket traffic
-daphne -b 0.0.0.0 -p 10000 django_core.asgi:application
+daphne -b 0.0.0.0 -p 10000 django_core.asgi:application &
 DAPHNE_PID=$!
 
 # Start Celery worker
