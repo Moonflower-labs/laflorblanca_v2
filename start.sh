@@ -2,26 +2,26 @@
 
 set -e errexit
 
+# Start Daphne for both HTTP and WebSocket traffic
+daphne -b 0.0.0.0 -p 10000 django_core.asgi:application &
+# # Start Daphne for both HTTP and WebSocket traffic
+# daphne -b 127.0.0.1 -p $PORT django_core.asgi:application 
 
 # supervisord -c /etc/supervisor/conf.d/supervisord.conf
-supervisord -c supervisord.conf
+# supervisord -c supervisord.conf
+
+
 # Start Celery worker
-# celery -A django_core worker --loglevel=info --detach
+celery -A django_core worker --loglevel=info &
 
-# # Start Celery beat scheduler
-# celery -A django_core beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler --detach
+# Start Celery beat scheduler
+celery -A django_core beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
 
-# # Start Daphne for both HTTP and WebSocket traffic
-# exec daphne -b 0.0.0.0 -p 8000 django_core.asgi:application
-# exec supervisord -c supervisord.conf
+
 # # Start Celery worker
 # celery -A django_core worker --loglevel=info &
 
-# # Start Celery beat scheduler
-# celery -A django_core beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler &
 
-# # Start Daphne for both HTTP and WebSocket traffic
-# daphne -b 127.0.0.1 -p $PORT django_core.asgi:application 
 
 
 # Start uvicorn as the interface server to serve the ASGI application
