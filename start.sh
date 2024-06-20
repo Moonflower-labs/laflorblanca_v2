@@ -11,7 +11,7 @@ celery -A django_core worker --loglevel=info -c 4 &
 CELERY_WORKER_PID=$!
 
 # Start Celery beat scheduler
-celery -A django_core beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+celery -A django_core beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler &
 CELERY_BEAT_PID=$!
 
 # Wait for the processes to finish
