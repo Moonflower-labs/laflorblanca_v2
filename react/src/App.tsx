@@ -41,190 +41,134 @@ const routes: RouteObject[] = [
         Component: Homepage,
       },
       {
-        //* Protected Routes
-        loader: protectedRouteLoader,
+        lazy: async () => {
+          const { MembersLayout } = await import("./components/layouts/MembersLayout");
+          return { Component: MembersLayout };
+        },
+        ErrorBoundary: ErrorPage,
         children: [
           {
-            async lazy() {
-              const { MembersLayout } = await import("./components/layouts/MembersLayout");
-              return { Component: MembersLayout }
-            },
-            ErrorBoundary: ErrorPage,
-            children: [
-              {
-                // loader({ request }) {
-                //   return protectedLoader({ request })
-                // },
-                path: "personality",
-                children: [
-                  {
-                    index: true,
-                    loader: personalityLoader,
-                    action: personalityAction,
-                    Component: Personality,
-                  },
-                  {
-                    path: "post/:id",
-                    loader: basicDetailLoader,
-                    action: basicDetailAction,
-                    Component: BasicDetail,
-                  },
-                ],
-              },
-              {
-                path: "soul",
-                // loader({ request }) {
-                //   return protectedLoader({ request })
-                // },
-                children: [
-                  {
-                    index: true,
-                    loader: soulLoader,
-                    Component: Soul,
-                  },
-                  {
-                    path: "video/:id",
-                    loader: soulDetailLoader,
-                    action: soulDetailAction,
-                    Component: SoulDetail,
-                  },
-                ],
-              },
-              {
-                path: "spirit",
-                loader({ request }) {
-                  return protectedLoader({ request })
-                },
-                children: [
-                  {
-                    index: true,
-                    loader: spiritLoader,
-                    Component: Spirit,
-                  },
-                  {
-                    path: "video/:id",
-                    loader: spiritDetailLoader,
-                    action: spiritDetailAction,
-                    Component: SpiritDetail,
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: "questions",
-            async lazy() {
-              const { QuestionLayout } = await import("./components/layouts/QuestionLayout");
-              return { Component: QuestionLayout }
-            },
-            ErrorBoundary: ErrorPage,
-            children: [
-              {
-                // loader({ request }) {
-                //   return protectedLoader({ request })
-                // },
-                path: "basic",
-                children: [
-                  {
-                    index: true,
-                    async lazy() {
-                      const { basicLoader, basicAction, BasicQuestion } = await import("./routes/questions/basic");
-                      return {
-                        loader: basicLoader,
-                        action: basicAction,
-                        Component: BasicQuestion,
-                      }
-                    },
-                  },
-                ],
-              },
-              {
-                // loader({ request }) {
-                //   return protectedLoader({ request })
-                // },
-                path: "tarot",
-                children: [
-                  {
-                    index: true,
-                    async lazy() {
-                      const { tarotLoader, tarotAction, Tarot } =
-                        await import("./routes/questions/tarot")
-
-                      return {
-                        loader: tarotLoader,
-                        action: tarotAction,
-                        Component: Tarot,
-                      }
-                    },
-                  },
-                ],
-              },
-              {
-                // loader({ request }) {
-                //   return protectedLoader({ request })
-                // },
-                path: "live",
-                children: [
-                  {
-                    index: true,
-                    async lazy() {
-                      const { liveLoader, liveAction, Live } = await import("./routes/questions/live");
-                      return {
-                        loader: liveLoader,
-                        action: liveAction,
-                        Component: Live,
-                      }
-                    },
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: "user-profile",
-            async lazy() {
-              const { userProfileAction } =
-                await import("./routes/userProfile/profile")
-              const { UserProfileLayout } = await import("./components/layouts/UserProfileLayout")
-
-              return {
-                action: userProfileAction,
-                Component: UserProfileLayout,
-              }
-            },
+            // loader({ request }) {
+            //   return protectedLoader({ request })
+            // },
+            path: "personality",
             children: [
               {
                 index: true,
-                async lazy() {
-                  const { userProfileLoader, userProfileAction, UserProfile } =
-                    await import("./routes/userProfile/profile")
+                loader: personalityLoader,
+                action: personalityAction,
+                Component: Personality,
+              },
+              {
+                path: "post/:id",
+                loader: basicDetailLoader,
+                action: basicDetailAction,
+                Component: BasicDetail,
+              },
+            ],
+          },
+          {
+            path: "soul",
+            // loader({ request }) {
+            //   return protectedLoader({ request })
+            // },
+            children: [
+              {
+                index: true,
+                loader: soulLoader,
+                Component: Soul,
+              },
+              {
+                path: "video/:id",
+                loader: soulDetailLoader,
+                action: soulDetailAction,
+                Component: SoulDetail,
+              },
+            ],
+          },
+          {
+            path: "spirit",
+            // loader({ request }) {
+            //   return protectedLoader({ request })
+            // },
+            children: [
+              {
+                index: true,
+                loader: spiritLoader,
+                Component: Spirit,
+              },
+              {
+                path: "video/:id",
+                loader: spiritDetailLoader,
+                action: spiritDetailAction,
+                Component: SpiritDetail,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: "questions",
+        lazy: async () => {
+          const { QuestionLayout } = await import("./components/layouts/QuestionLayout");
+          return { Component: QuestionLayout }
+        },
+        ErrorBoundary: ErrorPage,
+        children: [
+          {
+            loader({ request }) {
+              return protectedLoader({ request })
+            },
+            path: "basic",
+            children: [
+              {
+                index: true,
+                lazy: async () => {
+                  const { basicLoader, basicAction, BasicQuestion } = await import("./routes/questions/basic");
+                  return {
+                    loader: basicLoader,
+                    action: basicAction,
+                    Component: BasicQuestion,
+                  }
+                },
+              },
+            ],
+          },
+          {
+            // loader({ request }) {
+            //   return protectedLoader({ request })
+            // },
+            path: "tarot",
+            children: [
+              {
+                index: true,
+                lazy: async () => {
+                  const { tarotLoader, tarotAction, Tarot } =
+                    await import("./routes/questions/tarot")
 
                   return {
-                    loader: userProfileLoader,
-                    action: userProfileAction,
-                    Component: UserProfile,
+                    loader: tarotLoader,
+                    action: tarotAction,
+                    Component: Tarot,
                   }
                 },
               },
+            ],
+          },
+          {
+            // loader({ request }) {
+            //   return protectedLoader({ request })
+            // },
+            path: "live",
+            children: [
               {
-                path: "subscription",
-                async lazy() {
-                  const { userSubscriptionLoader, Subscription } =
-                    await import("./routes/userProfile/subscription")
+                index: true,
+                lazy: async () => {
+                  const { liveLoader, liveAction, Live } = await import("./routes/questions/live");
                   return {
-                    loader: userSubscriptionLoader,
-                    Component: Subscription,
-                  }
-                },
-              },
-              {
-                path: "favorites",
-                async lazy() {
-                  const { userFavoriteLoader, Favorites } =
-                    await import("./routes/userProfile/favorites")
-                  return {
-                    loader: userFavoriteLoader,
-                    Component: Favorites,
+                    loader: liveLoader,
+                    action: liveAction,
+                    Component: Live,
                   }
                 },
               },
@@ -233,8 +177,59 @@ const routes: RouteObject[] = [
         ],
       },
       {
+        path: "user-profile",
+        lazy: async () => {
+          const { userProfileAction } =
+            await import("./routes/userProfile/profile")
+          const { UserProfileLayout } = await import("./components/layouts/UserProfileLayout")
+
+          return {
+            action: userProfileAction,
+            Component: UserProfileLayout,
+          }
+        },
+        loader: protectedRouteLoader,
+        children: [
+          {
+            index: true,
+            lazy: async () => {
+              const { userProfileLoader, userProfileAction, UserProfile } =
+                await import("./routes/userProfile/profile")
+
+              return {
+                loader: userProfileLoader,
+                action: userProfileAction,
+                Component: UserProfile,
+              }
+            },
+          },
+          {
+            path: "subscription",
+            lazy: async () => {
+              const { userSubscriptionLoader, Subscription } =
+                await import("./routes/userProfile/subscription")
+              return {
+                loader: userSubscriptionLoader,
+                Component: Subscription,
+              }
+            },
+          },
+          {
+            path: "favorites",
+            lazy: async () => {
+              const { userFavoriteLoader, Favorites } =
+                await import("./routes/userProfile/favorites")
+              return {
+                loader: userFavoriteLoader,
+                Component: Favorites,
+              }
+            },
+          },
+        ],
+      },
+      {
         path: "help",
-        async lazy() {
+        lazy: async () => {
           const { Help } = await import("./routes/help")
           return { Component: Help }
         },
@@ -255,7 +250,7 @@ const routes: RouteObject[] = [
       },
       {
         path: "store",
-        async lazy() {
+        lazy: async () => {
           const { Store, storeLoader } = await import("./routes/store")
           return {
             loader: storeLoader,
@@ -268,14 +263,14 @@ const routes: RouteObject[] = [
         Component: Checkout,
       },
       {
-        async lazy() {
+        lazy: async () => {
           const { AuthLayout } = await import("./components/layouts/AuthLayout");
           return { Component: AuthLayout }
         },
         children: [
           {
             path: "register",
-            async lazy() {
+            lazy: async () => {
               const { registerLoader, registerAction, Register } = await import("./routes/auth/register")
               return {
                 loader: registerLoader,
@@ -286,7 +281,7 @@ const routes: RouteObject[] = [
           },
           {
             path: "login",
-            async lazy() {
+            lazy: async () => {
               const { loginLoader, loginAction, Login } = await import("./routes/auth/login")
               return {
                 loader: loginLoader,
@@ -297,7 +292,7 @@ const routes: RouteObject[] = [
           },
           {
             path: "reset-password",
-            async lazy() {
+            lazy: async () => {
               const { resetPassAction, ResetPassword } = await import("./routes/auth/reset-password");
               return {
                 action: resetPassAction,
@@ -307,7 +302,7 @@ const routes: RouteObject[] = [
           },
           {
             path: "reset/:uidb64/:token",
-            async lazy() {
+            lazy: async () => {
               const { confirmResetAction, ConfirmReset } = await import("./routes/auth/reset-confirmation");
               return {
                 action: confirmResetAction,
@@ -318,23 +313,22 @@ const routes: RouteObject[] = [
         ],
       },
       {
-        path: "logout",
-        async action() {
-          await authProvider.logout();
-          return redirect("/");
-        },
-      },
-      {
-        path: "comment",
-        action: commentAction,
-      },
-      {
         path: "*",
         ErrorBoundary: ErrorPage,
         Component: NotFound,
-
       },
     ],
+  },
+  {
+    path: "logout",
+    async action() {
+      await authProvider.logout();
+      return redirect("/");
+    },
+  },
+  {
+    path: "comment",
+    action: commentAction,
   },
 ];
 

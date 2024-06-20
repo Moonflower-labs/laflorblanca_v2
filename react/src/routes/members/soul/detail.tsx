@@ -56,7 +56,7 @@ export const soulDetailAction = async ({
   // TODO: handle favorites and rating actions.
 };
 
-export function  SoulDetail() {
+export function SoulDetail() {
   const { video } = (useLoaderData() as { video: VideoLink | null }) || {
     video: null,
   };

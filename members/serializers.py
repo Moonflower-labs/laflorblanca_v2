@@ -176,7 +176,7 @@ class VideoLinkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = VideoLink
-        fields = ['id', 'section', 'url', 'uploaded_on', 'title',
+        fields = ['id', 'section', 'videoId', 'uploaded_on', 'title',
                   'description', 'category', 'likes', 'comments']
         ordering = ['-created']
 

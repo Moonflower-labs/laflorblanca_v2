@@ -13,6 +13,8 @@ export default async function protectedRouteLoader({ request }: LoaderFunctionAr
 }
 export async function protectedLoader({ request }:{ request: Request }) {
   const lastSegment = new URL(request.url).pathname.split('/').pop() || "";
+  // console.log(`segment exteracted: ${lastSegment}`)
+  // console.log(`url: ${new URL(request.url).pathname}`)
   // Check authentication
   const user = await authProvider.checkAuthentication();
   if (!user) {

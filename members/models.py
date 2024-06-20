@@ -7,6 +7,8 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     customer_id = models.CharField(max_length=100, blank=True, null=True)
+    # Add unique constraint for the email field
+    email = models.EmailField(unique=True)
 
 
 class UserProfile(models.Model):
@@ -75,7 +77,6 @@ class VideoLink(models.Model):
         ('tarot', 'Tarot'),
     ]
     section = models.CharField(max_length=10, choices=SECTION_CHOICES)
-    url = models.URLField(max_length=350)
     videoId = models.CharField(max_length=255)
     uploaded_on = models.DateField(auto_now_add=True)
     title = models.CharField(max_length=400)

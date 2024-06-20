@@ -44,17 +44,7 @@ export const Personality = () => {
       </div>
       <div className="grid grid-cols-1 md:w-1/2 mx-auto mb-4">
         <p className="text-3xl mb-2">¡Bienvenidos Personalidades!</p>
-        <iframe
-          className="aspect-video rounded-lg"
-          src="https://www.youtube-nocookie.com/embed/7158ShreVEU?si=bkwDx8JAqnWtQRuZ"
-          height="100%"
-          width="100%"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-          allowFullScreen
-          referrerPolicy="no-referrer"
-          loading="lazy"
-        ></iframe>
+        <YoutubeVideo videoId="7158ShreVEU" />
       </div>
       <div className="text-center mb-4">
         Estos son ejemplos de preguntas y sugerencias de temáticas generalizadas
@@ -129,13 +119,13 @@ export const Personality = () => {
       </div>
       <p className="text-3xl mb-5">Respuestas de Blog</p>
       <FilterComponent />
-        {posts && posts.length ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 justify-items-center pb-4">
-            {posts.map((post: Post) => <PostListCard post={post} key={post.id} />)}
-          </div>
-        ) : (
-          <div className="text-xl pb-3 text-center">No hay respuestas disponibles</div>
-        )}
+      {posts && posts.length ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 justify-items-center pb-4">
+          {posts.map((post: Post) => <PostListCard post={post} key={post.id} />)}
+        </div>
+      ) : (
+        <div className="text-xl pb-3 text-center">No hay respuestas disponibles</div>
+      )}
       <Pagination totalPages={data?.total_pages as number} />
     </div>
   );

@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 
 const SubscriptionPlans = () => {
- 
-  const  { subscriptionId, clientSecret }  = useActionData() as {subscriptionId: string, clientSecret: string} || {};
+
+  const { subscriptionId, clientSecret } = useActionData() as { subscriptionId: string, clientSecret: string } || {};
   const navigate = useNavigate()
   const navigation = useNavigation()
 
@@ -20,17 +20,17 @@ const SubscriptionPlans = () => {
   //    const { subscriptionId, clientSecret } = response.data;
   //    return  navigate("/subscribe", { state: {subscriptionId,clientSecret }});
 
-  //   // setSubscriptionData({ subscriptionId, clientSecret });
+  // setSubscriptionData({ subscriptionId, clientSecret });
   // };
- 
 
-  
-useEffect(() => {
-  if (subscriptionId && clientSecret) {
-       navigate("/subscribe", { state: {subscriptionId,clientSecret  }});
- }
 
-},[clientSecret, navigate, subscriptionId])
+
+  useEffect(() => {
+    if (subscriptionId && clientSecret) {
+      navigate("/subscribe", { state: { subscriptionId, clientSecret } });
+    }
+
+  }, [clientSecret, navigate, subscriptionId])
 
 
 
@@ -62,15 +62,15 @@ useEffect(() => {
             <div className="card-actions">
               <Form method="post">
                 <button
-                    type="submit"
-                    id="plan1"
-                    className="btn btn-primary"
-                    value={"price_1Ng3CfAEZk4zaxmwMXEF9bfR"}
-                    name={"priceId"}
-                    disabled={navigation.state === "submitting"}
-                  >
+                  type="submit"
+                  id="plan1"
+                  className="btn btn-primary"
+                  value={"price_1Ng3CfAEZk4zaxmwMXEF9bfR"}
+                  name={"priceId"}
+                  disabled={navigation.state === "submitting"}
+                >
                   Comprar por £0
-                 </button>
+                </button>
               </Form>
             </div>
           </div>
@@ -100,18 +100,18 @@ useEffect(() => {
               </li>
             </ul>
             <div className="card-actions">
-            <Form method="post">
-            <button
-                type="submit"
-                id="plan2"
-                className="btn btn-primary"
-                value={"price_1Ng3GzAEZk4zaxmwyZRkXBiW"}
-                name={"priceId"}
-                disabled={navigation.state === "submitting"}
-              >
-                Comprar por £9,95/mes
-              </button>
-            </Form>
+              <Form method="post">
+                <button
+                  type="submit"
+                  id="plan2"
+                  className="btn btn-primary"
+                  value={"price_1Ng3GzAEZk4zaxmwyZRkXBiW"}
+                  name={"priceId"}
+                  disabled={navigation.state === "submitting"}
+                >
+                  Comprar por £9,95/mes
+                </button>
+              </Form>
             </div>
           </div>
         </div>
@@ -143,15 +143,15 @@ useEffect(() => {
             <div className="card-actions">
               <Form method="post">
                 <button
-                    type="submit"
-                    id="plan3"
-                    className="btn btn-primary"
-                    value={"price_1Ng3KKAEZk4zaxmwLuapT9kg"}
-                    name={"priceId"}
-                    disabled={navigation.state === "submitting"}
-                  >
+                  type="submit"
+                  id="plan3"
+                  className="btn btn-primary"
+                  value={"price_1Ng3KKAEZk4zaxmwLuapT9kg"}
+                  name={"priceId"}
+                  disabled={navigation.state === "submitting"}
+                >
                   Comprar por £14,95/mes
-                 </button>
+                </button>
               </Form>
             </div>
           </div>

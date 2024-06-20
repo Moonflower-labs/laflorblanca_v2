@@ -13,38 +13,37 @@ import YoutubeVideo from "./ui/YoutubeVideo";
 
 export const homeLoader = () => {
   return api.get('api/reviews').then((response) => {
-    return defer({ reviews: response.data})
-  }).catch((error)=> {
+    return defer({ reviews: response.data })
+  }).catch((error) => {
     console.error(error)
     return null
   })
 }
 
-export const homeAction = async ({request}: ActionFunctionArgs) => {
+export const homeAction = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData()
-
   const priceId = formData.get('priceId')
-// handle subscription
- if(priceId) {     
-      try {
-        const response = await api.post("subscriptions/", { priceId });
-        const { subscriptionId, clientSecret } = response.data;
-        if (subscriptionId && clientSecret) {
-          console.log(subscriptionId, clientSecret)
-          return {subscriptionId, clientSecret};
-        }
-      } catch (error) {
+  // handle subscription
+  if (priceId) {
+    try {
+      const response = await api.post("subscriptions/", { priceId });
+      const { subscriptionId, clientSecret } = response.data;
+      if (subscriptionId && clientSecret) {
+        console.log(subscriptionId, clientSecret)
+        return { subscriptionId, clientSecret };
+      }
+    } catch (error) {
       console.error(error)
       return null
-      }
+    }
 
-  }else {
+  } else {
 
     try {
-      await api.post('api/reviews/',formData)
-   
+      await api.post('api/reviews/', formData)
+
       return toast.success("Gracias por tu opinión")
-      
+
     } catch (error) {
       console.error(error)
       return toast.error("Ya has dado tu opinión!")
@@ -54,7 +53,7 @@ export const homeAction = async ({request}: ActionFunctionArgs) => {
 
 const Homepage = () => {
   const { pathname, hash } = useLocation();
-  const {reviews} = useLoaderData() as {reviews: Review[]} || {}
+  const { reviews } = useLoaderData() as { reviews: Review[] } || {}
   const staticPrefix = import.meta.env.PROD ? "/static" : "";
 
   const logoUrl = `${staticPrefix}/flower.png`;
@@ -111,35 +110,35 @@ const Homepage = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-6 mb-4 px-1">
-          <YoutubeVideo videoId="v726U5jRots"  />
-          <YoutubeVideo videoId="Lj5Q6_o_yyw"  />
+          <YoutubeVideo videoId="v726U5jRots" />
+          <YoutubeVideo videoId="Lj5Q6_o_yyw" />
           <div className="col-span-full">
-           <YoutubeVideo videoId="4GIIhZK1vaY" className="md:w-1/2 mx-auto"  />
+            <YoutubeVideo videoId="4GIIhZK1vaY" className="md:w-1/2 mx-auto" />
           </div>
         </div>
-       
+
         <SubscriptionPlans />
 
-        <Suspense fallback={<ReviewsSkeleton/>}>
-            <Await
-              resolve={reviews}
-              errorElement={
-                <p className="text-error text-xl text-center col-span-full py-6">
-                  ⚠️  {" "}Error cargando los reviews!
-                </p>
-              }
-            >
-              {(reviewList) =>
-                reviewList ? (
-                    <Reviews reviewsData={reviewList} />
-                  
-                ) : (
-                  <div className="text-2xl py-10 text-center mx-auto col-span-full">
-                    No hay reviews que mostrar.
-                  </div>
-                )
-              }
-            </Await>
+        <Suspense fallback={<ReviewsSkeleton />}>
+          <Await
+            resolve={reviews}
+            errorElement={
+              <p className="text-error text-xl text-center col-span-full py-6">
+                ⚠️  {" "}Error cargando los reviews!
+              </p>
+            }
+          >
+            {(reviewList) =>
+              reviewList ? (
+                <Reviews reviewsData={reviewList} />
+
+              ) : (
+                <div className="text-2xl py-10 text-center mx-auto col-span-full">
+                  No hay reviews que mostrar.
+                </div>
+              )
+            }
+          </Await>
         </Suspense>
       </AnimatedPage>
     </>

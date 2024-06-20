@@ -4,6 +4,7 @@ import type { DRFResponse, VideoLink } from "../../../utils/definitions";
 import { videoLinkActions } from "../../../api/actions";
 import Pagination from "../../../components/ui/Pagination";
 import VideoListCard from "../../../components/members/VideoListCard";
+import YoutubeVideo from "../../../components/ui/YoutubeVideo";
 
 export const spiritLoader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
@@ -34,15 +35,7 @@ export function Spirit() {
       </div>
       <div className="grid grid-cols-1 md:w-1/2 mx-auto mb-4">
         <p className="text-3xl mb-2">¡Bienvenidos Espíritus!</p>
-        <iframe
-          className="aspect-video rounded-lg"
-          src="https://www.youtube.com/embed/be5-o9k9zdg?si=qGBN-fklnUGCBtj8"
-          height="100%"
-          width="100%"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
+        <YoutubeVideo videoId="be5-o9k9zdg" />
       </div>
       <div className="text-2xl mx-auto text-center">
         <div className="mb-4">

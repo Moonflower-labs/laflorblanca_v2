@@ -6,9 +6,9 @@ const VideoComponent = ({ link }: { link: VideoLink }) => {
     <div className="flex flex-col items-center">
       <iframe
         className="aspect-video w-[85%] rounded-md mb-6"
-        src={link.url}
+        src={`https://www.youtube-nocookie.com/embed/${link.videoId}`}
         title={link.title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; "
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
         allowFullScreen
       />
       <p className="text-xl mb-4">

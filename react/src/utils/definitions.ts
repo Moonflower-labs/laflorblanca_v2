@@ -117,7 +117,7 @@ export interface Errors {
 export interface VideoLink {
   id: number | string;
   section: string;
-  url: string;
+  videoId: string;
   uploaded_on: Date;
   title: string;
   description: string;

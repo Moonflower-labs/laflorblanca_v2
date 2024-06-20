@@ -52,7 +52,7 @@ export const basicDetailAction = async ({
   // TODO: handle rating action.
 };
 
-export function BasicDetail () {
+export function BasicDetail() {
   const { post } = (useLoaderData() as { post: Post | null }) || {
     post: null,
   };
@@ -87,7 +87,6 @@ export function BasicDetail () {
             <div className="flex flex-col md:flex-row gap-4 align-middle">
               <div className="flex flex-row justify-between w-[50%]">
                 <FavoritesBtn object={post} isFavorite={!!isFavorite} />
-
                 <div className="flex gap-4 align-middle">
                   <div className="shadow my-auto">
                     <div className="stat-title">Puntuación</div>

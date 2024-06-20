@@ -14,11 +14,10 @@ const ShoppingCart = () => {
   const { cartItems, incrementItemQuantity, decreaseItemQuantity, deleteItem } = useCart()
   const [isVisible, setIsVisible] = useState(false);
   const cartRef = useRef<HTMLDivElement>(null);
+
   const handleModal = () => {
     setIsVisible(!isVisible);
   };
-
-
 
   const calculateTotalItems = (cartItems: CartProduct[]) => {
     let totalItems = 0;
@@ -38,7 +37,7 @@ const ShoppingCart = () => {
             key={calculateTotalItems(cartItems)}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="badge badge-sm badge-primary border-primary-content indicator-item indicator-end"
+            className="badge badge-sm badge-primary border-primary-content/70 indicator-item indicator-end"
           >
             {calculateTotalItems(cartItems)}
           </motion.span>

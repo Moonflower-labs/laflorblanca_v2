@@ -1,6 +1,6 @@
 {
   "index.html": {
-    "file": "assets/index-DoNRI4aa.js",
+    "file": "assets/index-CVQA0C7f.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -24,11 +24,11 @@
       "src/routes/auth/reset-confirmation.tsx"
     ],
     "css": [
-      "assets/index-lzgEoWvn.css"
+      "assets/index-nXmiRZoc.css"
     ]
   },
   "src/components/layouts/AuthLayout.tsx": {
-    "file": "assets/AuthLayout-DIRjrtrm.js",
+    "file": "assets/AuthLayout-6BN8Mq78.js",
     "name": "AuthLayout",
     "src": "src/components/layouts/AuthLayout.tsx",
     "isDynamicEntry": true,
@@ -37,7 +37,7 @@
     ]
   },
   "src/components/layouts/MembersLayout.tsx": {
-    "file": "assets/MembersLayout-5rbsFhQu.js",
+    "file": "assets/MembersLayout-3FiShDzO.js",
     "name": "MembersLayout",
     "src": "src/components/layouts/MembersLayout.tsx",
     "isDynamicEntry": true,
@@ -46,7 +46,7 @@
     ]
   },
   "src/components/layouts/QuestionLayout.tsx": {
-    "file": "assets/QuestionLayout-BUznRufw.js",
+    "file": "assets/QuestionLayout-DCB_3Q_w.js",
     "name": "QuestionLayout",
     "src": "src/components/layouts/QuestionLayout.tsx",
     "isDynamicEntry": true,
@@ -55,7 +55,7 @@
     ]
   },
   "src/components/layouts/UserProfileLayout.tsx": {
-    "file": "assets/UserProfileLayout-BFOk4H6i.js",
+    "file": "assets/UserProfileLayout-BkgoGBzP.js",
     "name": "UserProfileLayout",
     "src": "src/components/layouts/UserProfileLayout.tsx",
     "isDynamicEntry": true,
@@ -64,7 +64,7 @@
     ]
   },
   "src/routes/auth/login.tsx": {
-    "file": "assets/login-Dv2jmj_1.js",
+    "file": "assets/login-CYGPiQbP.js",
     "name": "login",
     "src": "src/routes/auth/login.tsx",
     "isDynamicEntry": true,
@@ -73,7 +73,7 @@
     ]
   },
   "src/routes/auth/register.tsx": {
-    "file": "assets/register-BKxuA140.js",
+    "file": "assets/register-Bkr7ycEf.js",
     "name": "register",
     "src": "src/routes/auth/register.tsx",
     "isDynamicEntry": true,
@@ -82,7 +82,7 @@
     ]
   },
   "src/routes/auth/reset-confirmation.tsx": {
-    "file": "assets/reset-confirmation-BMW0FTTb.js",
+    "file": "assets/reset-confirmation-BTTOjuxb.js",
     "name": "reset-confirmation",
     "src": "src/routes/auth/reset-confirmation.tsx",
     "isDynamicEntry": true,
@@ -91,7 +91,7 @@
     ]
   },
   "src/routes/auth/reset-password.tsx": {
-    "file": "assets/reset-password-kQHNRF5X.js",
+    "file": "assets/reset-password-CXs98MF3.js",
     "name": "reset-password",
     "src": "src/routes/auth/reset-password.tsx",
     "isDynamicEntry": true,
@@ -100,7 +100,7 @@
     ]
   },
   "src/routes/help.tsx": {
-    "file": "assets/help-PbU9wHxq.js",
+    "file": "assets/help-BPmlf0hr.js",
     "name": "help",
     "src": "src/routes/help.tsx",
     "isDynamicEntry": true,
@@ -109,7 +109,7 @@
     ]
   },
   "src/routes/questions/basic.tsx": {
-    "file": "assets/basic-DJPEMZv-.js",
+    "file": "assets/basic-Bn4NfoBk.js",
     "name": "basic",
     "src": "src/routes/questions/basic.tsx",
     "isDynamicEntry": true,
@@ -118,7 +118,7 @@
     ]
   },
   "src/routes/questions/live.tsx": {
-    "file": "assets/live-Bj-GGEy5.js",
+    "file": "assets/live-C1Lxf2ib.js",
     "name": "live",
     "src": "src/routes/questions/live.tsx",
     "isDynamicEntry": true,
@@ -127,7 +127,7 @@
     ]
   },
   "src/routes/questions/tarot.tsx": {
-    "file": "assets/tarot-hsj3j3bK.js",
+    "file": "assets/tarot-CQf7JO6v.js",
     "name": "tarot",
     "src": "src/routes/questions/tarot.tsx",
     "isDynamicEntry": true,
@@ -136,7 +136,7 @@
     ]
   },
   "src/routes/store.tsx": {
-    "file": "assets/store-DR2gWx83.js",
+    "file": "assets/store-B9dMFYgo.js",
     "name": "store",
     "src": "src/routes/store.tsx",
     "isDynamicEntry": true,
@@ -145,7 +145,7 @@
     ]
   },
   "src/routes/userProfile/favorites.tsx": {
-    "file": "assets/favorites-BO460HYt.js",
+    "file": "assets/favorites-BUVgXVHe.js",
     "name": "favorites",
     "src": "src/routes/userProfile/favorites.tsx",
     "isDynamicEntry": true,
@@ -154,7 +154,7 @@
     ]
   },
   "src/routes/userProfile/profile.tsx": {
-    "file": "assets/profile-D5Dbx9tZ.js",
+    "file": "assets/profile-BczIos1T.js",
     "name": "profile",
     "src": "src/routes/userProfile/profile.tsx",
     "isDynamicEntry": true,
@@ -163,7 +163,7 @@
     ]
   },
   "src/routes/userProfile/subscription.tsx": {
-    "file": "assets/subscription-Gj9fhRoR.js",
+    "file": "assets/subscription-I9QEJa5m.js",
     "name": "subscription",
     "src": "src/routes/userProfile/subscription.tsx",
     "isDynamicEntry": true,

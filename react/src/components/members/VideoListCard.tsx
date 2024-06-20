@@ -4,15 +4,13 @@ import { Link } from "react-router-dom";
 import type { VideoLink } from "../../utils/definitions";
 
 const VideoListCard = ({ video }: { video: VideoLink }) => {
-  const staticPrefix = import.meta.env.PROD ? "/static" : "";
 
-  const logoUrl = `${staticPrefix}/flower.png`;
 
   return (
     <div className="card w-[98%] bg-base-100 shadow-xl">
       <figure className="px-10 pt-10">
         <img
-          src={logoUrl}
+          src={`https://i.ytimg.com/vi/${video.videoId}/sddefault.jpg`}
           alt=""
           className="rounded-xl aspect-video"
           width={300}
