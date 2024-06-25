@@ -8,7 +8,7 @@ import {VitePWA} from "vite-plugin-pwa"
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
-    includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'apple-touch-icon-180x180.png','mask-icon.png'],
+    includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'apple-touch-icon-180x180.png'],
     manifest: {
       name: 'La Flor Blanca',
       short_name: 'FlorBlanca',
@@ -32,12 +32,6 @@ export default defineConfig({
           "sizes": "512x512",
           "type": "image/png"
         },
-        {
-          "src": "maskable-icon-512x512.png",
-          "sizes": "512x512",
-          "type": "image/png",
-          "purpose": "maskable"
-        }, 
         {
           "src": "apple-touch-icon.png",
           "sizes": "180x180",
