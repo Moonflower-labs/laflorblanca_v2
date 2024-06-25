@@ -55,7 +55,7 @@ export const minimalPresetNoPadding: Preset = {
         }
       }, ['iPad Air 9.7"'])
     },
-    images: ['public/flower.png']
+    images: ['public/logo.jpeg']
   })
 
 
