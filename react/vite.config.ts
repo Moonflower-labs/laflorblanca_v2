@@ -8,13 +8,14 @@ import {VitePWA} from "vite-plugin-pwa"
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
-    includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'apple-touch-icon-180x180.png'],
+    includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'apple-touch-icon-180x180.png','apple-splash-landscape-2048x1536.png','apple-splash-portrait-1536x2048.png'],
     manifest: {
       name: 'La Flor Blanca',
       short_name: 'La Flor Blanca',
       description: 'Visiones con La Flor Blanca',
       theme_color: '#000000',
       background_color: '#000000',
+      
       icons:   [
        
         {
@@ -38,7 +39,19 @@ export default defineConfig({
           "type": "image/png",
           "purpose": "maskable"
         },
+        {
+          "src": "apple-splash-landscape-2048x1536.png",
+          "sizes": "2048x1536",
+          "type": "image/png",
+        },
+        {
+          "src": "apple-splash-portrait-1536x2048.png",
+          "sizes": "1536x2048",
+          "type": "image/png",
+          "purpose": "maskable"
+        },
       ],
+      
     },
     devOptions: {
       enabled: true
