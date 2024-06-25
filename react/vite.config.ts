@@ -48,7 +48,6 @@ export default defineConfig({
           "src": "apple-splash-portrait-light-1536x2048.png",
           "sizes": "1536x2048",
           "type": "image/png",
-          "purpose": "maskable"
         },
       ],
       
