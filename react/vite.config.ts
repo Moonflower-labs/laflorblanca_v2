@@ -11,7 +11,7 @@ export default defineConfig({
     includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'apple-touch-icon-180x180.png'],
     manifest: {
       name: 'La Flor Blanca',
-      short_name: 'FlorBlanca',
+      short_name: 'La Flor Blanca',
       description: 'Visiones con La Flor Blanca',
       theme_color: '#000000',
       background_color: '#000000',
