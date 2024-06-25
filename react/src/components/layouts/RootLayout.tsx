@@ -6,16 +6,17 @@ import Footer from "../Footer";
 import "react-toastify/dist/ReactToastify.css";
 import AnimatedOutlet from "./AnimatedOutlet";
 import { useCallback } from "react";
+import Notifications from "../Notifications";
 
 const RootLayout = () => {
   const submit = useSubmit()
   const navigation = useNavigation()
 
   const isPageRefresh =
-  navigation.state === "idle" &&
-  navigation.formData == null &&
-  navigation.location == null
-  
+    navigation.state === "idle" &&
+    navigation.formData == null &&
+    navigation.location == null
+
   useBeforeUnload(
     useCallback(() => {
       const isRefresh = isPageRefresh
@@ -29,25 +30,26 @@ const RootLayout = () => {
   );
 
 
-  
+
 
   return (
     <>
       <Header />
       <ToastContainer position="bottom-right" />
+      <Notifications />
       <div data-testid="root-layout" className="min-h-screen">
         <AnimatedOutlet />
       </div>
       <Footer />
-      <ScrollRestoration 
-          getKey={(location, _matches) => {
-            const paths = ["/", "/notifications"];
-            return paths.includes(location.pathname)
-              ? //  restore by pathname
-                location.pathname
-              : // everything else by location like the browser
-                location.key;
-          }} />
+      <ScrollRestoration
+        getKey={(location, _matches) => {
+          const paths = ["/", "/notifications"];
+          return paths.includes(location.pathname)
+            ? //  restore by pathname
+            location.pathname
+            : // everything else by location like the browser
+            location.key;
+        }} />
     </>
   );
 };

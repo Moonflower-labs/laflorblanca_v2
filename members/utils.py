@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 from django.conf import settings
 
 
@@ -30,15 +31,10 @@ def get_bundle_files():
             else:
                 css_files.extend(entry_css_files)
 
-    # for entry_data in manifest.values():
-    #     entry_js_files = entry_data.get('file', [])
-    #     entry_css_files = entry_data.get('css', [])
-
-    # if isinstance(entry_js_files, str):
-    #     entry_js_files = [entry_js_files]
-    # if isinstance(entry_css_files, str):
-    #     entry_css_files = [entry_css_files]
-    # js_files.extend(entry_js_files)
-    # css_files.extend(entry_css_files)
-
     return js_files, css_files
+
+
+def load_vite_pwa_manifest():
+    manifest_path = Path('react/dist/manifest.webmanifest')
+    with open(manifest_path, 'r') as manifest_file:
+        return json.load(manifest_file)

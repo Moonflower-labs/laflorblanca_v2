@@ -7,9 +7,10 @@
     <link rel="icon" type="image/svg+xml" href="{% static 'logo.jpeg' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La Flor Blanca</title>
+    <link rel="manifest" href="{% static  'manifest.webmanifest' %}">
+    {% load_vite_bundles %}
   </head>
   <body class="font-serif">
     <div id="root"></div>
-      {% load_vite_bundles %}
   </body>
 </html>

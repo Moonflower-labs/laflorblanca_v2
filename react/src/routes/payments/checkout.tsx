@@ -8,16 +8,11 @@ import { useRouteLoaderData } from "react-router-dom";
 import { CartProduct } from "../../utils/definitions";
 import { useCart } from "../../context/CartContext";
 
-// Make sure to call loadStripe outside of a component’s render to avoid
-// recreating the Stripe object on every render.
-// const stripePromise = loadStripe(
-//   "pk_test_51LIRtEAEZk4zaxmw2ngsEkzDCYygcLkU5uL4m2ba01aQ6zXkWFXboTVdNH71GBZzvHNmiRU13qtQyjjCvTzVizlX00yXeplNgV"
-// );
+
 
 export default function Checkout() {
-  const { stripePromise } = useRouteLoaderData("root") as {
-    stripePromise: Stripe | PromiseLike<Stripe | null>;
-  };
+
+  const { stripePromise } = useRouteLoaderData("root") as { stripePromise: Stripe | PromiseLike<Stripe | null> };
   const lastCartItems = useRef<CartProduct[]>([]);
   const [clientSecret, setClientSecret] = useState("");
   const [paymentIntentId, setPaymentIntentId] = useState("");
@@ -27,7 +22,10 @@ export default function Checkout() {
   useEffect(() => {
     // Update the reference when cartItems change
     lastCartItems.current = cartItems;
+
   }, [cartItems]);
+
+
 
   useMemo(() => {
     const fetchData = async () => {
@@ -96,37 +94,3 @@ export default function Checkout() {
   );
 }
 
-// useMemo(() => {
-//   const fetchData = async () => {
-//     // Check if the payment intent exists
-//     if (clientSecret) {
-//       console.log(clientSecret);
-//       try {
-//         const response = await api.patch("/create-payment-intent/", {
-//           paymentIntentId,
-//           items: cartItems,
-//         });
-//         setAmount(response.data.amount);
-//       } catch (error) {
-//         console.error("Error updating payment intent:", error);
-//         // Handle error, e.g., show a user-friendly message
-//       }
-//     } else {
-//       try {
-//         const response = await api.post("/create-payment-intent/", {
-//           items: cartItems,
-//         });
-//         setClientSecret(response.data.clientSecret);
-//         setAmount(response.data.amount);
-//         setPaymentIntentId(response.data.id);
-//       } catch (error) {
-//         console.error("Error creating payment intent:", error);
-//         // Handle error, e.g., show a user-friendly message
-//       }
-//     }
-//   };
-
-//   if (cartItems.length > 0) {
-//     fetchData();
-//   }
-// }, [cartItems, clientSecret, paymentIntentId]);

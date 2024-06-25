@@ -21,12 +21,12 @@ export const tarotLoader = async () => {
 export const tarotAction = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const text = formData.get("text");
-  // const remaining_questions = formData?.get("remaining_questions") || 0;
+  const remaining_questions = formData?.get("remaining_questions") || 0;
 
-  // if ((remaining_questions as number) <= 0) {
-  //   toast.error("Yas has usado el máximo numero de preguntas este mes");
-  //   return null;
-  // }
+  if ((remaining_questions as number) <= 0) {
+    toast.error("Yas has usado el máximo numero de preguntas este mes");
+    return null;
+  }
 
   const errors: Errors = {};
 
@@ -52,7 +52,6 @@ export const tarotAction = async ({ request }: ActionFunctionArgs) => {
     toast.error("Ha ocurrido un error.");
   }
 
-  // TODO: handle rating action.
   return null;
 };
 

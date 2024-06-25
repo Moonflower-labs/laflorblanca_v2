@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { ImBin } from "react-icons/im";
@@ -28,6 +28,13 @@ const ShoppingCart = () => {
     }
     return totalItems;
   }
+
+  useEffect(() => {
+    if (cartItems.length <= 0 && location.pathname.includes("checkout")) {
+      console.log('cartItems.length <= 0')
+      navigate('/')
+    }
+  }, [cartItems.length, location.pathname, navigate])
 
   return (
     <>

@@ -28,5 +28,6 @@ urlpatterns = [
     path('api/register/', RegisterAPIView.as_view()),
     path('api/password_reset/', PasswordResetView.as_view()),
     path('api/reset/<uidb64>/<token>', PasswordResetView.as_view()),
+    path('api/send-notification/', SendNotificationView.as_view()),
     path('mail/send/', MailView.as_view()),
 ]

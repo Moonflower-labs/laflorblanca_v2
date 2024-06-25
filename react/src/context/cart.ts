@@ -1,7 +1,7 @@
 import { storage } from "../utils/storage";
 import { CartProduct, ProductItem } from "../utils/definitions";
 
-interface CartProvider{
+interface CartProvider {
   cartItems:CartProduct[];
   addToCart(product:ProductItem,selectedPrice: { id: string; amount: number }): void;
   getCart(): CartProduct[];

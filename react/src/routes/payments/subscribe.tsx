@@ -3,7 +3,7 @@ import { useLocation, useRouteLoaderData } from "react-router-dom";
 import SubscriptionForm from "../../components/payments/SubscriptionForm";
 import { Stripe, StripeElementsOptions } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
- 
+
 const Subscribe = () => {
   const { stripePromise } = useRouteLoaderData("root") as {
     stripePromise: Stripe | PromiseLike<Stripe | null>;
@@ -13,9 +13,7 @@ const Subscribe = () => {
   const clientSecret =
     (location.state?.clientSecret as string) ||
     searchParams.get("payment_intent_client_secret");
-    
-  console.log("secret", clientSecret)
-  console.log("promise", stripePromise)
+
 
   if (!stripePromise || !clientSecret) {
     return;
@@ -43,7 +41,6 @@ const Subscribe = () => {
           <SubscriptionForm />
         </Elements>
       )}
-      {/* <SubscriptionForm /> */}
     </div>
   );
 };

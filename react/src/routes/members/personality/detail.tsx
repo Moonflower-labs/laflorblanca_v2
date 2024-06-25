@@ -1,11 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
 import { PiFlowerLotus } from "react-icons/pi";
-import { FaRegCommentAlt } from "react-icons/fa";
 import { postActions, submitLike } from "../../../api/actions";
 import FavoritesBtn from "../../../components/ui/FavoritesBtn";
 import Rating from "../../../components/ui/Rating";
 import type { DRFResponse, Post, User } from "../../../utils/definitions";
-import CommentComponent from "../../../components/ui/Comment";
 import CommentForm from "../../../components/members/CommentForm";
 import { formatDate } from "../../../utils/format";
 import {
@@ -14,8 +12,7 @@ import {
   useLoaderData,
   useRouteLoaderData,
 } from "react-router-dom";
-import LikeButton from "../../../components/ui/LikeButton";
-import isLiked from "../../../utils/helpers";
+import CommentSection from "../../../components/ui/Comment";
 
 export const basicDetailLoader = async ({ params }: LoaderFunctionArgs) => {
   const response = await postActions.getPost(params.id);
@@ -49,7 +46,6 @@ export const basicDetailAction = async ({
     }
   }
 
-  // TODO: handle rating action.
 };
 
 export function BasicDetail() {
@@ -67,6 +63,7 @@ export function BasicDetail() {
     );
   const hasRated = post?.rating_score?.authors.includes(user?.id as number);
   const likedComments = user?.likes?.liked_comments;
+
 
   return (
     <>
@@ -102,31 +99,7 @@ export function BasicDetail() {
               <Rating hasRated={hasRated || false} />
             </div>
           </article>
-          <h2 className="flex gap-4 align-middle text-primary justify-center font-semibold text-2xl mt-4 mb-3">
-            Comentarios <FaRegCommentAlt size={24} className="my-auto" />
-          </h2>
-          <div className="md:px-40 mb-6 max-h-44 bg-primary/20 rounded-md mx-4 overflow-y-auto">
-            {post.comments && post.comments.length ? (
-              post.comments.map((comment) => (
-                <div
-                  key={comment.id}
-                  className="flex flex-row gap-4 align-middles"
-                >
-                  <CommentComponent comment={comment} />
-                  <LikeButton
-                    object="comment"
-                    id={comment.id as number}
-                    isLiked={isLiked(
-                      comment.id as number,
-                      likedComments as number[] | null
-                    )}
-                  />
-                </div>
-              ))
-            ) : (
-              <p className="text-xl text-center">Nadie ha comentado todavía.</p>
-            )}
-          </div>
+          <CommentSection currentUser={user?.username as string} comments={post?.comments as []} likedComments={likedComments as number[]} />
           <CommentForm object={post} fieldName="post" />
         </>
       ) : (

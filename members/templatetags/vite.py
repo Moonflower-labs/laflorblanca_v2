@@ -1,6 +1,6 @@
 from django import template
 from django.conf import settings
-from members.utils import get_bundle_files
+from members.utils import get_bundle_files, load_vite_pwa_manifest
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
@@ -21,3 +21,8 @@ def load_vite_bundles():
                             settings.STATIC_URL, js_file)
 
     return mark_safe(tags)
+
+
+@register.simple_tag
+def vite_pwa_manifest():
+    return load_vite_pwa_manifest()

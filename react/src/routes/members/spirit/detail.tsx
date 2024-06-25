@@ -12,12 +12,11 @@ import {
 import { formatDate } from "../../../utils/format";
 import { PiFlowerLotus } from "react-icons/pi";
 import FavoritesBtn from "../../../components/ui/FavoritesBtn";
-import { FaRegCommentAlt } from "react-icons/fa";
 import CommentForm from "../../../components/members/CommentForm";
 import VideoComponent from "../../../components/members/VideoComponent";
 import LikeButton from "../../../components/ui/LikeButton";
 import isLiked from "../../../utils/helpers";
-import CommentComponent from "../../../components/ui/Comment";
+import CommentSection from "../../../components/ui/Comment";
 
 export const spiritDetailLoader = async ({
   request,
@@ -54,7 +53,6 @@ export const spiritDetailAction = async ({
       throw new Response("", { status: 405 });
     }
   }
-  // TODO: handle favorites and rating actions.
 };
 
 export const SpiritDetail = () => {
@@ -101,7 +99,6 @@ export const SpiritDetail = () => {
             <div className="flex flex-col md:flex-row gap-4 align-middle">
               <div className="flex gap-4 align-middle">
                 <FavoritesBtn object={video} isFavorite={!!isFavorite} />
-                {/* <Rating post={video} /> */}
               </div>
               <LikeButton
                 object="video"
@@ -113,31 +110,7 @@ export const SpiritDetail = () => {
               />
             </div>
           </article>
-          <h2 className="flex gap-4 align-middle text-secondary justify-center font-semibold text-2xl mt-4 mb-3">
-            Comentarios <FaRegCommentAlt size={24} className="my-auto" />
-          </h2>
-          <div className="md:px-40 mb-6 max-h-44 bg-primary/20 rounded-md mx-4 overflow-y-auto">
-            {video?.comments ? (
-              video.comments.map((comment) => (
-                <div
-                  key={comment.id}
-                  className="flex flex-row gap-4 align-middles"
-                >
-                  <CommentComponent comment={comment} />
-                  <LikeButton
-                    object="comment"
-                    id={comment.id as number}
-                    isLiked={isLiked(
-                      comment.id as number,
-                      likedComments as number[] | null
-                    )}
-                  />
-                </div>
-              ))
-            ) : (
-              <p className="text-xl text-center">Nadie ha comentado todavía.</p>
-            )}
-          </div>
+          <CommentSection currentUser={user?.username as string} comments={video?.comments as []} likedComments={likedComments as number[]} />
           <CommentForm object={video} fieldName="video" />
         </>
       ) : (

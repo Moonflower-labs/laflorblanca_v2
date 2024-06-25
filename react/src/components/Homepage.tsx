@@ -52,6 +52,7 @@ export const homeAction = async ({ request }: ActionFunctionArgs) => {
 }
 
 const Homepage = () => {
+
   const { pathname, hash } = useLocation();
   const { reviews } = useLoaderData() as { reviews: Review[] } || {}
   const staticPrefix = import.meta.env.PROD ? "/static" : "";

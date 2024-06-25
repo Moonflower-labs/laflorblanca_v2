@@ -45,7 +45,7 @@ export interface Like {
   comment?: Comment;
 }
 
-export interface Comment {
+export interface UserComment {
   id: number;
   user: number;
   text: string;
@@ -138,9 +138,6 @@ export type LkeButtonProps = {
   isLiked: boolean;
 };
 
-export type CommentProps = {
-  comment: Comment;
-};
 
 export type CommentFormProps = {
   object: Post | VideoLink;

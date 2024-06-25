@@ -21,7 +21,29 @@ from .pagination import CustomPagination
 from .serializers import *
 from .permissions import IsActiveMember, HasSoulMembership
 from payments.views import CustomerView
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
 from django.views.generic import TemplateView
+from .signals import comment_created
+
+
+class SendNotificationView(APIView):
+    def post(self, request):
+        message = request.data.get('message')
+
+        # Get the channel layer
+        channel_layer = get_channel_layer()
+
+        # Send the notification to the 'notifications' group
+        async_to_sync(channel_layer.group_send)(
+            'notifications',
+            {
+                'type': 'notification_message',
+                'message': message
+            }
+        )
+
+        return Response({'message': message})
 
 
 class UserPermissions(View):
@@ -321,15 +343,16 @@ class CommentViewSet(viewsets.ModelViewSet):
             # If the comment is related to a post, set the post field
             post_id = self.request.data.get('post')
             post = Post.objects.get(id=post_id)
-            serializer.save(user=self.request.user, post=post)
+            comment = serializer.save(user=self.request.user, post=post)
         elif 'video' in self.request.data:
             # If the comment is related to a video, set the video field
             video_id = self.request.data.get('video')
             video = VideoLink.objects.get(id=video_id)
-            serializer.save(user=self.request.user, video=video)
+            comment = serializer.save(user=self.request.user, video=video)
         else:
             # If the comment is not related to a post or a video, default behavior (without post or video)
             serializer.save(user=self.request.user)
+        return comment
 
 
 @method_decorator(csrf_protect, name='dispatch')
