@@ -13,7 +13,8 @@ export default defineConfig({
       'apple-touch-icon.png', 
       'apple-touch-icon-180x180.png',
       'apple-splash-landscape-light-2048x1536.png',
-      'apple-splash-portrait-light-1536x2048.png'],
+      'apple-splash-portrait-light-1536x2048.png'
+    ],
     manifest: {
       name: 'La Flor Blanca',
       short_name: 'La Flor Blanca',
