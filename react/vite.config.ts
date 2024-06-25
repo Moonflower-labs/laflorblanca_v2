@@ -8,6 +8,15 @@ import {VitePWA} from "vite-plugin-pwa"
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: 'autoUpdate',
+    includeAssets: ['flower.png'],
+    manifest: {
+      name: 'La Flor Blanca',
+      icons:  [
+       { src: 'flower.png',
+        type: 'image/png'
+       }
+      ],
+    },
     devOptions: {
       enabled: true
     }
