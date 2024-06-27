@@ -60,10 +60,10 @@ export default defineConfig({
           urlPattern: /^https:\/\/laflorblanca\.onrender\.com\/.*/i,
           handler: 'NetworkFirst',
           options: {
-            cacheName: 'google-fonts-cache',
+            cacheName: 'api-cache',
             expiration: {
               maxEntries: 10,
-              maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+              maxAgeSeconds: 24 * 60 * 60  // <== 24 hours
             },
             cacheableResponse: {
               statuses: [0, 200]
