@@ -1,7 +1,8 @@
 import {
     createAppleSplashScreens,
     defineConfig,
-    minimal2023Preset
+    minimal2023Preset,
+    
 } from '@vite-pwa/assets-generator/config';
 
   

@@ -17,8 +17,8 @@ export default defineConfig({
       name: 'La Flor Blanca',
       short_name: 'La Flor Blanca',
       description: 'Visiones con La Flor Blanca',
-      theme_color: '#000000',
-      background_color: '#000000',
+      theme_color: '#ffffff',
+      background_color: '#ffffff',
      
       "icons": [
         {
@@ -42,7 +42,7 @@ export default defineConfig({
           "type": "any"
         },
         {
-          src: 'pwa-512x512.png',
+          src: 'maskable-icon-512x512.png',
           sizes: '512x512',
           type: 'image/png',
           purpose: 'maskable'

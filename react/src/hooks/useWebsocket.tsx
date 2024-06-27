@@ -36,7 +36,7 @@ const useWebSocket = (url: string) => {
                 }
             };
             ws.onerror = (event) => {
-                const eventError = new Error(`${event}`)
+                const eventError = new Error(`${event.type}}`)
                 setError(eventError)
                 console.error('WebSocket error:', event);
             };
