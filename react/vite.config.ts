@@ -53,24 +53,6 @@ export default defineConfig({
     devOptions: {
       enabled: true
     },
-    workbox: {
-      navigateFallbackDenylist: [/^\/backoffice/],
-      runtimeCaching: [
-        {
-          urlPattern: /^https:\/\/laflorblanca\.onrender\.com\/.*/i,
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'api-cache',
-            expiration: {
-              maxEntries: 10,
-              maxAgeSeconds: 24 * 60 * 60  // <== 24 hours
-            },
-            cacheableResponse: {
-              statuses: [0, 200]
-            }
-          }
-        }]
-    }
   })],
 
   build: {
