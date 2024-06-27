@@ -52,6 +52,24 @@ export default defineConfig({
     },
     devOptions: {
       enabled: true
+    },
+    workbox: {
+      navigateFallbackDenylist: [/^\/backoffice/],
+      runtimeCaching: [
+        {
+          urlPattern: /^https:\/\/laflorblanca\.onrender\.com\/.*/i,
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'google-fonts-cache',
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+            },
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        }]
     }
   })],
 

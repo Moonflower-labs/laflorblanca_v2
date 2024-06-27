@@ -13,7 +13,7 @@ import {
     preset: {
       ...minimal2023Preset,
       appleSplashScreens: createAppleSplashScreens({
-        padding: 0,
+        padding: 0.3,
         resizeOptions: { background: 'white', fit: 'contain' },
         // by default, dark splash screens are exluded
         darkResizeOptions: { background: 'black' },
