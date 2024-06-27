@@ -19,9 +19,8 @@ export default defineConfig({
       description: 'Visiones con La Flor Blanca',
       theme_color: '#000000',
       background_color: '#000000',
-      
-      icons:   [
-       
+     
+      "icons": [
         {
           "src": "pwa-64x64.png",
           "sizes": "64x64",
@@ -38,12 +37,12 @@ export default defineConfig({
           "type": "image/png"
         },
         {
-          "src": "apple-touch-icon.png",
-          "sizes": "180x180",
+          "src": "maskable-icon-512x512.png",
+          "sizes": "512x512",
           "type": "image/png",
           "purpose": "maskable"
-        },
-      ],
+        }
+      ]
       
     },
     devOptions: {
@@ -74,3 +73,29 @@ export default defineConfig({
 // - Using dynamic import() to code-split the application
 // - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 // - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+ 
+      // icons:   [
+       
+      //   {
+      //     "src": "pwa-64x64.png",
+      //     "sizes": "64x64",
+      //     "type": "image/png"
+      //   },
+      //   {
+      //     "src": "pwa-192x192.png",
+      //     "sizes": "192x192",
+      //     "type": "image/png"
+      //   },
+      //   {
+      //     "src": "pwa-512x512.png",
+      //     "sizes": "512x512",
+      //     "type": "image/png"
+      //   },
+      //   {
+      //     "src": "apple-touch-icon.png",
+      //     "sizes": "180x180",
+      //     "type": "image/png",
+      //     "purpose": "maskable"
+      //   },
+      // ],

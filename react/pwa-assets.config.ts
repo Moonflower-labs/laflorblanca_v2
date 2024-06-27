@@ -15,7 +15,7 @@ import {
         padding: 0,
         resizeOptions: { background: 'white', fit: 'contain' },
         // by default, dark splash screens are exluded
-        // darkResizeOptions: { background: 'black' },
+        darkResizeOptions: { background: 'black' },
         linkMediaOptions: {
           // will log the links you need to add to your html pages
           log: true,
