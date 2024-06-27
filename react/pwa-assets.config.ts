@@ -38,7 +38,7 @@ import {
         name: (landscape, size, dark) => {
           return `apple-splash-${landscape ? 'landscape' : 'portrait'}-${typeof dark === 'boolean' ? (dark ? 'dark-' : 'light-') : ''}${size.width}x${size.height}.png`
         }
-      }, ['iPad Air 9.7"'])
+      }, ['iPhone 12 Pro Max'])
     },
     images: ['public/logo.jpeg']
   })
