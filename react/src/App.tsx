@@ -9,16 +9,16 @@ import { commentAction } from "./routes/comments";
 import Checkout from "./routes/payments/checkout";
 import Success, { successLoader } from "./routes/payments/success";
 import Subscribe from "./routes/payments/subscribe";
-import protectedRouteLoader, { protectedLoader } from "./config/protectedRouteLoader";
+import protectedRouteLoader from "./config/protectedRouteLoader";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentsLayout from "./components/layouts/PaymentsLayout";
-import { Personality, personalityAction, personalityLoader } from "./routes/members/personality";
-import { BasicDetail, basicDetailAction, basicDetailLoader } from "./routes/members/personality/detail";
-import { SoulDetail, soulDetailAction, soulDetailLoader } from "./routes/members/soul/detail";
-import { Soul, soulLoader } from "./routes/members/soul";
-import { Spirit, spiritLoader } from "./routes/members/spirit";
-import { SpiritDetail, spiritDetailAction, spiritDetailLoader } from "./routes/members/spirit/detail";
 import NotFound from "./routes/404";
+import { Personality, personalityAction, personalityLoader } from "./routes/members/personality/index";
+import { BasicDetail, basicDetailAction, basicDetailLoader } from "./routes/members/personality/detail";
+import { Soul, soulAction, soulLoader } from "./routes/members/soul/index";
+import { SoulDetail, soulDetailAction, soulDetailLoader } from "./routes/members/soul/detail";
+import { SpiritDetail, spiritDetailAction, spiritDetailLoader } from "./routes/members/spirit/detail";
+import { Spirit, spiritAction, spiritLoader } from "./routes/members/spirit/index";
 
 
 const routes: RouteObject[] = [
@@ -41,10 +41,7 @@ const routes: RouteObject[] = [
         Component: Homepage,
       },
       {
-        lazy: async () => {
-          const { MembersLayout } = await import("./components/layouts/MembersLayout");
-          return { Component: MembersLayout };
-        },
+        lazy: () => import("./components/layouts/MembersLayout"),
         ErrorBoundary: ErrorPage,
         children: [
           {
@@ -58,6 +55,7 @@ const routes: RouteObject[] = [
                 loader: personalityLoader,
                 action: personalityAction,
                 Component: Personality,
+
               },
               {
                 path: "post/:id",
@@ -76,6 +74,7 @@ const routes: RouteObject[] = [
               {
                 index: true,
                 loader: soulLoader,
+                action: soulAction,
                 Component: Soul,
               },
               {
@@ -95,6 +94,7 @@ const routes: RouteObject[] = [
               {
                 index: true,
                 loader: spiritLoader,
+                action: spiritAction,
                 Component: Spirit,
               },
               {
@@ -109,28 +109,19 @@ const routes: RouteObject[] = [
       },
       {
         path: "questions",
-        lazy: async () => {
-          const { QuestionLayout } = await import("./components/layouts/QuestionLayout");
-          return { Component: QuestionLayout }
-        },
+        lazy: () => import("./components/layouts/QuestionLayout"),
+
         ErrorBoundary: ErrorPage,
         children: [
           {
-            loader({ request }) {
-              return protectedLoader({ request })
-            },
+            // loader({ request }) {
+            //   return protectedLoader({ request })
+            // },
             path: "basic",
             children: [
               {
                 index: true,
-                lazy: async () => {
-                  const { basicLoader, basicAction, BasicQuestion } = await import("./routes/questions/basic");
-                  return {
-                    loader: basicLoader,
-                    action: basicAction,
-                    Component: BasicQuestion,
-                  }
-                },
+                lazy: () => import("./routes/questions/basic"),
               },
             ],
           },
@@ -142,16 +133,7 @@ const routes: RouteObject[] = [
             children: [
               {
                 index: true,
-                lazy: async () => {
-                  const { tarotLoader, tarotAction, Tarot } =
-                    await import("./routes/questions/tarot")
-
-                  return {
-                    loader: tarotLoader,
-                    action: tarotAction,
-                    Component: Tarot,
-                  }
-                },
+                lazy: () => import("./routes/questions/tarot"),
               },
             ],
           },
@@ -163,14 +145,7 @@ const routes: RouteObject[] = [
             children: [
               {
                 index: true,
-                lazy: async () => {
-                  const { liveLoader, liveAction, Live } = await import("./routes/questions/live");
-                  return {
-                    loader: liveLoader,
-                    action: liveAction,
-                    Component: Live,
-                  }
-                },
+                lazy: () => import("./routes/questions/live"),
               },
             ],
           },
@@ -178,61 +153,26 @@ const routes: RouteObject[] = [
       },
       {
         path: "user-profile",
-        lazy: async () => {
-          const { userProfileAction } =
-            await import("./routes/userProfile/profile")
-          const { UserProfileLayout } = await import("./components/layouts/UserProfileLayout")
-
-          return {
-            action: userProfileAction,
-            Component: UserProfileLayout,
-          }
-        },
         loader: protectedRouteLoader,
+        lazy: () => import("./components/layouts/UserProfileLayout"),
         children: [
           {
             index: true,
-            lazy: async () => {
-              const { userProfileLoader, userProfileAction, UserProfile } =
-                await import("./routes/userProfile/profile")
-
-              return {
-                loader: userProfileLoader,
-                action: userProfileAction,
-                Component: UserProfile,
-              }
-            },
+            lazy: () => import("./routes/userProfile/profile"),
           },
           {
             path: "subscription",
-            lazy: async () => {
-              const { userSubscriptionLoader, Subscription } =
-                await import("./routes/userProfile/subscription")
-              return {
-                loader: userSubscriptionLoader,
-                Component: Subscription,
-              }
-            },
+            lazy: () => import("./routes/userProfile/subscription"),
           },
           {
             path: "favorites",
-            lazy: async () => {
-              const { userFavoriteLoader, Favorites } =
-                await import("./routes/userProfile/favorites")
-              return {
-                loader: userFavoriteLoader,
-                Component: Favorites,
-              }
-            },
+            lazy: () => import("./routes/userProfile/favorites")
           },
         ],
       },
       {
         path: "help",
-        lazy: async () => {
-          const { Help } = await import("./routes/help")
-          return { Component: Help }
-        },
+        lazy: () => import("./routes/help")
       },
       {
         path: "subscribe",
@@ -249,66 +189,36 @@ const routes: RouteObject[] = [
         ]
       },
       {
+        id: "store",
         path: "store",
-        lazy: async () => {
-          const { Store, storeLoader } = await import("./routes/store")
-          return {
-            loader: storeLoader,
-            Component: Store,
-          }
-        },
+        lazy: () => import("./routes/store"),
+        handle: {
+          lazyChildren: () => import("./routes/help"),
+        }
       },
       {
         path: "checkout",
         Component: Checkout,
       },
       {
-        lazy: async () => {
-          const { AuthLayout } = await import("./components/layouts/AuthLayout");
-          return { Component: AuthLayout }
-        },
+        lazy: () => import("./components/layouts/AuthLayout"),
+
         children: [
           {
             path: "register",
-            lazy: async () => {
-              const { registerLoader, registerAction, Register } = await import("./routes/auth/register")
-              return {
-                loader: registerLoader,
-                action: registerAction,
-                Component: Register,
-              }
-            },
+            lazy: () => import("./routes/auth/register")
           },
           {
             path: "login",
-            lazy: async () => {
-              const { loginLoader, loginAction, Login } = await import("./routes/auth/login")
-              return {
-                loader: loginLoader,
-                action: loginAction,
-                Component: Login,
-              }
-            }
+            lazy: () => import("./routes/auth/login")
           },
           {
             path: "reset-password",
-            lazy: async () => {
-              const { resetPassAction, ResetPassword } = await import("./routes/auth/reset-password");
-              return {
-                action: resetPassAction,
-                Component: ResetPassword,
-              }
-            },
+            lazy: () => import("./routes/auth/reset-password"),
           },
           {
             path: "reset/:uidb64/:token",
-            lazy: async () => {
-              const { confirmResetAction, ConfirmReset } = await import("./routes/auth/reset-confirmation");
-              return {
-                action: confirmResetAction,
-                Component: ConfirmReset,
-              }
-            },
+            lazy: () => import("./routes/auth/reset-confirmation"),
           },
         ],
       },
@@ -336,11 +246,16 @@ const router = createBrowserRouter(routes, {
   future: {
     v7_normalizeFormMethod: true,
   },
-
+  async unstable_patchRoutesOnMiss({ matches, patch }) {
+    console.log("Fog of war!")
+    const leafRoute = matches[matches.length - 1]?.route;
+    if (leafRoute?.handle?.lazyChildren) {
+      const children = await leafRoute.handle.lazyChildren();
+      patch(leafRoute.id as string, children);
+    }
+  }
 });
 
-function App() {
+export default function App() {
   return <RouterProvider data-testid="app" router={router} />;
 }
-
-export default App;

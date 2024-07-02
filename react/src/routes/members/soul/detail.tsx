@@ -52,7 +52,6 @@ export const soulDetailAction = async ({
       throw new Response("", { status: 405 });
     }
   }
-  // TODO: handle favorites and rating actions.
 };
 
 export function SoulDetail() {

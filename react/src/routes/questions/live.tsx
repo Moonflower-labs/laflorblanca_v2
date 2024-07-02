@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { MutableRefObject, useEffect, useRef } from "react";
 import { Errors } from "../../utils/definitions";
 
-export const liveLoader = async () => {
+export const loader = async () => {
   try {
     const response = await api.get(
       "api/premium-questions/retrieve_premium_used_questions/?type=live"
@@ -23,7 +23,7 @@ export const liveLoader = async () => {
   return null;
 };
 
-export const liveAction = async ({ request }: ActionFunctionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const text = formData.get("text");
   const remaining_questions = formData?.get("remaining_questions") || 0;
@@ -60,7 +60,7 @@ export const liveAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-export function Live() {
+export function Component() {
   const errors = useActionData() as Errors;
   const navigation = useNavigation();
   const { live_used_questions = 3 } = (useLoaderData() as {

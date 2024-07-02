@@ -13,27 +13,28 @@ import StoreSkeleton from "../components/skeletons/StoreSkeleton";
 import authProvider from "../utils/auth";
 import { useCart } from "../context/CartContext";
 
-export const storeLoader = () => {
+export const loader = () => {
   return api
     .get("products/")
-    .then((response) => { return defer({ products: response.data })}
+    .then((response) => { return defer({ products: response.data }) }
     )
     .catch((error) => {
       console.error(error);
       return null;
     });
 };
-export const storeAction = ({ request }: ActionFunctionArgs) => {
+export const action = ({ request }: ActionFunctionArgs) => {
   if (request.method === "post") {
     console.log("post");
   }
+  return null
 };
 
-export const Store = () => {
-  const { products } = (useLoaderData() as { products: ProductItem[] }) ?? {products: null};
+export const Component = () => {
+  const { products } = (useLoaderData() as { products: ProductItem[] }) ?? { products: null };
   const { addToCart } = useCart();
 
- 
+
   return (
     <>
       <h2 className="text-3xl text-center text-primary font-semibold pt-3 mb-4">

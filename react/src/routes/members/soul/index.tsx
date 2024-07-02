@@ -78,7 +78,7 @@ export function Soul() {
             height="390"
             width="100%"
             seamless={true}
-            src="https://share.transistor.fm/e/respuestas-alma/playlist/dark"
+            src="https://share.transistor.fm/e/respuestas-alma/playlist"
             referrerPolicy="no-referrer"
             loading="lazy"
           ></iframe>

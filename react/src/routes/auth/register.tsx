@@ -4,24 +4,34 @@ import { Form, Link, redirect } from "react-router-dom";
 import authProvider from "../../utils/auth";
 import { api } from "../../api/axios";
 
-export const registerLoader = async () => {
-  const response = await api.options("api/login/");
+export const loader = async () => {
+  try {
+    const response = await api.options("api/login/");
 
-  return response ? response.data : null;
-};
-
-export const registerAction = async ({ request }: LoaderFunctionArgs) => {
-  const formData = await request.formData();
-  const response = await authProvider.register(formData);
-
-  if (response !== null && response !== undefined) {
-    return null;
+    return response ? response.data : null;
+  } catch (error) {
+    console.error(error)
   }
-  await authProvider.login(formData);
-  return redirect("/");
+  return null
 };
 
-export const Register = () => {
+export const action = async ({ request }: LoaderFunctionArgs) => {
+  const formData = await request.formData();
+  try {
+    const response = await authProvider.register(formData);
+
+    if (response !== null && response !== undefined) {
+      return null;
+    }
+    await authProvider.login(formData);
+    return redirect("/");
+  } catch (error) {
+    console.error(error)
+  }
+  return null
+};
+
+export const Component = () => {
   return (
     <>
       <div className="text-center">
@@ -29,7 +39,7 @@ export const Register = () => {
           Registrar usuario
         </h1>
         <p className="py-6">
-         Si ya estás registrado inicia sesión <Link to={"/login"} className="link-primary">aquí</Link>
+          Si ya estás registrado inicia sesión <Link to={"/login"} className="link-primary">aquí</Link>
         </p>
       </div>
       <Form method="post" className="w-full">
@@ -69,7 +79,7 @@ export const Register = () => {
                 required
               />
               <label className="floating-label" htmlFor="password">
-              Contraseña
+                Contraseña
               </label>
             </div>
             <div className="form-control mb-3">
@@ -82,7 +92,7 @@ export const Register = () => {
                 required
               />
               <label className="floating-label" htmlFor="confirmation">
-              Confirma la contraseña
+                Confirma la contraseña
               </label>
             </div>
             <div className="form-control mt-6">

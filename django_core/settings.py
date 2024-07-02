@@ -30,7 +30,8 @@ SITE_NAME = 'La Flor Blanca - Admin Site'
 LANGUAGE_CODE = 'es'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+# DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'laflorblanca.onrender.com']
 

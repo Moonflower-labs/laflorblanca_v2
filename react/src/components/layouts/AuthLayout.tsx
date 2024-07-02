@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import AnimatedPage from "../AnimatedPage";
-export const AuthLayout = () => {
+export const Component = () => {
   const staticPrefix = import.meta.env.PROD ? "/static" : "";
 
   const logoUrl = `${staticPrefix}/logo.jpeg`;

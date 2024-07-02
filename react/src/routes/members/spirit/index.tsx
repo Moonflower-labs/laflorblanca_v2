@@ -91,7 +91,7 @@ export function Spirit() {
             height="390"
             width="100%"
             seamless={true}
-            src="https://share.transistor.fm/e/contenido-sorpresa-alma-y-espiritu/playlist/dark"
+            src="https://share.transistor.fm/e/contenido-sorpresa-alma-y-espiritu/playlist"
             referrerPolicy="no-referrer"
             loading="lazy"
           ></iframe>

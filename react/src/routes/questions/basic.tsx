@@ -6,7 +6,7 @@ import { api } from "../../api/axios";
 import { toast } from "react-toastify";
 import { Errors } from "../../utils/definitions";
 
-export const basicLoader = async () => {
+export const loader = async () => {
   try {
     const response = await api.get(
       "api/basic-questions/retrieve_basic_used_questions/"
@@ -18,7 +18,7 @@ export const basicLoader = async () => {
   return null;
 };
 
-export const basicAction = async ({ request }: ActionFunctionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const remaining_questions = formData?.get("remaining_questions") || 0;
 
@@ -70,7 +70,7 @@ export const basicAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-export function BasicQuestion() {
+export function Component() {
   const { basic_used_questions = 3 } = (useLoaderData() as {
     basic_used_questions: number;
   }) || { basic_used_questions: 3 };

@@ -6,7 +6,7 @@ import { api } from "../../api/axios";
 import { MutableRefObject, useRef } from "react";
 import { Errors } from "../../utils/definitions";
 
-export const tarotLoader = async () => {
+export const loader = async () => {
   try {
     const response = await api.get(
       "api/premium-questions/retrieve_premium_used_questions/?type=tarot"
@@ -18,7 +18,7 @@ export const tarotLoader = async () => {
   return null;
 };
 
-export const tarotAction = async ({ request }: ActionFunctionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const text = formData.get("text");
   const remaining_questions = formData?.get("remaining_questions") || 0;
@@ -55,7 +55,7 @@ export const tarotAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-export const Tarot = () => {
+export const Component = () => {
   const errors = useActionData() as Errors;
   const { tarot_used_questions = 3 } = (useLoaderData() as {
     tarot_used_questions: number;

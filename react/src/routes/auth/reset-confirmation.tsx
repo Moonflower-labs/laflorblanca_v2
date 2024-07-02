@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { api } from "../../api/axios";
 import { AxiosError } from "axios";
 
-export const confirmResetAction = async ({
+export const action = async ({
   request,
   params,
 }: ActionFunctionArgs) => {
@@ -36,58 +36,59 @@ export const confirmResetAction = async ({
   return null;
 };
 
-export const ConfirmReset = () => {
+export const Component = () => {
   const { error } = (useActionData() as { error: string }) || { error: null };
   const navigation = useNavigation();
   return (
     <>
       <div className="text-center">
-        <h1 className="text-4xl font-bold  mb-4">
-          Comfirma el cambio de contraseña
+        <h1 className="text-4xl font-bold text-primary mb-4">
+          Confirma el cambio de contraseña
         </h1>
 
         <p className="py-8 w-2/3 mx-auto">Elige una contraseña nueva.</p>
       </div>
 
       <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <Form method="post" className="card-body">
-        <div className="form-control mb-3">
-          <input
-            type="password"
-            placeholder="Contraseña"
-            className="floating-label-input peer"
-            name="password"
-            id="password"
-            required
-          />
-          <label htmlFor="password" className="floating-label">
-            Contraseña
-          </label>
-        </div>
-        <div className="form-control mb-3">
-          <input
-            type="password"
-            placeholder="Comfirmación"
-            className="floating-label-input peer"
-            name="confirm"
-            id="confirm"
-            required
-          />
-          <label htmlFor="confirm" className="floating-label">
-            Comfirmación
-          </label>
-        </div>
-        {error && <div className="text-error text-center">{error}</div>}
-        <div className="form-control mt-6">
-          <button
-            type="submit"
-            disabled={navigation.state === ("submitting" || "loading")}
-            className="btn btn-primary"
-          >
-            Confirmar
-          </button>
-        </div>
-      </Form></div>
+        <Form method="post" className="card-body">
+          <div className="form-control mb-3">
+            <input
+              type="password"
+              placeholder="Contraseña"
+              className="floating-label-input peer"
+              name="password"
+              id="password"
+              required
+            />
+            <label htmlFor="password" className="floating-label">
+              Contraseña
+            </label>
+          </div>
+          <div className="form-control mb-3">
+            <input
+              type="password"
+              placeholder="Comfirmación"
+              className="floating-label-input peer"
+              name="confirm"
+              id="confirm"
+              required
+            />
+            <label htmlFor="confirm" className="floating-label">
+              Comfirmación
+            </label>
+          </div>
+          {error && <div className="text-error text-center">{error}</div>}
+          <div className="form-control mt-6">
+            <button
+              type="submit"
+              disabled={navigation.state === ("submitting" || "loading")}
+              className="btn btn-primary"
+            >
+              Confirmar
+            </button>
+          </div>
+        </Form>
+      </div>
     </>
   );
 };

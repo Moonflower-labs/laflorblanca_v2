@@ -12,20 +12,27 @@
     "generate-pwa-assets": "pwa-assets-generator"
   },
   "dependencies": {
+    "@eslint/config-array": "^0.17.0",
+    "@eslint/object-schema": "^2.1.4",
+    "@jridgewell/sourcemap-codec": "^1.4.15",
     "@stripe/react-stripe-js": "^2.7.1",
     "@stripe/stripe-js": "^3.0.0",
     "axios": "^1.7.2",
     "framer-motion": "^11.2.11",
+    "glob": "^10.4.2",
+    "lru-cache": "^10.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.1",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "rimraf": "^5.0.7"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
@@ -43,6 +50,11 @@
     "typescript": "^5.5.2",
     "vite": "^5.3.1",
     "vite-plugin-pwa": "^0.20.0",
-    "vitest": "^1.6.0"
+    "vitest": "^1.6.0",
+    "workbox-build": "^7.1.1",
+    "workbox-core": "^7.1.0",
+    "workbox-precaching": "^7.1.0",
+    "workbox-routing": "^7.1.0",
+    "workbox-strategies": "^7.1.0"
   }
 }

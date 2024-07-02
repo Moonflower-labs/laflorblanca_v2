@@ -2,7 +2,7 @@ import { useState } from "react";
 import AnimatedPage from "../components/AnimatedPage";
 import React from "react";
 
-export const Help = () => {
+export const Component = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredQuestions = searchTerm

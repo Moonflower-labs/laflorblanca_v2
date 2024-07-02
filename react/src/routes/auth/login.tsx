@@ -5,20 +5,25 @@ import { Form, redirect } from "react-router-dom";
 import { api } from "../../api/axios";
 import authProvider from "../../utils/auth";
 
-export const loginLoader = async () => {
+export const loader = async () => {
   if (authProvider.isAuthenticated) {
     return redirect("/");
   }
-  const response = await api.options("api/login/");
+  try {
+    const response = await api.options("api/login/");
+    return response ? response.data : null;
+  } catch (error) {
+    console.error(error)
+  }
 
-  return response ? response.data : null;
+  return null;
 };
 
-export const loginAction = async ({ request }: ActionFunctionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   //   TODO: validate input data
   try {
-    await authProvider.login(formData);  
+    await authProvider.login(formData);
 
     if (authProvider.isAuthenticated) {
       const redirectTo = formData.get("redirectTo") as string | null;
@@ -30,7 +35,7 @@ export const loginAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-export const Login = () => {
+export const Component = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const from = params.get("from") || "/";
@@ -40,8 +45,8 @@ export const Login = () => {
       <div className="text-center">
         <h1 className="text-5xl text-primary font-bold">Iniciar sesión</h1>
         <p className="py-8">
-        ¿ No tienes una cuenta ?{" "}
-        <Link to={"register"} className="link-primary">Registro</Link>
+          ¿ No tienes una cuenta ?{" "}
+          <Link to={"register"} className="link-primary">Registro</Link>
         </p>
       </div>
       <Form method="post">

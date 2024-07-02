@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { api } from "../../api/axios";
 import { AxiosError } from "axios";
 
-export const resetPassAction = async ({ request }: ActionFunctionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const formData = await request.formData();
   try {
     await api.post("api/password_reset/", formData);
@@ -25,13 +25,13 @@ export const resetPassAction = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-export const ResetPassword = () => {
+export const Component = () => {
   const navigation = useNavigation();
   return (
     <>
       <div className="text-center px-8">
         <h1 className="text-4xl font-bold text-primary mb-4">
-          Resetear tu contraseña
+          Resetea tu contraseña
         </h1>
 
         <p className="py-8">
@@ -41,30 +41,30 @@ export const ResetPassword = () => {
       </div>
 
       <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <Form method="post" className="card-body">
-        <div className="form-control">
-          <input
-            type="email"
-            placeholder="email"
-            className="floating-label-input peer"
-            name="email"
-            id="email"
-            required
-          />
-          <label htmlFor="email" className="floating-label">
-            Email
-          </label>
-        </div>
-        <div className="form-control mt-6">
-          <button
-            type="submit"
-            disabled={navigation.state === ("submitting" || "loading")}
-            className="btn btn-primary"
-          >
-            Resetear contraseña
-          </button>
-        </div>
-      </Form>
+        <Form method="post" className="card-body">
+          <div className="form-control">
+            <input
+              type="email"
+              placeholder="email"
+              className="floating-label-input peer"
+              name="email"
+              id="email"
+              required
+            />
+            <label htmlFor="email" className="floating-label">
+              Email
+            </label>
+          </div>
+          <div className="form-control mt-6">
+            <button
+              type="submit"
+              disabled={navigation.state === ("submitting" || "loading")}
+              className="btn btn-primary"
+            >
+              Resetear contraseña
+            </button>
+          </div>
+        </Form>
       </div>
     </>
   );
