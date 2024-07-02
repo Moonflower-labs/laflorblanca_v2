@@ -24,7 +24,7 @@ const Reviews = ({ reviewsData }: { reviewsData: Review[] }) => {
         <div className="flex flex-col justify-center mb-6">
             <h2 className="text-center text-3xl text-primary mb-4">Reviews</h2>
             <div className="carousel w-full lg:w-[85%] border rounded-lg shadow-lg mx-auto mb-8 max-h-60 align-middle">
-                {reviewsData.map((slide, index) => (
+                {reviewsData.length > 0 ? reviewsData.map((slide, index) => (
                     <div key={index} id={slide.id} className="carousel-item relative w-full flex-col items-center">
                         <div className="rating pt-4">
                             {renderStars(slide.score)}
@@ -36,7 +36,9 @@ const Reviews = ({ reviewsData }: { reviewsData: Review[] }) => {
                             <a href={`#${reviewsData[index === reviewsData.length - 1 ? 0 : index + 1].id}`} className="btn btn-circle btn-ghost text-primary">❯</a>
                         </div>
                     </div>
-                ))}
+                )) :
+                    <div className="w-full p-8 text-center">No hay reviews</div>
+                }
             </div>
 
             {authProvider.isAuthenticated ? (

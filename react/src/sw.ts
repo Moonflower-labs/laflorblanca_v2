@@ -26,7 +26,10 @@ let allowlist: undefined | RegExp[]
 if (import.meta.env.DEV)
   allowlist = [/^\/$/]
 
-const denylist: undefined | RegExp[] = [/^\/backoffice/]
+const denylist: undefined | RegExp[] = [
+  /^\/backoffice/,
+  /^\/admin/,
+]
 
 // to allow work offline
 registerRoute(new NavigationRoute(
