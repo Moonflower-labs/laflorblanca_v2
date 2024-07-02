@@ -1,7 +1,7 @@
 
 import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching'
 import { NavigationRoute, registerRoute } from 'workbox-routing'
-import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
+import { StaleWhileRevalidate, CacheFirst, NetworkFirst } from 'workbox-strategies';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
@@ -17,6 +17,8 @@ precacheAndRoute(self.__WB_MANIFEST)
 
 // Check if the application is running in production
 const isProduction = process.env.NODE_ENV === 'production';
+const apiBaseUrl = isProduction ? 'https://laflorblanca.onrender.com/api/' : 'http://localhost:8000/api/';
+
 // clean old assets
 cleanupOutdatedCaches()
 
@@ -66,36 +68,36 @@ registerRoute(
 );
 
 // Cache API responses using NetworkFirst strategy
-// registerRoute(
-//   ({ request }) => request.url.startsWith('/api/'),
-//   new NetworkFirst({
-//     cacheName: 'api-cache',
-//     plugins: [
-//       new CacheableResponsePlugin({
-//         statuses: [0, 200],
-//       }),
-//       new ExpirationPlugin({
-//         maxEntries: 50,
-//         maxAgeSeconds: 24 * 60 * 60, // 1 Day
-//       }),
-//     ],
-//   })
-// );
-
-// Ensure internal app routes are cached appropriately
 registerRoute(
-  new RegExp('/src/.*'),
-  new StaleWhileRevalidate({
-      cacheName: 'internal-resources',
+  ({ url }) => url.pathname.includes('/api/'),
+  new NetworkFirst({
+    cacheName: 'api-cache',
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 50,
+        maxAgeSeconds: 24 * 60 * 60, // 1 Day
+      }),
+      {
+        cacheDidUpdate: async ({ request }) => {
+          const response = await fetch(request);
+          const cache = await caches.open('api-cache');
+          await cache.put(request, response.clone());
+        }
+      },
+    ],
   })
 );
+
 
 // Fallback for offline API responses
 const FALLBACK_JSON = { error: 'This is a fallback response because the network is currently unavailable.' };
 
 self.addEventListener('fetch', (event) => {
     // Match any API request
-    if (event.request.url.startsWith('http://localhost:8000/api/')) {
+    if (event.request.url.startsWith(apiBaseUrl)) {
         event.respondWith(
             // Try to fetch the request from the network
             fetch(event.request).catch(() => {
@@ -108,8 +110,6 @@ self.addEventListener('fetch', (event) => {
     }
 });
 
-
-// **********************************************
 
 // // /* eslint-disable @typescript-eslint/no-unused-vars */
 // // /* eslint-disable @typescript-eslint/no-explicit-any */
